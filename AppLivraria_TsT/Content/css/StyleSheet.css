@@ -1,0 +1,29 @@
+﻿body {
+}
+.field-validation-error {
+    color: red;
+    display: block;
+}
+.bg-dark {
+    background-color: #1E90FF !important;
+}
+a {
+    color: #FFFFFF;
+    text-decoration: none;
+    background-color: transparent;
+}
+.dropdown-menu show {
+    background-color: #1E90FF;
+}
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #FFFFFF;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: #1E90FF;
+    border: 0;
+}
