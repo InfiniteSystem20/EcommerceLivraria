@@ -16,6 +16,19 @@ namespace AppLivraria_TsT.Controllers
         {
             return View();
         }
+        public ActionResult Login()
+        {
+            return View();
+        }
+        public ActionResult CadastroCliente()
+        {
+            return View();
+        }
+        public ActionResult CarrinhoCompras()
+        {
+            return View();
+        }
+
 
         public ActionResult About()
         {
