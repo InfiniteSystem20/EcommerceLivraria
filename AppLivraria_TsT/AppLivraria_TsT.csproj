@@ -463,8 +463,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\items\banner1.png" />
-    <Content Include="images\items\Banner2.png" />
-    <Content Include="images\items\Banner3.png" />
+    <Content Include="images\items\Banner2.jpeg" />
+    <Content Include="images\items\Banner3.jpeg" />
+    <Content Include="images\logo\Logo_Livraria.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\resources\lib\bootstrap-4.2.1-dist\css\bootstrap-grid.css.map" />
@@ -663,14 +664,13 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index_Old.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\CadastroCliente.cshtml" />
-    <Content Include="Views\Home\CarrinhoCompras.cshtml" />
-    <Content Include="Views\Home\Contato_Old.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\CadastroClienteOld.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Contato.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\CarrinhoCompras.cshtml" />
+    <Content Include="Views\Home\CadastroCliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
