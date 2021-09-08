@@ -1,4 +1,5 @@
 ﻿using AppLivraria_TsT.Models.DAO;
+using AppLivraria_TsT.Models.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -24,6 +25,18 @@ namespace AppLivraria_TsT.Models.DLL
                 throw ex;
             }
             return tb;
+        }
+        public void novoCliente(Cliente_DTO clienteDto)
+        {
+            try
+            {
+                dal = new clienteDAO_Acoes();
+                dal.inserirCliente(clienteDto);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

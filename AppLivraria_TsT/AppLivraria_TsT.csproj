@@ -676,6 +676,8 @@
     <Content Include="Views\Home\CarrinhoCompras.cshtml" />
     <Content Include="Views\Home\CadastroCliente.cshtml" />
     <Content Include="Views\Cliente\ListarClientes.cshtml" />
+    <Content Include="Views\Cliente\CadCliente.cshtml" />
+    <Content Include="Views\Cliente\CadastroCliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

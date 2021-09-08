@@ -25,7 +25,7 @@ namespace AppLivraria_TsT.Models.DAO
             {
                 using (MySqlConnection conn = new MySqlConnection(_conexaoMySQL))
                 {
-                    using (MySqlCommand command = new MySqlCommand("Select * from cliente", conn))
+                    using (MySqlCommand command = new MySqlCommand("Select * from tbCliente", conn))
                     {
                         conn.Open();
                         List<Cliente_DTO> listaCliente = new List<Cliente_DTO>();
@@ -89,6 +89,44 @@ namespace AppLivraria_TsT.Models.DAO
                 throw new Exception("Erro na aplicação ao selecionar Cliente" + ex.Message);
             }
         }
+        //Inserir Cliente
+        public void inserirCliente(Cliente_DTO cliente)
+        {
+           
+            try
+            {
+                String sql = "INSERT INTO tbCliente (Nome, Nascimento, Sexo, CPF, Email, Senha) VALUES (@nome,@Nascimento,@Sexo,@CPF,@Email,@Senha)";
+                con = new MySqlConnection(_conexaoMySQL);
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@Nome", cliente.Nome);
+                cmd.Parameters.AddWithValue("@Nascimento", cliente.Nascimento);
+                cmd.Parameters.AddWithValue("@Sexo", cliente.Sexo);
+                cmd.Parameters.AddWithValue("@CPF", cliente.CPF);
+
+                cmd.Parameters.AddWithValue("@Email", cliente.CPF);
+                cmd.Parameters.AddWithValue("@Senha", cliente.CPF);
+                //cmd.Parameters.AddWithValue("@privilegios", cliente.Privilegio);
+                //cmd.Parameters.AddWithValue("@status", cliente.Status);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+
+                throw new Exception("Erro no banco em cadastro cliente" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na aplicação em cadastro cliente" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
 
 
     }
