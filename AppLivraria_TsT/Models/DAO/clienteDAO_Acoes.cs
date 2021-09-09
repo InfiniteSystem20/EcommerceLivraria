@@ -95,16 +95,18 @@ namespace AppLivraria_TsT.Models.DAO
            
             try
             {
-                String sql = "INSERT INTO tbCliente (Nome, Nascimento, Sexo, CPF, Email, Senha) VALUES (@nome,@Nascimento,@Sexo,@CPF,@Email,@Senha)";
+                String sql = "INSERT INTO tbCliente (Nome, Nascimento, Sexo, CPF,Telefone, Celular, Email, Senha) VALUES (@nome,@Nascimento,@Sexo,@CPF, Telefone, Celular,@Email,@Senha)";
                 con = new MySqlConnection(_conexaoMySQL);
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@Nome", cliente.Nome);
                 cmd.Parameters.AddWithValue("@Nascimento", cliente.Nascimento);
                 cmd.Parameters.AddWithValue("@Sexo", cliente.Sexo);
                 cmd.Parameters.AddWithValue("@CPF", cliente.CPF);
+                cmd.Parameters.AddWithValue("@Telefone", cliente.Telefone);
+                cmd.Parameters.AddWithValue("@Celular", cliente.Celular);
 
-                cmd.Parameters.AddWithValue("@Email", cliente.CPF);
-                cmd.Parameters.AddWithValue("@Senha", cliente.CPF);
+                cmd.Parameters.AddWithValue("@Email", cliente.Email);
+                cmd.Parameters.AddWithValue("@Senha", cliente.Senha);
                 //cmd.Parameters.AddWithValue("@privilegios", cliente.Privilegio);
                 //cmd.Parameters.AddWithValue("@status", cliente.Status);
 

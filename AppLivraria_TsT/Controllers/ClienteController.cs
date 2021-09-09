@@ -38,9 +38,44 @@ namespace AppLivraria_TsT.Controllers
         [HttpPost]
         public ActionResult CadCliente(Cliente_DTO cliente)
         {
-            dll.novoCliente(cliente);
-            ViewBag.msg = "Cliene cadastrado com sucesso!";
+            if (ModelState.IsValid)
+            {
+                dll.novoCliente(cliente);
+
+                //TODO Imprementar redirecionamento diferenetes
+                return RedirectToAction(nameof(CadCliente));
+
+                /* ViewBag.msg = "Cliene cadastrado com sucesso!";
+                    return View();
+                */
+            }
+            return View();
+
+
+        }
+        public ActionResult CadastroCliente()
+        {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult CadastroCliente(Cliente_DTO cliente)
+        {
+            if (ModelState.IsValid)
+            {
+                dll.novoCliente(cliente);
+
+                //TODO Imprementar redirecionamento diferenetes
+                return RedirectToAction(nameof(CadastroCliente));
+
+                /* ViewBag.msg = "Cliene cadastrado com sucesso!";
+                    return View();
+                */
+            }
+            return View();
+
+
+        }
+
     }
 }
