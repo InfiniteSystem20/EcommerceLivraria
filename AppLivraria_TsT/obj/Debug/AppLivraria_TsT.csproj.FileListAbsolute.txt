@@ -225,6 +225,7 @@ C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\Antlr3.Runtime.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\Microsoft.Web.Infrastructure.dll
+C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\MySql.Data.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\Newtonsoft.Json.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\System.Web.Helpers.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\System.Web.Mvc.dll
@@ -234,6 +235,18 @@ C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\System.Web.WebPages.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\System.Web.WebPages.Razor.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\WebGrease.dll
+C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\Google.Protobuf.dll
+C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\Zstandard.Net.dll
+C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\K4os.Compression.LZ4.Streams.dll
+C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\BouncyCastle.Crypto.dll
+C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\Ubiety.Dns.Core.dll
+C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\Renci.SshNet.dll
+C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\System.Buffers.dll
+C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\K4os.Compression.LZ4.dll
+C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\K4os.Hash.xxHash.dll
+C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\System.Memory.dll
+C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\MySql.Data.xml
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\System.Web.Helpers.xml
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\System.Web.Mvc.xml
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\System.Web.Optimization.xml
@@ -251,6 +264,7 @@ C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\pt-br\System.Web.WebPages.resources.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\pt-br\System.Web.WebPages.Deployment.resources.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\pt-br\System.Web.WebPages.Razor.resources.dll
+C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\obj\Debug\AppLivraria_TsT.csprojAssemblyReference.cache
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\obj\Debug\AppLivraria_TsT.csproj.CoreCompileInputs.cache
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\obj\Debug\AppLivraria_TsT.csproj.CopyComplete
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\obj\Debug\AppLivraria_TsT.dll
