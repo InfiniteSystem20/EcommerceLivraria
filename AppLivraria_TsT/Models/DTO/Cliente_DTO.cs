@@ -12,31 +12,41 @@ namespace AppLivraria_TsT.Models.DTO
         /* PK */
         public int IdCli { get; set; }
 
-        //[Required(ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E001")]
-        //[MinLength(4, ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E002")]
+        [Display(Name = "Nome", Description = "Nome e Sobrenome.")]
+        [Required(ErrorMessage = "O nome completo é obrigatório.")]
         public string Nome { get; set; }
 
-        //[Required(ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E001")]
+        [Display(Name = "Nascimento")]
+        [Required(ErrorMessage = "O CPF é obrigatorio")]
         public string Nascimento { get; set; }
 
-        //[Required(ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E001")]
+        [Display(Name = "Sexo")]
+        [Required(ErrorMessage = "O CPF é obrigatorio")]
         public string Sexo { get; set; }
 
-        //[Required(ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E001")]
+        [Display(Name = "CPF")]
+        [Required(ErrorMessage = "O CPF é obrigatorio")]
         public string CPF { get; set; }
 
-        //[Required(ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E001")]
+        [Display(Name = "Telefone")]
         public string Telefone { get; set; }
 
+        [Display(Name = "Celular")]
+        [Required(ErrorMessage = "O CPF é obrigatorio")]
         public string Celular { get; set; }
 
-        //[Required(ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E001")]
-        //[EmailAddress(ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E004")]
+        [Display(Name = "Email")]
+        [EmailAddress(ErrorMessage = " O Email não é valido")]
+        [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Informe um email válido...")]
         public string Email { get; set; }
 
-        //[Required(ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E001")]
-        //[MinLength(6, ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E002")]
+        [Display(Name = "Senha")]
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "O senha é obrigatorio")]
+        [StringLength(10, MinimumLength = 6, ErrorMessage = "A senha deve ter entre 6 e 10 caracteres")]
         public string Senha { get; set; }
+
+        public string Tipo { get; set; }
 
     }
 }

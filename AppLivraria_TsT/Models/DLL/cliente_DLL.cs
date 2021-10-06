@@ -12,6 +12,8 @@ namespace AppLivraria_TsT.Models.DLL
     {
         Cliente_DAO dal = null;
         public Cliente_DLL() { }
+
+        //SELECIONAR CLIENTE
         public DataTable selecionaCliente()
         {
             DataTable tb = new DataTable();
@@ -26,6 +28,7 @@ namespace AppLivraria_TsT.Models.DLL
             }
             return tb;
         }
+        //INSERIR CLIENTE
         public void novoCliente(Cliente_DTO clienteDto)
         {
             try

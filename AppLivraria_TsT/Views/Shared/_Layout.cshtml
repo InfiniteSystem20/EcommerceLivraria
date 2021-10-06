@@ -38,10 +38,13 @@
                             <i class="fas fa-list-ul"></i> Categorias
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="#">Banco de Dados</a>
+                            <a class="dropdown-item" href="#">Hardware‎</a>
+                            <a class="dropdown-item" href="#">História da informatica</a>
+                            <a class="dropdown-item" href="#">Linguagens de Marcação</a>
+                            <a class="dropdown-item" href="#">Linguagens de Programação‎</a>
+                            <a class="dropdown-item" href="#">Redes de Computadores</a>
+                            <a class="dropdown-item" href="#">Sistemas operacionais</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -52,10 +55,13 @@
 
 
 
-                    <input class="form-control mr-sm-2" type="search" placeholder="palavra" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisa</button>
-                    <a class="nav-link" href="/Home/Login"><i class="fas fa-user-alt"></i> Login</a>
+                    <input class="form-control mr-sm-2" type="search" placeholder="Digite uma palavra" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                    <a class="nav-link" href="/Login/Login"><i class="fas fa-user-alt"></i> Login </a>
                     <a class="nav-link" href="/Home/CarrinhoCompras"><i class="fas fa-shopping-cart"></i> Carrinho</a>
+                    <a class="nav-link" href="#"> <i class="fas fa-user"></i> Bem vindo! @Session["usuarioNome"]</a>
+                    <span class="glyphicon glyphicon-log-in">  @Html.ActionLink("Sair", "Logout", "Login")</span>
+
                 </form>
             </div>
         </nav>
@@ -75,7 +81,7 @@
           ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-  
+
     <script src="/Content/resources/lib/holder/holder.min.js"></script>
     <script src="/Content/resources/lib/jquery3.3.1/jquery-3.3.1.min.js"></script>
     <script src="/Content/resources/lib/popper1.14.6/popper.min.js"></script>

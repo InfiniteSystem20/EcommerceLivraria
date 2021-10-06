@@ -51,7 +51,6 @@ namespace AppLivraria_TsT.Controllers
             }
             return View();
 
-
         }
         public ActionResult CadastroCliente()
         {
@@ -75,6 +74,5 @@ namespace AppLivraria_TsT.Controllers
             return View();
 
         }
-
     }
 }

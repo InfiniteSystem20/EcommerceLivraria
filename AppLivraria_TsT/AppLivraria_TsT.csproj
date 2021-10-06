@@ -122,15 +122,20 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\DashbordController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Contato.cs" />
+    <Compile Include="Models\DAO\AcoesLogin.cs" />
     <Compile Include="Models\DAO\Cliente_DAO.cs" />
+    <Compile Include="Models\DAO\Conexao.cs" />
     <Compile Include="Models\DLL\Cliente_DLL.cs" />
     <Compile Include="Models\DTO\Cliente_DTO.cs" />
+    <Compile Include="Models\DTO\Login.cs" />
     <Compile Include="Models\ErrorViewModel.cs" />
     <Compile Include="Models\NewsletterEmail.cs" />
     <Compile Include="Models\Produto.cs" />
@@ -678,6 +683,8 @@
     <Content Include="Views\Cliente\ListarClientes.cshtml" />
     <Content Include="Views\Cliente\CadCliente.cshtml" />
     <Content Include="Views\Cliente\CadastroCliente.cshtml" />
+    <Content Include="Views\Dashbord\index.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

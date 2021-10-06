@@ -41,6 +41,7 @@ namespace AppLivraria_TsT.Models.DAO
                                 cliente.CPF = (String)dr["CPF"];
                                 cliente.Email = (String)dr["Email"];
                                 cliente.Senha = (String)dr["Senha"];
+
                                 // cliente.Veiculo.IdVeiculo = (int)dr["idveiculo"];
                                 //  cliente.Usuario.Codigo = (int)dr["id"];
 
@@ -55,12 +56,12 @@ namespace AppLivraria_TsT.Models.DAO
             catch (MySqlException ex)
             {
 
-                throw new Exception("Erro no banco ao Listar usuario" + ex.Message);
+                throw new Exception("Erro no banco ao Listar cliente" + ex.Message);
             }
             catch (Exception ex)
             {
 
-                throw new Exception("Erro na aplicação ao Listar usuario" + ex.Message);
+                throw new Exception("Erro na aplicação ao Listar cliente" + ex.Message);
             }
         }
 
@@ -70,7 +71,7 @@ namespace AppLivraria_TsT.Models.DAO
             {
                 String sql = "SELECT * FROM tbCliente;";
                 con = new MySqlConnection(_conexaoMySQL);
-              
+
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 MySqlDataAdapter da = new MySqlDataAdapter();
                 da.SelectCommand = cmd;
@@ -92,10 +93,12 @@ namespace AppLivraria_TsT.Models.DAO
         //Inserir Cliente
         public void inserirCliente(Cliente_DTO cliente)
         {
-           
+            int Tipo = 1;
             try
             {
-                String sql = "INSERT INTO tbCliente (Nome, Nascimento, Sexo, CPF,Telefone, Celular, Email, Senha) VALUES (@nome,@Nascimento,@Sexo,@CPF, @Telefone, @Celular,@Email,@Senha)";
+                String sql = "INSERT INTO tbCliente (Nome, Nascimento, Sexo, CPF,Telefone, Celular, Email, Senha, Tipo)" +
+                                                   " VALUES (@nome,@Nascimento,@Sexo,@CPF,@Telefone,@Celular,@Email,@Senha,@Tipo)";
+
                 con = new MySqlConnection(_conexaoMySQL);
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@Nome", cliente.Nome);
@@ -104,10 +107,9 @@ namespace AppLivraria_TsT.Models.DAO
                 cmd.Parameters.AddWithValue("@CPF", cliente.CPF);
                 cmd.Parameters.AddWithValue("@Telefone", cliente.Telefone);
                 cmd.Parameters.AddWithValue("@Celular", cliente.Celular);
-
                 cmd.Parameters.AddWithValue("@Email", cliente.Email);
                 cmd.Parameters.AddWithValue("@Senha", cliente.Senha);
-               
+                cmd.Parameters.AddWithValue("@Tipo", Tipo);
 
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -127,8 +129,5 @@ namespace AppLivraria_TsT.Models.DAO
                 con.Close();
             }
         }
-
-
-
     }
 }
