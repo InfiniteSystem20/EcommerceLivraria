@@ -16,10 +16,12 @@ namespace AppLivraria_TsT.Controllers
         {
             return View();
         }
+        //Cadastrar Funcionario
         public ActionResult CadastroFuncionario()
         {
             return View();
         }
+        //Cadastrar Funcionario
         [HttpPost]
         public ActionResult CadastroFuncionario(Funcionario_DTO funcionario)
         {
@@ -32,6 +34,14 @@ namespace AppLivraria_TsT.Controllers
                 return RedirectToAction(nameof(CadastroFuncionario));
             }
             return View();
+        }
+
+        //Listar Funcionario
+        public ActionResult ListarFuncionario()
+        {
+
+            return View(dll.listaFuncionario());
+
         }
     }
 }

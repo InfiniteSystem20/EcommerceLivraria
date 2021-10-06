@@ -67,6 +67,14 @@
         </nav>
     </header>
     <div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+        <script src="~/Scripts/jquery.js"></script>
+        <script src="~/Scripts/jquery-mask.js"></script>
+        <script src="~/Scripts/js-bootstrap.js"></script>
+
         @RenderBody()
     </div>
     <hr class="featurette-divider">

@@ -101,5 +101,60 @@ namespace AppLivraria_TsT.Models.DAO
                 throw new Exception("Erro na aplicação ao localizar funcionario pelo codigo" + ex.Message);
             }
         }
+        // Selecionar Lista Funcionario
+        public List<Funcionario_DTO> selectListFuncionario()
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(_conexaoMySQL))
+                {
+                    using (MySqlCommand command = new MySqlCommand("Select * from tbFuncionario", conn))
+                    {
+                        conn.Open();
+                        List<Funcionario_DTO> listaFuncionario = new List<Funcionario_DTO>();
+                        using (MySqlDataReader dr = command.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                Funcionario_DTO funcionario = new Funcionario_DTO();                             
+
+                                funcionario.IdFunc = Convert.ToInt32(dr["IdFunc"]);
+                                funcionario.Nome = dr["Nome"].ToString();
+                                funcionario.CPF = dr["CPF"].ToString();
+                                funcionario.Nascimento = dr["Nascimento"].ToString();
+                                funcionario.Sexo = dr["Sexo"].ToString();
+                                funcionario.Telefone = dr["Telefone"].ToString();
+                                funcionario.Celular = dr["Celular"].ToString();
+                                funcionario.Cargo = dr["Cargo"].ToString();
+                                funcionario.Email = dr["Email"].ToString();
+                                funcionario.Senha = dr["Senha"].ToString();
+                                funcionario.Tipo = dr["Tipo"].ToString();
+
+                                //funcionario.IdFunc = (int)dr["IdFunc"];
+                                //funcionario.Nome = (String)dr["Nome"];
+                                //funcionario.CPF = (String)dr["CPF"];
+                                //funcionario.Nascimento = (String)dr["Nascimento"];
+                                //funcionario.Sexo = (String)dr["Sexo"];
+
+                                listaFuncionario.Add(funcionario);
+
+                                
+                            }
+                        }
+                        return listaFuncionario;
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+
+                throw new Exception("Erro no banco ao Listar endereço" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na aplicação ao Listar endereço" + ex.Message);
+            }
+        }
     }
 }

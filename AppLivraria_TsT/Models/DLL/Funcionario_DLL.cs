@@ -38,5 +38,18 @@ namespace AppLivraria_TsT.Models.DLL
                 throw ex;
             }
         }
+        //SELECIONAR LISTA DE FUNCIONARIO
+        public List<Funcionario_DTO> listaFuncionario()
+        {
+            try
+            {
+                dal = new Funcionario_DAO();
+                return dal.selectListFuncionario();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

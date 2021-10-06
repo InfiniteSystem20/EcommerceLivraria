@@ -166,12 +166,15 @@
     $(document).ready(function () {
         $("#CPF").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });
         $("#Telefone").inputmask("mask", { "mask": "(99)99999-9999" });
-        $("#Celular").inputmask("mask", { "mask": "(99)9999-9999" });        
+        $("#Celular").inputmask("mask", { "mask": "(99)9999-9999" });
         $("#CEP").inputmask("mask", { "mask": "99999-999" });
         $("#Nascimento").inputmask("mask", { "mask": "99/99/9999" });
     });
 </script>
 
 @Scripts.Render("~/bundles/inputmask")
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 
 
