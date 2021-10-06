@@ -685,6 +685,7 @@
     <Content Include="Views\Cliente\CadastroCliente.cshtml" />
     <Content Include="Views\Dashbord\index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Dashbord\Layout\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

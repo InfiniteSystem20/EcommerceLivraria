@@ -58,5 +58,15 @@ namespace AppLivraria_TsT.Controllers
             Session["tipologado2"] = null;
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult LogoutDash()
+        {
+            Session["usuarioLogado"] = null;
+            Session["senhaLogado"] = null;
+            Session["usuarioNome"] = null;
+            Session["tipoLogado1"] = null;
+            Session["tipologado2"] = null;
+            return RedirectToAction("Index", "Dashbord");
+        }
     }
 }
