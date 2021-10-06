@@ -122,15 +122,24 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\DashbordController.cs" />
+    <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Contato.cs" />
-    <Compile Include="Models\DAO\clienteDAO_Acoes.cs" />
-    <Compile Include="Models\DLL\cliente_DLL.cs" />
+    <Compile Include="Models\DAO\AcoesLogin.cs" />
+    <Compile Include="Models\DAO\Cliente_DAO.cs" />
+    <Compile Include="Models\DAO\Conexao.cs" />
+    <Compile Include="Models\DAO\Funcionario_DAO.cs" />
+    <Compile Include="Models\DLL\Cliente_DLL.cs" />
+    <Compile Include="Models\DLL\Funcionario_DLL.cs" />
     <Compile Include="Models\DTO\Cliente_DTO.cs" />
+    <Compile Include="Models\DTO\Funcionario_DTO.cs" />
+    <Compile Include="Models\DTO\Login.cs" />
     <Compile Include="Models\ErrorViewModel.cs" />
     <Compile Include="Models\NewsletterEmail.cs" />
     <Compile Include="Models\Produto.cs" />
@@ -142,6 +151,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\StyleSheet.css" />
+    <Content Include="Content\dash\Site.css" />
+    <Content Include="Content\dash\style.css" />
+    <Content Include="Content\dash\webjars.css" />
     <Content Include="Content\favicon.ico" />
     <Content Include="Content\paginas\cadastro.html" />
     <Content Include="Content\paginas\carrinho.html" />
@@ -647,6 +659,11 @@
     <Content Include="Content\resources\lib\bootstrap-ecommerce-uikit\ui-ecommerce\sass\_variables-custom.scss" />
     <Content Include="Content\resources\lib\bootstrap-ecommerce-uikit\_bootstrap-ecommerce.com.url" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\inputmask\bindings\inputmask.binding.js" />
+    <Content Include="Scripts\inputmask\inputmask.js" />
+    <Content Include="Scripts\inputmask\inputmask.min.js" />
+    <Content Include="Scripts\inputmask\jquery.inputmask.js" />
+    <Content Include="Scripts\inputmask\jquery.inputmask.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -678,6 +695,12 @@
     <Content Include="Views\Cliente\ListarClientes.cshtml" />
     <Content Include="Views\Cliente\CadCliente.cshtml" />
     <Content Include="Views\Cliente\CadastroCliente.cshtml" />
+    <Content Include="Views\Dashbord\index.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Dashbord\Layout\_Layout.cshtml" />
+    <Content Include="Views\Dashbord\Home\Index.cshtml" />
+    <Content Include="Views\Funcionario\CadastroFuncionario.cshtml" />
+    <Content Include="Views\Funcionario\ListarFuncionario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

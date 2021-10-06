@@ -8,16 +8,18 @@ using System.Web;
 
 namespace AppLivraria_TsT.Models.DLL
 {
-    public class cliente_DLL
+    public class Cliente_DLL
     {
-        clienteDAO_Acoes dal = null;
-        public cliente_DLL() { }
+        Cliente_DAO dal = null;
+        public Cliente_DLL() { }
+
+        //SELECIONAR CLIENTE
         public DataTable selecionaCliente()
         {
             DataTable tb = new DataTable();
             try
             {
-                dal = new clienteDAO_Acoes();
+                dal = new Cliente_DAO();
                 tb = dal.selectCliente();
             }
             catch (Exception ex)
@@ -26,11 +28,12 @@ namespace AppLivraria_TsT.Models.DLL
             }
             return tb;
         }
+        //INSERIR CLIENTE
         public void novoCliente(Cliente_DTO clienteDto)
         {
             try
             {
-                dal = new clienteDAO_Acoes();
+                dal = new Cliente_DAO();
                 dal.inserirCliente(clienteDto);
             }
             catch (Exception ex)

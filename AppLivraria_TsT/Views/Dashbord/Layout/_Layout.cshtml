@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Livraria BG</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/dash/webjars.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
+
+
+
+    <!-- Custom styles for this template -->
+    <link href="~/Content/dash/style.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-inverse navbar navbar-dark bg-dark bg-company fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="btn btn-dark navbar-toggle bg-company2 pull-left">
+                        <i class="fas fa-bars sizebtnh"></i>
+                    </button>
+                    <img src="/images/logo/Logo_Livraria.png" width="60" height="40" class="img-responsive">
+                    <a class="navbar-brand " href="#">Livraria BG</a>
+                </div>
+                <div class="nav nav-pills">
+                    <a class="nav-link2 sizet" href="/Funcionario/CadastroFuncionario"> <i class="fas fa-users sizet"></i> <span>Funcionários</span></a>
+                </div>
+                <div class="nav nav-pills">
+                    <a class="nav-link2 sizet" href="/MeusDados/MeusDados"> <i class="fas fa-user-circle sizet"></i> <span>Meus Dados</span></a>
+                </div>
+                <div class="nav nav-pills">
+                    <a class="nav-link2 sizet" href="/"> Bem vindo! @Session["usuarioNome"] <span></span></a>
+                </div>
+                <div class="nav nav-pills">
+                    <a class="nav-link2 sizet" href="/Login/LogoutDash"><i class="fas fa-power-off sizet"></i> <span>Sair</span></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="layout-main">
+
+        <aside>
+            <nav class="sidebar sidebar-open">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link " href="/Home/Index">
+                            <i class="fas fa-home"></i> <span>Ir para Ecommerce</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="nav nav-pills">
+                    <li class="nav-item"><span class="nav-link active">VENDAS</span></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Vendas/RealizarVenda">
+                            <i class="fas fa-shopping-cart"></i> <span>Realizar Venda</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Vendas/Consultar">
+                            <i class="fas fa-search"></i> <span>Consultar</span>
+                        </a>
+                    </li>
+                </ul>
+
+
+                <ul class="nav nav-pills">
+                    <li class="nav-item"><span class="nav-link active">GERENCIAMENTO</span></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Gerenciamento/Retirada">
+                            <i class="fas fa-shopping-bag"></i> <span>Retirada</span>
+                        </a>
+                    </li>
+                </ul>
+
+
+                <ul class="nav nav-pills">
+                    <li class="nav-item"><span class="nav-link active">CLIENTES</span></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Cliente/CadastroCliente">
+                            <i class="fas fa-plus-circle"></i> <span>Cadastrar</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Clientes/Consultar">
+                            <i class="fas fa-search"></i> <span>Consultar</span>
+                        </a>
+                    </li>
+                </ul>
+
+
+                <ul class="nav nav-pills">
+                    <li class="nav-item"><span class="nav-link active">PRODUTOS</span></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Produtos/Cadastrar">
+                            <i class="fas fa-plus-circle"></i> <span>Cadastrar</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Produtos/Consultar">
+                            <i class="fas fa-search"></i> <span>Consultar</span>
+                        </a>
+                    </li>
+                </ul>
+
+
+                <ul class="nav nav-pills">
+                    <li class="nav-item"><span class="nav-link active">RELATÓRIOS</span></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Relatorios/Vendas">
+                            <i class="far fa-file-alt"></i> <span>Vendas</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Relatorios/Clientes">
+                            <i class="far fa-file-alt"></i> <span>Clientes</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Relatorios/ProdutoEstoque">
+                            <i class="far fa-file-alt"></i> <span>Produto / Estoque</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+
+
+        <script src="~/Scripts/jquery.js"></script>
+        <script src="~/Scripts/jquery-mask.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="~/Scripts/js-bootstrap.js"></script>
+        <script type="text/javascript">
+
+
+
+            $(function () {
+                $('[data-toggle="popover"]').popover();
+            });
+
+            $(document).ready(function () {
+                $(".navbar-toggle").click(function () {
+                    $(".sidebar").toggleClass("sidebar-open");
+                })
+            });
+
+        </script>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+        <script src="~/Scripts/jquery.js"></script>
+        <script src="~/Scripts/jquery-mask.js"></script>
+        <script src="~/Scripts/js-bootstrap.js"></script>
+
+        @RenderBody()
+
+
+</body>
+</html>

@@ -13,7 +13,7 @@ namespace AppLivraria_TsT.Controllers
 {
     public class ClienteController : Controller
     {
-        cliente_DLL dll = new cliente_DLL();
+        Cliente_DLL dll = new Cliente_DLL();
         // GET: Cliente
         public ActionResult Index()
         {
@@ -51,7 +51,6 @@ namespace AppLivraria_TsT.Controllers
             }
             return View();
 
-
         }
         public ActionResult CadastroCliente()
         {
@@ -74,8 +73,6 @@ namespace AppLivraria_TsT.Controllers
             }
             return View();
 
-
         }
-
     }
 }
