@@ -41,7 +41,6 @@ namespace AppLivraria_TsT.Models.DAO
                 user.Senha = null;
                 user.Tipo = null;
             }
-
             con.MyDesConectarBD();
         }
     }

@@ -25,5 +25,18 @@ namespace AppLivraria_TsT.Models.DLL
                 throw ex;
             }
         }
+        //SELECIONAR FUNCIONARIO POR ID
+        public Funcionario_DTO listafuncionarioPorID(int id)
+        {
+            try
+            {
+                dal = new Funcionario_DAO();
+                return dal.selectFuncionarioByID(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

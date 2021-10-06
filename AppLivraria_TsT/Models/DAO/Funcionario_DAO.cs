@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -25,7 +26,7 @@ namespace AppLivraria_TsT.Models.DAO
 
             try
             {
-                String sql = "INSERT INTO tbCliente (Nome, Nascimento, Sexo, CPF,Telefone,Celular, Cargo, Email, Senha, Tipo)" +
+                String sql = "INSERT INTO tbFuncionario (Nome, Nascimento, Sexo, CPF,Telefone,Celular, Cargo, Email, Senha, Tipo)" +
                                " VALUES (@nome,@Nascimento,@Sexo,@CPF,@Telefone,@Celular,@Cargo, @Email,@Senha,@Tipo)";
                 con = new MySqlConnection(_conexaoMySQL);
                 MySqlCommand cmd = new MySqlCommand(sql, con);
@@ -56,6 +57,48 @@ namespace AppLivraria_TsT.Models.DAO
             finally
             {
                 con.Close();
+            }
+        }
+        // SELECIONAR FUNCIONARIO POR ID
+        public Funcionario_DTO selectFuncionarioByID(int id)
+        {
+            try
+            {
+                String sql = "call proc_SelectFuncById(IdFunc)";
+                con = new MySqlConnection(_conexaoMySQL);
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@IdFunc", id);
+                con.Open();
+                MySqlDataReader dr;
+                Funcionario_DTO funcionario = new Funcionario_DTO();
+                dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                while (dr.Read())
+                {
+                    funcionario.IdFunc = Convert.ToInt32(dr["IdFunc"]);
+                    funcionario.Nome = dr["Nome"].ToString();
+                    funcionario.CPF = dr["CPF"].ToString();
+                    funcionario.Nascimento = dr["Nascimento"].ToString();
+                    funcionario.Sexo = dr["Sexo"].ToString();                   
+                    funcionario.Telefone = dr["Telefone"].ToString();
+                    funcionario.Celular = dr["CEP"].ToString();
+                    funcionario.Cargo = dr["Cargo"].ToString();
+                    funcionario.Email = dr["Email"].ToString();
+                    funcionario.Senha = dr["Senha"].ToString();
+                    funcionario.Tipo = dr["Tipo"].ToString();
+
+                }
+                return funcionario;
+
+            }
+            catch (MySqlException ex)
+            {
+
+                throw new Exception("Erro no banco ao localizar funcionario pelo codigo" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na aplicação ao localizar funcionario pelo codigo" + ex.Message);
             }
         }
     }

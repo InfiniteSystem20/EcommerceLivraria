@@ -37,9 +37,6 @@ namespace AppLivraria_TsT.Controllers
                     Session["tipoLogado2"] = verLogin.Tipo.ToString();//=2
                     return RedirectToAction("index", "Dashbord");
                 }
-
-
-
                 return RedirectToAction("Index", "Home");
             }
             else
