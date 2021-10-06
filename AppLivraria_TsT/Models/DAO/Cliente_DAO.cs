@@ -9,13 +9,13 @@ using System.Web;
 
 namespace AppLivraria_TsT.Models.DAO
 {
-    public class clienteDAO_Acoes
+    public class Cliente_DAO
     {
         String _conexaoMySQL = null;
         MySqlConnection con = null;
 
         //String Conexão
-        public clienteDAO_Acoes()
+        public Cliente_DAO()
         {
             _conexaoMySQL = ConfigurationManager.ConnectionStrings["conexaoMySQL"].ToString();
         }

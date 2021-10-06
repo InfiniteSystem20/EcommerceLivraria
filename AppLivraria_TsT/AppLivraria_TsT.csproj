@@ -128,8 +128,8 @@
     </Compile>
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Contato.cs" />
-    <Compile Include="Models\DAO\clienteDAO_Acoes.cs" />
-    <Compile Include="Models\DLL\cliente_DLL.cs" />
+    <Compile Include="Models\DAO\Cliente_DAO.cs" />
+    <Compile Include="Models\DLL\Cliente_DLL.cs" />
     <Compile Include="Models\DTO\Cliente_DTO.cs" />
     <Compile Include="Models\ErrorViewModel.cs" />
     <Compile Include="Models\NewsletterEmail.cs" />
