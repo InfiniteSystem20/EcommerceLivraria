@@ -280,12 +280,23 @@ namespace AppLivraria_TsT.Models.DAO
         {
             try
             {
-                String sql = "DELETE FROM tbfuncionario WHERE IdFunc = @IdFunc ";
+                String sql1 = "CALL  proc_DeleteEndereco(@IdFunc); ";
+                MySqlConnection con1 = new MySqlConnection(_conexaoMySQL);
+                MySqlCommand cmd1 = new MySqlCommand(sql1, con1);
+                cmd1.Parameters.AddWithValue("@IdFunc", id);
+                con1.Open();
+                cmd1.ExecuteNonQuery();
+
+
+                String sql = "CALL  proc_DeleteFuncionario(@IdFunc); ";
                 MySqlConnection con = new MySqlConnection(_conexaoMySQL);
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@IdFunc", id);
                 con.Open();
                 cmd.ExecuteNonQuery();
+
+                
+
             }
             catch (MySqlException ex)
             {
@@ -299,7 +310,7 @@ namespace AppLivraria_TsT.Models.DAO
             }
             //finally
             //{
-            //    con.Close();
+            //    con1.Close();
             //}
 
         }
