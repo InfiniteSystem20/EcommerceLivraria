@@ -25,7 +25,11 @@ namespace AppLivraria_TsT.Models.DAO
             }
             return cn;
         }
-
+        public string RetornaDado(string StrQuery)
+        {
+            var vComando = new MySqlCommand(StrQuery, cn);
+            return vComando.ExecuteScalar().ToString();
+        }
 
         public MySqlConnection MyDesConectarBD()  //Método: MyDesConectarBD()
         {

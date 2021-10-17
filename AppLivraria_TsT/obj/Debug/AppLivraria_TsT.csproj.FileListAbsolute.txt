@@ -241,10 +241,10 @@ C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\BouncyCastle.Crypto.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\Ubiety.Dns.Core.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\Renci.SshNet.dll
+C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\System.Memory.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\System.Buffers.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\K4os.Compression.LZ4.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\K4os.Hash.xxHash.dll
-C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\System.Memory.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\System.Runtime.CompilerServices.Unsafe.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\MySql.Data.xml
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\System.Web.Helpers.xml

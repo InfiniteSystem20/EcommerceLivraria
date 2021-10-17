@@ -26,7 +26,7 @@ namespace AppLivraria_TsT.Models.DTO
         public string CPF { get; set; }
 
         [Display(Name = "Nascimento")]
-        [Required(ErrorMessage = "O CPF é obrigatorio")]
+        [Required(ErrorMessage = "A data é obrigatorio")]
         public string Nascimento { get; set; }
 
         [Display(Name = "Sexo")]
@@ -110,7 +110,11 @@ namespace AppLivraria_TsT.Models.DTO
                   "Números e caracteres especiais não são permitidos no nome.")]
         public string UF { get; set; }
 
-       
+        [Display(Name = "Cobraça/Entrega", Description = "Tipo Endereço")]
+        [Required(ErrorMessage = "O nome completo é obrigatório.")]
+        public string TipoEndereco { get; set; }
+        
+
 
     }
 }

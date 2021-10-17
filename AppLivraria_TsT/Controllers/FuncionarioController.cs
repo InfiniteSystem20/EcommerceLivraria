@@ -11,6 +11,7 @@ namespace AppLivraria_TsT.Controllers
     public class FuncionarioController : Controller
     {
         Funcionario_DLL dll = new Funcionario_DLL();
+        Funcionario_DTO funcionarioDto = new Funcionario_DTO();
         // GET: Funcionario
         public ActionResult Index()
         {
@@ -31,7 +32,7 @@ namespace AppLivraria_TsT.Controllers
 
                 //TODO Imprementar redirecionamento diferenetes
                 ViewBag.msg = "Cliene cadastrado com sucesso!";
-                return RedirectToAction(nameof(CadastroFuncionario));
+                return RedirectToAction(nameof(ListarFuncionario));
             }
             return View();
         }
@@ -41,7 +42,54 @@ namespace AppLivraria_TsT.Controllers
         {
 
             return View(dll.listaFuncionario());
-
         }
+        //Listar Funcionario Detalhes
+        public ActionResult DetalhesFuncionario(int id)
+        {
+            return View(dll.listaFuncionarioDetalhes().Find(funcionarioDto => funcionarioDto.IdFunc == id));
+        }
+
+
+        // EDITAR CLIENTE        
+        public ActionResult EditarFuncionario(int id)
+        {
+          //  if (Session["usuariologado"] == null || Session["senhaLogado"] == null)
+          //  {
+          //      return RedirectToAction("Index", "Home");
+          //  }
+          //  else
+         //   {
+                return View(dll.listaFuncionario().Find(funcionarioDto => funcionarioDto.IdFunc == id));
+          //  }
+        }
+
+        [HttpPost]
+        public ActionResult EditarFuncionario(Funcionario_DTO funcionario)
+        {
+            dll.alteraFuncionario(funcionario);
+            return RedirectToAction(nameof(ListarFuncionario));
+        }
+        // Excluir Funcionario      
+        //public ActionResult ExcluirFuncionario(int id)
+        //{
+        //    //  if (Session["usuariologado"] == null || Session["senhaLogado"] == null)
+        //    //  {
+        //    //      return RedirectToAction("Index", "Home");
+        //    //  }
+        //    //  else
+        //    //   {
+        //    return View(dll.listaFuncionario().Find(funcionarioDto => funcionarioDto.IdFunc == id));
+            
+        //    //  }
+        //}
+
+       
+        public ActionResult ExcluirFuncionario(int id)
+        {
+            //dll.listaFuncionario().Find(funcionarioDto => funcionarioDto.IdFunc == id);
+            dll.exclurFuncionario(id);
+            return RedirectToAction(nameof(ListarFuncionario));
+        }
+
     }
 }
