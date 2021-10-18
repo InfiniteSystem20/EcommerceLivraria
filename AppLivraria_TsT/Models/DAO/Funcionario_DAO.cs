@@ -60,6 +60,7 @@ namespace AppLivraria_TsT.Models.DAO
                 cmd1.Parameters.AddWithValue("@UF", funcionario.UF);
                 
 
+
                 con.Open();
                 cmd1.ExecuteNonQuery();
             }
@@ -310,7 +311,7 @@ namespace AppLivraria_TsT.Models.DAO
             }
             //finally
             //{
-            //    con1.Close();
+            //    con.Close();
             //}
 
         }
