@@ -1,11 +1,10 @@
 ﻿@model AppLivraria_TsT.Models.DTO.Funcionario_DTO
 
 @{
-    ViewBag.Title = "Cadastro Funcionario";
+    ViewBag.Title = "EditarFuncionario";
     Layout = "~/Views/Dashbord/Layout/_Layout.cshtml";
 }
-
-@using (Html.BeginForm("CadastroFuncionario", "Funcionario"))
+@using (Html.BeginForm("EditarFuncionario", "Funcionario"))
 {
     @Html.AntiForgeryToken()
     <section class="layout-content">
@@ -15,7 +14,7 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         <i class="fas fa-caret-right"></i>
-                        <span>Cadastrar Funcionário</span>
+                        <span>Editar Funciánario</span>
                     </li>
                 </ul>
             </div>
@@ -23,8 +22,14 @@
         <div class="container" id="cadastrarFunc">
             <form action="" method="POST">
                 <div class="form-row">
-                    <div class="form-group col-md-5">
-                        @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-5" })
+                    <div class="form-group col-md-1">
+                        @Html.LabelFor(model => model.IdFunc, htmlAttributes: new { @class = "control-label col-md-1" })
+                        @Html.EditorFor(model => model.IdFunc, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.IdFunc, "", new { @class = "text-danger" })
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-4" })
                         @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { placeholder = "Informe um nome", @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
                         <div class="invalid-feedback"></div>
@@ -88,84 +93,20 @@
                         <div class="invalid-feedback"></div>
                     </div>
                 </div>
-                @*__________________________________________FIM TELEFONE______________________________________________________*@
-
-                @*__________________________________________INICIO ENDEREÇO LINHA 1___________________________________________*@
-                <hr />
-                <div class="form-row">
-                    <div class="form-group col-md-5">
-                        @Html.LabelFor(model => model.logradouro, htmlAttributes: new { @class = "control-label col-md-5" })
-                        @Html.EditorFor(model => model.logradouro, new { htmlAttributes = new { placeholder = "Informe o logradouro", @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.logradouro, "", new { @class = "text-danger" })
-                        <div class="invalid-feedback"></div>
-                    </div>
-                    <div class="form-group col-md-2">
-                        @Html.LabelFor(model => model.numero, htmlAttributes: new { @class = "control-label col-md-2" })
-                        @Html.EditorFor(model => model.numero, new { htmlAttributes = new { placeholder = "Número", @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.numero, "", new { @class = "text-danger" })
-                        <div class="invalid-feedback"></div>
-                    </div>
-                    <div class="form-group col-md-3">
-                        @Html.LabelFor(model => model.complemento, htmlAttributes: new { @class = "control-label col-md-3" })
-                        @Html.EditorFor(model => model.complemento, new { htmlAttributes = new { placeholder = "Exemplo casa, apto, loja", @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.complemento, "", new { @class = "text-danger" })
-                        <div class="invalid-feedback"></div>
-                    </div>
-                    <div class="form-group col-md-2">
-                        @Html.LabelFor(model => model.CEP, htmlAttributes: new { @class = "control-label col-md-2" })
-                        @Html.EditorFor(model => model.CEP, new { htmlAttributes = new { placeholder = "99999-999", @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.CEP, "", new { @class = "text-danger" })
-                        <div class="invalid-feedback"></div>
-                    </div>
-
-                </div>
-                @*__________________________________________INICIO ENDEREÇO LINHA 2___________________________________________*@
-            <div class="form-row">
-                <div class="form-group col-md-3">
-                    @Html.LabelFor(model => model.bairro, htmlAttributes: new { @class = "control-label col-md-3" })
-                    @Html.EditorFor(model => model.bairro, new { htmlAttributes = new { placeholder = "Informe o Bairro", @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.bairro, "", new { @class = "text-danger" })
-                    <div class="invalid-feedback"></div>
-                </div>
-                <div class="form-group col-md-2">
-                    @Html.LabelFor(model => model.cidade, htmlAttributes: new { @class = "control-label col-md-2" })
-                    @Html.EditorFor(model => model.cidade, new { htmlAttributes = new { placeholder = "Informe a cidade", @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.cidade, "", new { @class = "text-danger" })
-                    <div class="invalid-feedback"></div>
-                </div>
-
-
-                <div class="form-group col-md-2">
-                    @Html.LabelFor(model => model.estado, htmlAttributes: new { @class = "control-label col-md-2" })
-                    @Html.EditorFor(model => model.estado, new { htmlAttributes = new { placeholder = "Informe o estado", @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.estado, "", new { @class = "text-danger" })
-                    <div class="invalid-feedback"></div>
-                </div>
-                <div class="form-group col-md-1">
-                    @Html.LabelFor(model => model.UF, htmlAttributes: new { @class = "control-label col-md-1" })
-                    @Html.EditorFor(model => model.UF, new { htmlAttributes = new { placeholder = "Informe o UF", @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.UF, "", new { @class = "text-danger" })
-                    <div class="invalid-feedback"></div>
-                </div>
-                <div class="form-group col-md-4">
-                    @Html.LabelFor(model => model.TipoEndereco, htmlAttributes: new { @class = "control-label col-md-4" })
-                    @Html.EditorFor(model => model.TipoEndereco, new { htmlAttributes = new { placeholder = "Endereço cobrança/entrega", @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.TipoEndereco, "", new { @class = "text-danger" })
-                    <div class="invalid-feedback"></div>
-                </div>
-
-            </div>
-                @*__________________________________________FIM ENDEREÇO______________________________________________________*@
 
                 <input type="hidden" id="id" name="id" value="" />
-                <button type="submit" class="btn btn-outline-primary">Cadastrar</button>
+                <button type="submit" class="btn btn-outline-primary">Atualizar</button>
+                
+                <button type="button" class="btn btn-outline-primary" style="color:black">
+                    @Html.ActionLink("Voltar", "ListarFuncionario", new { @style = "color:white" })
+                </button>
             </form>
         </div>
     </section>
 }
 <script>
     $(document).ready(function () {
-        $("#CPF").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });        
+        $("#CPF").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });
         $("#Telefone").inputmask("mask", { "mask": "(99)9999-9999" });
         $("#Celular").inputmask("mask", { "mask": "(99)99999-9999" });
         $("#CEP").inputmask("mask", { "mask": "99999-999" });
@@ -177,5 +118,7 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+
 
 

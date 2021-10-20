@@ -701,6 +701,9 @@
     <Content Include="Views\Dashbord\Home\Index.cshtml" />
     <Content Include="Views\Funcionario\CadastroFuncionario.cshtml" />
     <Content Include="Views\Funcionario\ListarFuncionario.cshtml" />
+    <Content Include="Views\Funcionario\EditarFuncionario.cshtml" />
+    <Content Include="Views\Funcionario\ExcluirFuncionario.cshtml" />
+    <Content Include="Views\Funcionario\DetalhesFuncionario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
