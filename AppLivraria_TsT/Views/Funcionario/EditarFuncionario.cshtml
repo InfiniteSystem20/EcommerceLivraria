@@ -65,7 +65,7 @@
 
                     <div class="form-group col-md-4">
                         @Html.LabelFor(model => model.Nascimento, htmlAttributes: new { @class = "control-label col-md-4" })
-                        @Html.EditorFor(model => model.Nascimento, new { htmlAttributes = new { placeholder = "99/99/9999", @class = "form-control", @id = "emailFunc" } })
+                        @Html.EditorFor(model => model.Nascimento, new { htmlAttributes = new { placeholder = "99/99/9999", @class = "form-control", @id = "Nascimento" } })
                         @Html.ValidationMessageFor(model => model.Nascimento, "", new { @class = "text-danger" })
                         <div class="invalid-feedback"></div>
                     </div>

@@ -704,6 +704,7 @@
     <Content Include="Views\Funcionario\EditarFuncionario.cshtml" />
     <Content Include="Views\Funcionario\ExcluirFuncionario.cshtml" />
     <Content Include="Views\Funcionario\DetalhesFuncionario.cshtml" />
+    <Content Include="Views\Cliente\ListarCliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -239,25 +239,27 @@ namespace AppLivraria_TsT.Models.DAO
         {
             try
             {
-                String sql = " update tbfuncionario set Nome = @Nome, Nascimento = @Nascimento, Sexo = @Sexo, CPF = @CPF, Telefone = @Telefone," +
-                             " Cargo = @Cargo, Celular = @Celular, Email = @Email, Senha = @Senha  where IdFunc = @IdFunc; ";
+                //String sql = " update tbfuncionario set Nome = @Nome, Nascimento = @Nascimento, Sexo = @Sexo, CPF = @CPF, " +
+                //"Telefone = @Telefone, Cargo = @Cargo, Celular = @Celular, Email = @Email, Senha = @Senha  where IdFunc = @IdFunc;";
 
-                //  String sql = " CALL proc_UpdateFuncionario(@IdFunc, @Nome, @Nascimento, @Sexo, @CPF, @Telefone@, @Cargo, @Celular, @Email, @Senha);";
+                String sql = " CALL proc_UpdateFuncionario(@IdFunc, @Nome, @CPF, @Sexo, @Telefone, @Celular,@Nascimento,  @Cargo, " +
+                             " @Email, @Senha); ";
 
                 //Alter Funcionario
                 con = new MySqlConnection(_conexaoMySQL);
                 MySqlCommand cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@IdFunc", funcionario.IdFunc);
+                
                 cmd.Parameters.AddWithValue("@Nome", funcionario.Nome);
-                cmd.Parameters.AddWithValue("@Nascimento", funcionario.Nascimento);
-                cmd.Parameters.AddWithValue("@Sexo", funcionario.Sexo);
                 cmd.Parameters.AddWithValue("@CPF", funcionario.CPF);
+                cmd.Parameters.AddWithValue("@Sexo", funcionario.Sexo);
                 cmd.Parameters.AddWithValue("@Telefone", funcionario.Telefone);
+                cmd.Parameters.AddWithValue("@Celular", funcionario.Celular);
+                cmd.Parameters.AddWithValue("@Nascimento", funcionario.Nascimento); 
                 cmd.Parameters.AddWithValue("@Cargo", funcionario.Cargo);
-                cmd.Parameters.AddWithValue("@Celular", funcionario.Celular);                
                 cmd.Parameters.AddWithValue("@Email", funcionario.Email);
                 cmd.Parameters.AddWithValue("@Senha", funcionario.Senha);
-                
+                cmd.Parameters.AddWithValue("@IdFunc", funcionario.IdFunc);
+
                 con.Open();
                 cmd.ExecuteNonQuery();
             }
@@ -282,15 +284,15 @@ namespace AppLivraria_TsT.Models.DAO
             try
             {
                 String sql1 = "CALL  proc_DeleteEndereco(@IdFunc); ";
-                MySqlConnection con1 = new MySqlConnection(_conexaoMySQL);
-                MySqlCommand cmd1 = new MySqlCommand(sql1, con1);
+                con = new MySqlConnection(_conexaoMySQL);
+                MySqlCommand cmd1 = new MySqlCommand(sql1, con);
                 cmd1.Parameters.AddWithValue("@IdFunc", id);
-                con1.Open();
+                con.Open();
                 cmd1.ExecuteNonQuery();
 
 
                 String sql = "CALL  proc_DeleteFuncionario(@IdFunc); ";
-                MySqlConnection con = new MySqlConnection(_conexaoMySQL);
+                con = new MySqlConnection(_conexaoMySQL);
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@IdFunc", id);
                 con.Open();
@@ -309,10 +311,10 @@ namespace AppLivraria_TsT.Models.DAO
 
                 throw new Exception("Erro na aplicação ao deletar funcionario" + ex.Message);
             }
-            //finally
-            //{
-            //    con.Close();
-            //}
+            finally
+            {
+                con.Close();
+            }
 
         }
     }

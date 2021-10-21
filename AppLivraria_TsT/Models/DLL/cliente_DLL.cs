@@ -13,6 +13,20 @@ namespace AppLivraria_TsT.Models.DLL
         Cliente_DAO dal = null;
         public Cliente_DLL() { }
 
+        //SELECIONAR LISTA DE CLIENTE
+        public List<Cliente_DTO> listaCliente()
+        {
+            try
+            {
+                dal = new Cliente_DAO();
+                return dal.selectListCliente();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         //SELECIONAR CLIENTE
         public DataTable selecionaCliente()
         {

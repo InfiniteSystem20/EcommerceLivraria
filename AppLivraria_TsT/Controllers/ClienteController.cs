@@ -43,36 +43,20 @@ namespace AppLivraria_TsT.Controllers
                 dll.novoCliente(cliente);
 
                 //TODO Imprementar redirecionamento diferenetes
-                return RedirectToAction(nameof(CadCliente));
+                ViewBag.msg = "Cliene cadastrado com sucesso!";
+                return RedirectToAction("Login","Login");
 
-                /* ViewBag.msg = "Cliene cadastrado com sucesso!";
-                    return View();
+                
+                   /* return View();
                 */
             }
             return View();
 
         }
-        public ActionResult CadastroCliente()
+        //Listar Cliente
+        public ActionResult ListarCliente()
         {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult CadastroCliente(Cliente_DTO cliente)
-        {
-            if (ModelState.IsValid)
-            {
-                dll.novoCliente(cliente);
-
-                //TODO Imprementar redirecionamento diferenetes
-                return RedirectToAction(nameof(CadastroCliente));
-
-                /* ViewBag.msg = "Cliene cadastrado com sucesso!";
-                    return View();
-                */
-            }
-            return View();
-
+            return View(dll.listaCliente());
         }
     }
 }
