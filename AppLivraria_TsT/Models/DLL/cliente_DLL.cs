@@ -55,5 +55,18 @@ namespace AppLivraria_TsT.Models.DLL
                 throw ex;
             }
         }
+        //SELECIONAR LISTA DE CLIENTE DETALHES
+        public List<Cliente_DTO> listaClienteDetalhes()
+        {
+            try
+            {
+                dal = new Cliente_DAO();
+                return dal.selectListClienteDetalhes();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

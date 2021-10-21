@@ -14,6 +14,8 @@ namespace AppLivraria_TsT.Controllers
     public class ClienteController : Controller
     {
         Cliente_DLL dll = new Cliente_DLL();
+        Cliente_DTO clienteDTO = new Cliente_DTO();
+
         // GET: Cliente
         public ActionResult Index()
         {
@@ -43,7 +45,7 @@ namespace AppLivraria_TsT.Controllers
                 dll.novoCliente(cliente);
 
                 //TODO Imprementar redirecionamento diferenetes
-                ViewBag.msg = "Cliene cadastrado com sucesso!";
+                ViewBag.msg = "Cliente cadastrado com sucesso!";
                 return RedirectToAction("Login","Login");
 
                 
@@ -57,6 +59,11 @@ namespace AppLivraria_TsT.Controllers
         public ActionResult ListarCliente()
         {
             return View(dll.listaCliente());
+        }
+        //Listar Cliente Detalhes
+        public ActionResult DetalhesCliente(int id)
+        {
+            return View(dll.listaClienteDetalhes().Find(clienteDTO => clienteDTO.IdCli == id));
         }
     }
 }

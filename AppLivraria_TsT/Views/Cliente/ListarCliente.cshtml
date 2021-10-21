@@ -74,7 +74,7 @@
 
                             <td colspan="2">
                                 <button type="button" class="btn btn-info btn-sm">
-                                    @Html.ActionLink("Detalhes", "Detalhescliente", new { id = cliente.IdCli }, new { @style = "color:white" })
+                                    @Html.ActionLink("Detalhes", "DetalhesCliente", new { id = cliente.IdCli }, new { @style = "color:white" })
                                 </button>
                                 @*<a class="btn btn-info btn-sm" href="/cliente/clientesPorId/@cliente.IdFunc" role="button">
                                         <span class="fas fa-info-circle" title="Detalhes" aria-hidden="true"></span>
@@ -83,7 +83,7 @@
                                         <span class="fas fa-edit" title="Atualizar" aria-hidden="true"></span>
                                     </a>*@
                                 <button type="button" class="btn btn-warning btn-sm fas fa-edit" style="color:black">
-                                    @Html.ActionLink("Editar", "Editarcliente", new { id = cliente.IdCli }, new { @style = "color:white" })
+                                    @Html.ActionLink("Editar", "EditarCliente", new { id = cliente.IdCli }, new { @style = "color:white" })
                                 </button>
 
                                 @*<a class="btn btn-danger btn-sm da" href="/cliente/Excluircliente/@cliente.IdFunc" role="button">

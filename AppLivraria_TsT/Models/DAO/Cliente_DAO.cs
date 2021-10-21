@@ -19,6 +19,8 @@ namespace AppLivraria_TsT.Models.DAO
         {
             _conexaoMySQL = ConfigurationManager.ConnectionStrings["conexaoMySQL"].ToString();
         }
+
+        //selecionar lista de Cliente
         public List<Cliente_DTO> selectListCliente()
         {
             try
@@ -62,7 +64,63 @@ namespace AppLivraria_TsT.Models.DAO
                 throw new Exception("Erro na aplicação ao Listar cliente" + ex.Message);
             }
         }
+        // Selecionar Lista cliente
+        public List<Cliente_DTO> selectListClienteDetalhes()
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(_conexaoMySQL))
+                {
+                    using (MySqlCommand command = new MySqlCommand("CALL proc_SelecionarClienteDetalhes( )", conn))
+                    {
+                        conn.Open();
+                        List<Cliente_DTO> listaCliente = new List<Cliente_DTO>();
+                        using (MySqlDataReader dr = command.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                Cliente_DTO cliente = new Cliente_DTO();
 
+                                cliente.IdCli = Convert.ToInt32(dr["IdCli"]);
+                                cliente.Nome = dr["Nome"].ToString();
+                                cliente.CPF = dr["CPF"].ToString();
+                                cliente.Nascimento = dr["Nascimento"].ToString();
+                                cliente.Sexo = dr["Sexo"].ToString();
+                                cliente.Telefone = dr["Telefone"].ToString();
+                                cliente.Celular = dr["Celular"].ToString();                                
+                                cliente.Email = dr["Email"].ToString();
+                                cliente.Senha = dr["Senha"].ToString();
+                                cliente.Tipo = dr["Tipo"].ToString();
+
+                                cliente.TipoEndereco = dr["TipoEndereco"].ToString();
+                                cliente.logradouro = dr["Logradouro"].ToString();
+                                cliente.numero = Convert.ToInt32(dr["Numero"]);
+                                cliente.complemento = dr["Complemento"].ToString();
+                                cliente.bairro = dr["Bairro"].ToString();
+                                cliente.CEP = dr["CEP"].ToString();
+                                cliente.cidade = dr["Cidade"].ToString();
+                                cliente.estado = dr["Estado"].ToString();
+                                cliente.UF = dr["UF"].ToString();
+
+                                listaCliente.Add(cliente);
+                            }
+                        }
+                        return listaCliente;
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+
+                throw new Exception("Erro no banco ao Listar cliente" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na aplicação ao Listar cliente" + ex.Message);
+            }
+        }
+        //selecionar cliente
         public DataTable selectCliente()
         {
             try

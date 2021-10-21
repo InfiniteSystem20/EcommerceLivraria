@@ -226,12 +226,12 @@ namespace AppLivraria_TsT.Models.DAO
             catch (MySqlException ex)
             {
 
-                throw new Exception("Erro no banco ao Listar endereço" + ex.Message);
+                throw new Exception("Erro no banco ao Listar funcionario" + ex.Message);
             }
             catch (Exception ex)
             {
 
-                throw new Exception("Erro na aplicação ao Listar endereço" + ex.Message);
+                throw new Exception("Erro na aplicação ao Listar funcionario" + ex.Message);
             }
         }
         // UPDATE CLIENTE
