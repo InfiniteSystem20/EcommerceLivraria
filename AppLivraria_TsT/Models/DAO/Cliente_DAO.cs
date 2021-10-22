@@ -203,5 +203,81 @@ namespace AppLivraria_TsT.Models.DAO
                 con.Close();
             }
         }
+        // UPDATE Cliente
+        public void updateCliente(Cliente_DTO cliente)
+        {
+            try
+            {
+                String sql = " CALL proc_UpdateCliente(@IdCli, @Nome, @CPF, @Sexo, @Telefone, @Celular,@Nascimento, @Email, @Senha); ";
+
+                //Alter Cliente
+                con = new MySqlConnection(_conexaoMySQL);
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+
+                cmd.Parameters.AddWithValue("@Nome", cliente.Nome);
+                cmd.Parameters.AddWithValue("@CPF", cliente.CPF);
+                cmd.Parameters.AddWithValue("@Sexo", cliente.Sexo);
+                cmd.Parameters.AddWithValue("@Telefone", cliente.Telefone);
+                cmd.Parameters.AddWithValue("@Celular", cliente.Celular);
+                cmd.Parameters.AddWithValue("@Nascimento", cliente.Nascimento);                
+                cmd.Parameters.AddWithValue("@Email", cliente.Email);
+                cmd.Parameters.AddWithValue("@Senha", cliente.Senha);
+                cmd.Parameters.AddWithValue("@IdCli", cliente.IdCli);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+
+                throw new Exception("Erro no banco ao atualizar dados do cliente" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na aplicação ao atualizar dados do cliente" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        // DELETAR CLIENTE
+        public void deleteCliente(int id)
+        {
+            try
+            {
+                String sql1 = "CALL  proc_DeleteEnderecoCli(@IdCli); ";
+                con = new MySqlConnection(_conexaoMySQL);
+                MySqlCommand cmd1 = new MySqlCommand(sql1, con);
+                cmd1.Parameters.AddWithValue("@IdCli", id);
+                con.Open();
+                cmd1.ExecuteNonQuery();
+
+
+                String sql = "CALL  proc_DeleteCliente(@IdCli); ";
+                con = new MySqlConnection(_conexaoMySQL);
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@IdCli", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (MySqlException ex)
+            {
+
+                throw new Exception("Erro no banco ao deletar cliente" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na aplicação ao deletar cliente" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
     }
 }

@@ -65,5 +65,30 @@ namespace AppLivraria_TsT.Controllers
         {
             return View(dll.listaClienteDetalhes().Find(clienteDTO => clienteDTO.IdCli == id));
         }
+        // EDITAR CLIENTE        
+        public ActionResult EditarCliente(int id)
+        {
+            //  if (Session["usuariologado"] == null || Session["senhaLogado"] == null)
+            //  {
+            //      return RedirectToAction("Index", "Home");
+            //  }
+            //  else
+            //   {
+            return View(dll.listaCliente().Find(clienteDTO => clienteDTO.IdCli == id));
+            //  }
+        }
+        // EDITAR CLIENTE
+        [HttpPost]
+        public ActionResult EditarCliente(Cliente_DTO cliente)
+        {
+            dll.alteraCliente(cliente);
+            return RedirectToAction(nameof(ListarCliente));
+        }
+        // EXCLUIR CLIENTE
+        public ActionResult ExcluirCliente(int id)
+        {
+            dll.exclurCliente(id);
+            return RedirectToAction(nameof(ListarCliente));
+        }
     }
 }

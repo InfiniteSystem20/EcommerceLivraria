@@ -234,7 +234,7 @@ namespace AppLivraria_TsT.Models.DAO
                 throw new Exception("Erro na aplicação ao Listar funcionario" + ex.Message);
             }
         }
-        // UPDATE CLIENTE
+        // UPDATE FUNCIONARIO
         public void updateFuncionario(Funcionario_DTO funcionario)
         {
             try
@@ -291,7 +291,7 @@ namespace AppLivraria_TsT.Models.DAO
                 cmd1.ExecuteNonQuery();
 
 
-                String sql = "CALL  proc_DeleteFuncionario(@IdFunc); ";
+                String sql = "CALL  proc_DeleteEnderecoFunc(@IdFunc); ";
                 con = new MySqlConnection(_conexaoMySQL);
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@IdFunc", id);

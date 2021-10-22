@@ -68,5 +68,31 @@ namespace AppLivraria_TsT.Models.DLL
                 throw ex;
             }
         }
+        //UPDATE CLIENTE
+        public void alteraCliente(Cliente_DTO cliente)
+        {
+            try
+            {
+                dal = new Cliente_DAO();
+                dal.updateCliente(cliente);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        //EXCLUIR CLIENTE
+        public void exclurCliente(int id)
+        {
+            try
+            {
+                dal = new Cliente_DAO();
+                dal.deleteCliente(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
