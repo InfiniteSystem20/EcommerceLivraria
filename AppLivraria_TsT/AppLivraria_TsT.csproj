@@ -121,6 +121,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\DashbordController.cs" />
     <Compile Include="Controllers\FuncionarioController.cs" />
@@ -132,11 +133,14 @@
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Contato.cs" />
     <Compile Include="Models\DAO\AcoesLogin.cs" />
+    <Compile Include="Models\DAO\Categoria_DAO.cs" />
     <Compile Include="Models\DAO\Cliente_DAO.cs" />
     <Compile Include="Models\DAO\Conexao.cs" />
     <Compile Include="Models\DAO\Funcionario_DAO.cs" />
+    <Compile Include="Models\DLL\Categoria_DLL.cs" />
     <Compile Include="Models\DLL\Cliente_DLL.cs" />
     <Compile Include="Models\DLL\Funcionario_DLL.cs" />
+    <Compile Include="Models\DTO\Categoria_DTO.cs" />
     <Compile Include="Models\DTO\Cliente_DTO.cs" />
     <Compile Include="Models\DTO\Funcionario_DTO.cs" />
     <Compile Include="Models\DTO\Login.cs" />
@@ -707,6 +711,7 @@
     <Content Include="Views\Cliente\ListarCliente.cshtml" />
     <Content Include="Views\Cliente\DetalhesCliente.cshtml" />
     <Content Include="Views\Cliente\EditarCliente.cshtml" />
+    <Content Include="Views\Categoria\CadCategoria.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
