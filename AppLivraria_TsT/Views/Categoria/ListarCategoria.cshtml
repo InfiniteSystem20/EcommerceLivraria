@@ -33,12 +33,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var funcionario in Model)
+                    @foreach (var categoria in Model)
                     {
 
                         <tr>
-                            <td>@funcionario.IdCat</td>
-                            <td>@funcionario.Nome</td>                            
+                            <td>@categoria.IdCat</td>
+                            <td>@categoria.Nome</td>                            
 
                             <td colspan="2">
                                 @*<button type="button" class="btn btn-info btn-sm">
@@ -51,7 +51,7 @@
                                         <span class="fas fa-edit" title="Atualizar" aria-hidden="true"></span>
                                     </a>*@
                                 <button type="button" class="btn btn-warning btn-sm fas fa-edit" style="color:black">
-                                    @Html.ActionLink("Editar", "EditarFuncionario", new { id = funcionario.IdCat }, new { @style = "color:white" })
+                                    @Html.ActionLink("Editar", "EditarCategoria", new { id = categoria.IdCat }, new { @style = "color:white" })
                                 </button>
 
                                 @*<a class="btn btn-danger btn-sm da" href="/Funcionario/ExcluirFuncionario/@funcionario.IdFunc" role="button">
@@ -59,7 +59,7 @@
                                     </a>*@
 
                                 <button type="button" class="btn btn-danger btn-sm da" style="color:black">
-                                    @Html.ActionLink("Excluir", "ExcluirFuncionario", new { id = funcionario.IdCat },
+                                    @Html.ActionLink("Excluir", "ExcluirCategoria", new { id = categoria.IdCat },
                                     new { onclick = "return confirm('Deseja realmente Excluir o funcionário?');" })
                                 </button>
                             </td>

@@ -38,5 +38,31 @@ namespace AppLivraria_TsT.Models.DLL
                 throw ex;
             }
         }
+        //UPDATE Categoria
+        public void alteraCategoria(Categoria_DTO categoria)
+        {
+            try
+            {
+                dal = new Categoria_DAO();
+                dal.updateCategoria(categoria);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        //EXCLUIR Categoria
+        public void exclurCategoria(int id)
+        {
+            try
+            {
+                dal = new Categoria_DAO();
+                dal.deleteCategoria(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

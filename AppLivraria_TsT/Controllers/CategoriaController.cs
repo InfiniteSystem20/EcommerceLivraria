@@ -41,10 +41,35 @@ namespace AppLivraria_TsT.Controllers
             return View();
 
         }
-        //Listar Cliente
+        //Listar Categoria
         public ActionResult ListarCategoria()
         {
             return View(dll.listaCategoria());
+        }
+        // EDITAR Categoria       
+        public ActionResult EditarCategoria(int id)
+        {
+            //  if (Session["usuariologado"] == null || Session["senhaLogado"] == null)
+            //  {
+            //      return RedirectToAction("Index", "Home");
+            //  }
+            //  else
+            //   {
+            return View(dll.listaCategoria().Find(categoriaDTO => categoriaDTO.IdCat == id));
+            //  }
+        }
+        // EDITAR Categoria
+        [HttpPost]
+        public ActionResult EditarCategoria(Categoria_DTO categoria)
+        {
+            dll.alteraCategoria(categoria);
+            return RedirectToAction(nameof(ListarCategoria));
+        }
+        // EXCLUIR Categoria
+        public ActionResult ExcluirCategoria(int id)
+        {
+            dll.exclurCategoria(id);
+            return RedirectToAction(nameof(ListarCategoria));
         }
     }
 }

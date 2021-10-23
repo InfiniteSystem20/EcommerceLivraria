@@ -748,6 +748,7 @@
     <Content Include="Views\Dashbord\index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Categoria\ListarCategoria.cshtml" />
+    <Content Include="Views\Categoria\EditarCategoria.cshtml" />
     <None Include="Views\Dashbord\Layout\_Layout.cshtml" />
     <Content Include="Views\Dashbord\Home\Index.cshtml" />
     <Content Include="Views\Funcionario\CadastroFuncionario.cshtml" />

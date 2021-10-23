@@ -21,14 +21,14 @@ namespace AppLivraria_TsT.Models.DAO
         //Inserir Categoria
         public void inserirCategoria(Categoria_DTO categoria)
         {
-            
+
             try
             {
                 String sql = "CALL proc_CadCategoria(@nome);";
 
                 con = new MySqlConnection(_conexaoMySQL);
                 MySqlCommand cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@Nome", categoria.Nome);                
+                cmd.Parameters.AddWithValue("@Nome", categoria.Nome);
 
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -87,6 +87,67 @@ namespace AppLivraria_TsT.Models.DAO
 
                 throw new Exception("Erro na aplicação ao Listar categoria" + ex.Message);
             }
+        }
+        // UPDATE Categoria
+        public void updateCategoria(Categoria_DTO categoria)
+        {
+            try
+            {
+                String sql = " CALL proc_UpdateCategoria(@IdCat, @Nome); ";
+
+                //Alter Categoria
+                con = new MySqlConnection(_conexaoMySQL);
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+
+                cmd.Parameters.AddWithValue("@Nome", categoria.Nome);                
+                cmd.Parameters.AddWithValue("@IdCat", categoria.IdCat);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+
+                throw new Exception("Erro no banco ao atualizar dados do categoria" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na aplicação ao atualizar dados do categoria" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        // DELETAR Categoria
+        public void deleteCategoria(int id)
+        {
+            try
+            {
+                String sql = "CALL  proc_DeleteCategoria(@IdCat); ";
+                con = new MySqlConnection(_conexaoMySQL);
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@IdCat", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (MySqlException ex)
+            {
+
+                throw new Exception("Erro no banco ao deletar categoria" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na aplicação ao deletar categoria" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
         }
     }
 }
