@@ -1,0 +1,48 @@
+﻿@model AppLivraria_TsT.Models.DTO.Categoria_DTO
+
+@{
+    ViewBag.Title = "Cadastro de Categoria";
+    Layout = "~/Views/Dashbord/Layout/_Layout.cshtml";
+}
+@using (Html.BeginForm("CadCategoria", "Categoria"))
+{
+    @Html.AntiForgeryToken()
+    <section class="layout-content">
+
+        <nav class="navbar navbar-expand-md bg-light">
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <i class="fas fa-caret-right"></i>
+                        <span>Cadastrar Categoria</span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container" id="cadastrarFunc">
+            <form action="" method="POST">
+                <div class="form-row">
+                    <div class="form-group ">
+                        @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-6" })
+                        @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { placeholder = "Informe um nome", @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    
+                </div>
+
+               
+                <button type="button" class="btn btn-outline-primary" style="color:black">
+                    @Html.ActionLink("Voltar", "ListarCategoria", new { @style = "color:white" })
+                </button>
+                <input type="hidden" id="id" name="id" value="" />
+                <button type="submit" class="btn btn-outline-primary">Cadastrar</button>
+            </form>
+        </div>
+    </section>
+}
+
+@Scripts.Render("~/bundles/inputmask")
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
