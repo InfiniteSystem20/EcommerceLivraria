@@ -1,35 +1,48 @@
 ﻿@model AppLivraria_TsT.Models.DTO.Categoria_DTO
 
 @{
-    ViewBag.Title = "CadCategoria";
+    ViewBag.Title = "Cadastro de Categoria";
+    Layout = "~/Views/Dashbord/Layout/_Layout.cshtml";
 }
-
-<h2>CadCategoria</h2>
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("CadCategoria", "Categoria"))
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Categoria_DTO</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <section class="layout-content">
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+        <nav class="navbar navbar-expand-md bg-light">
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <i class="fas fa-caret-right"></i>
+                        <span>Cadastrar Categoria</span>
+                    </li>
+                </ul>
             </div>
+        </nav>
+        <div class="container" id="cadastrarFunc">
+            <form action="" method="POST">
+                <div class="form-row">
+                    <div class="form-group ">
+                        @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-6" })
+                        @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { placeholder = "Informe um nome", @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    
+                </div>
+
+               
+                <button type="button" class="btn btn-outline-primary" style="color:black">
+                    @Html.ActionLink("Voltar", "ListarCategoria", new { @style = "color:white" })
+                </button>
+                <input type="hidden" id="id" name="id" value="" />
+                <button type="submit" class="btn btn-outline-primary">Cadastrar</button>
+            </form>
         </div>
-    </div>
+    </section>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+@Scripts.Render("~/bundles/inputmask")
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

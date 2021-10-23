@@ -12,12 +12,26 @@ namespace AppLivraria_TsT.Models.DLL
     {
         Categoria_DAO dal = null;
         public Categoria_DLL() { }
+
         public void novaCategoria(Categoria_DTO categoria)
         {
             try
             {
                 dal = new Categoria_DAO();
                 dal.inserirCategoria(categoria);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        //SELECIONAR LISTA DE Categoria
+        public List<Categoria_DTO> listaCategoria()
+        {
+            try
+            {
+                dal = new Categoria_DAO();
+                return dal.selectListCategoria();
             }
             catch (Exception ex)
             {

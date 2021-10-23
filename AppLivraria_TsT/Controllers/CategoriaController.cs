@@ -41,5 +41,10 @@ namespace AppLivraria_TsT.Controllers
             return View();
 
         }
+        //Listar Cliente
+        public ActionResult ListarCategoria()
+        {
+            return View(dll.listaCategoria());
+        }
     }
 }

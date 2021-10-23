@@ -18,6 +18,7 @@ namespace AppLivraria_TsT.Models.DAO
         {
             _conexaoMySQL = ConfigurationManager.ConnectionStrings["conexaoMySQL"].ToString();
         }
+        //Inserir Categoria
         public void inserirCategoria(Categoria_DTO categoria)
         {
             
@@ -49,6 +50,43 @@ namespace AppLivraria_TsT.Models.DAO
                 con.Close();
             }
         }
+        //selecionar lista de Categoria
+        public List<Categoria_DTO> selectListCategoria()
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(_conexaoMySQL))
+                {
+                    using (MySqlCommand command = new MySqlCommand("CALL proc_SelecionarCategoria();", conn))
+                    {
+                        conn.Open();
+                        List<Categoria_DTO> listaCategoria = new List<Categoria_DTO>();
+                        using (MySqlDataReader dr = command.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                Categoria_DTO categoria = new Categoria_DTO();
+                                categoria.IdCat = (int)dr["IdCat"];
+                                categoria.Nome = (String)dr["Nome"];
 
+
+                                listaCategoria.Add(categoria);
+                            }
+                        }
+                        return listaCategoria;
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+
+                throw new Exception("Erro no banco ao Listar categoria" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na aplicação ao Listar categoria" + ex.Message);
+            }
+        }
     }
 }
