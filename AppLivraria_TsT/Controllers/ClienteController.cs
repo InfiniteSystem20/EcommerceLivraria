@@ -14,6 +14,8 @@ namespace AppLivraria_TsT.Controllers
     public class ClienteController : Controller
     {
         Cliente_DLL dll = new Cliente_DLL();
+        Cliente_DTO clienteDTO = new Cliente_DTO();
+
         // GET: Cliente
         public ActionResult Index()
         {
@@ -43,36 +45,50 @@ namespace AppLivraria_TsT.Controllers
                 dll.novoCliente(cliente);
 
                 //TODO Imprementar redirecionamento diferenetes
-                return RedirectToAction(nameof(CadCliente));
+                ViewBag.msg = "Cliente cadastrado com sucesso!";
+                return RedirectToAction("Login","Login");
 
-                /* ViewBag.msg = "Cliene cadastrado com sucesso!";
-                    return View();
+                
+                   /* return View();
                 */
             }
             return View();
 
         }
-        public ActionResult CadastroCliente()
+        //Listar Cliente
+        public ActionResult ListarCliente()
         {
-            return View();
+            return View(dll.listaCliente());
         }
-
+        //Listar Cliente Detalhes
+        public ActionResult DetalhesCliente(int id)
+        {
+            return View(dll.listaClienteDetalhes().Find(clienteDTO => clienteDTO.IdCli == id));
+        }
+        // EDITAR CLIENTE        
+        public ActionResult EditarCliente(int id)
+        {
+            //  if (Session["usuariologado"] == null || Session["senhaLogado"] == null)
+            //  {
+            //      return RedirectToAction("Index", "Home");
+            //  }
+            //  else
+            //   {
+            return View(dll.listaCliente().Find(clienteDTO => clienteDTO.IdCli == id));
+            //  }
+        }
+        // EDITAR CLIENTE
         [HttpPost]
-        public ActionResult CadastroCliente(Cliente_DTO cliente)
+        public ActionResult EditarCliente(Cliente_DTO cliente)
         {
-            if (ModelState.IsValid)
-            {
-                dll.novoCliente(cliente);
-
-                //TODO Imprementar redirecionamento diferenetes
-                return RedirectToAction(nameof(CadastroCliente));
-
-                /* ViewBag.msg = "Cliene cadastrado com sucesso!";
-                    return View();
-                */
-            }
-            return View();
-
+            dll.alteraCliente(cliente);
+            return RedirectToAction(nameof(ListarCliente));
+        }
+        // EXCLUIR CLIENTE
+        public ActionResult ExcluirCliente(int id)
+        {
+            dll.exclurCliente(id);
+            return RedirectToAction(nameof(ListarCliente));
         }
     }
 }

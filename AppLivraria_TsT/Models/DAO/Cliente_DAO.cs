@@ -19,13 +19,15 @@ namespace AppLivraria_TsT.Models.DAO
         {
             _conexaoMySQL = ConfigurationManager.ConnectionStrings["conexaoMySQL"].ToString();
         }
+
+        //selecionar lista de Cliente
         public List<Cliente_DTO> selectListCliente()
         {
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(_conexaoMySQL))
                 {
-                    using (MySqlCommand command = new MySqlCommand("Select * from tbCliente", conn))
+                    using (MySqlCommand command = new MySqlCommand("CALL SelecionarCliente();", conn))
                     {
                         conn.Open();
                         List<Cliente_DTO> listaCliente = new List<Cliente_DTO>();
@@ -39,12 +41,10 @@ namespace AppLivraria_TsT.Models.DAO
                                 cliente.Nascimento = (String)dr["Nascimento"];
                                 cliente.Sexo = (String)dr["Sexo"];
                                 cliente.CPF = (String)dr["CPF"];
+                                cliente.Telefone = (String)dr["Telefone"];
+                                cliente.Celular = (String)dr["Celular"];
                                 cliente.Email = (String)dr["Email"];
                                 cliente.Senha = (String)dr["Senha"];
-
-                                // cliente.Veiculo.IdVeiculo = (int)dr["idveiculo"];
-                                //  cliente.Usuario.Codigo = (int)dr["id"];
-
 
                                 listaCliente.Add(cliente);
                             }
@@ -64,12 +64,68 @@ namespace AppLivraria_TsT.Models.DAO
                 throw new Exception("Erro na aplicação ao Listar cliente" + ex.Message);
             }
         }
+        // Selecionar Lista cliente
+        public List<Cliente_DTO> selectListClienteDetalhes()
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(_conexaoMySQL))
+                {
+                    using (MySqlCommand command = new MySqlCommand("CALL proc_SelecionarClienteDetalhes( )", conn))
+                    {
+                        conn.Open();
+                        List<Cliente_DTO> listaCliente = new List<Cliente_DTO>();
+                        using (MySqlDataReader dr = command.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                Cliente_DTO cliente = new Cliente_DTO();
 
+                                cliente.IdCli = Convert.ToInt32(dr["IdCli"]);
+                                cliente.Nome = dr["Nome"].ToString();
+                                cliente.CPF = dr["CPF"].ToString();
+                                cliente.Nascimento = dr["Nascimento"].ToString();
+                                cliente.Sexo = dr["Sexo"].ToString();
+                                cliente.Telefone = dr["Telefone"].ToString();
+                                cliente.Celular = dr["Celular"].ToString();                                
+                                cliente.Email = dr["Email"].ToString();
+                                cliente.Senha = dr["Senha"].ToString();
+                                cliente.Tipo = dr["Tipo"].ToString();
+
+                                cliente.TipoEndereco = dr["TipoEndereco"].ToString();
+                                cliente.logradouro = dr["Logradouro"].ToString();
+                                cliente.numero = Convert.ToInt32(dr["Numero"]);
+                                cliente.complemento = dr["Complemento"].ToString();
+                                cliente.bairro = dr["Bairro"].ToString();
+                                cliente.CEP = dr["CEP"].ToString();
+                                cliente.cidade = dr["Cidade"].ToString();
+                                cliente.estado = dr["Estado"].ToString();
+                                cliente.UF = dr["UF"].ToString();
+
+                                listaCliente.Add(cliente);
+                            }
+                        }
+                        return listaCliente;
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+
+                throw new Exception("Erro no banco ao Listar cliente" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na aplicação ao Listar cliente" + ex.Message);
+            }
+        }
+        //selecionar cliente
         public DataTable selectCliente()
         {
             try
             {
-                String sql = "SELECT * FROM tbCliente;";
+                String sql = "CALL SelecionarCliente();";
                 con = new MySqlConnection(_conexaoMySQL);
 
                 MySqlCommand cmd = new MySqlCommand(sql, con);
@@ -94,11 +150,11 @@ namespace AppLivraria_TsT.Models.DAO
         public void inserirCliente(Cliente_DTO cliente)
         {
             int Tipo = 1;
+            string retorno;
             try
-            {
-                String sql = "INSERT INTO tbCliente (Nome, Nascimento, Sexo, CPF,Telefone, Celular, Email, Senha, Tipo)" +
-                                                   " VALUES (@nome,@Nascimento,@Sexo,@CPF,@Telefone,@Celular,@Email,@Senha,@Tipo)";
-
+            {   
+                String sql = "CALL proc_CadCliente(@nome, @Nascimento, @Sexo, @CPF, @Telefone, @Celular, @Email, @Senha, @Tipo );SELECT LAST_INSERT_ID();";
+                
                 con = new MySqlConnection(_conexaoMySQL);
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@Nome", cliente.Nome);
@@ -112,7 +168,25 @@ namespace AppLivraria_TsT.Models.DAO
                 cmd.Parameters.AddWithValue("@Tipo", Tipo);
 
                 con.Open();
-                cmd.ExecuteNonQuery();
+                retorno = Convert.ToString(cmd.ExecuteScalar());
+
+                String sqlEnd = "CALL proc_CadEnderecoCli(@IdCli, @TipoEndereco, @Logradouro, @Numero, @Complemento, @Bairro, @CEP, @Cidade, @Estado, @UF);";
+
+                con = new MySqlConnection(_conexaoMySQL);
+                MySqlCommand cmd1 = new MySqlCommand(sqlEnd, con);
+                cmd1.Parameters.AddWithValue("@IdCli", retorno);
+                cmd1.Parameters.AddWithValue("@TipoEndereco", cliente.TipoEndereco);
+                cmd1.Parameters.AddWithValue("@Logradouro", cliente.logradouro);
+                cmd1.Parameters.AddWithValue("@Numero", cliente.numero);
+                cmd1.Parameters.AddWithValue("@Complemento", cliente.complemento);
+                cmd1.Parameters.AddWithValue("@Bairro", cliente.bairro);
+                cmd1.Parameters.AddWithValue("@CEP", cliente.CEP);
+                cmd1.Parameters.AddWithValue("@Cidade", cliente.cidade);
+                cmd1.Parameters.AddWithValue("@Estado", cliente.estado);
+                cmd1.Parameters.AddWithValue("@UF", cliente.UF);
+
+                con.Open();
+                cmd1.ExecuteNonQuery();
             }
             catch (MySqlException ex)
             {
@@ -128,6 +202,82 @@ namespace AppLivraria_TsT.Models.DAO
             {
                 con.Close();
             }
+        }
+        // UPDATE Cliente
+        public void updateCliente(Cliente_DTO cliente)
+        {
+            try
+            {
+                String sql = " CALL proc_UpdateCliente(@IdCli, @Nome, @CPF, @Sexo, @Telefone, @Celular,@Nascimento, @Email, @Senha); ";
+
+                //Alter Cliente
+                con = new MySqlConnection(_conexaoMySQL);
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+
+                cmd.Parameters.AddWithValue("@Nome", cliente.Nome);
+                cmd.Parameters.AddWithValue("@CPF", cliente.CPF);
+                cmd.Parameters.AddWithValue("@Sexo", cliente.Sexo);
+                cmd.Parameters.AddWithValue("@Telefone", cliente.Telefone);
+                cmd.Parameters.AddWithValue("@Celular", cliente.Celular);
+                cmd.Parameters.AddWithValue("@Nascimento", cliente.Nascimento);                
+                cmd.Parameters.AddWithValue("@Email", cliente.Email);
+                cmd.Parameters.AddWithValue("@Senha", cliente.Senha);
+                cmd.Parameters.AddWithValue("@IdCli", cliente.IdCli);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+
+                throw new Exception("Erro no banco ao atualizar dados do cliente" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na aplicação ao atualizar dados do cliente" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        // DELETAR CLIENTE
+        public void deleteCliente(int id)
+        {
+            try
+            {
+                String sql1 = "CALL  proc_DeleteEnderecoCli(@IdCli); ";
+                con = new MySqlConnection(_conexaoMySQL);
+                MySqlCommand cmd1 = new MySqlCommand(sql1, con);
+                cmd1.Parameters.AddWithValue("@IdCli", id);
+                con.Open();
+                cmd1.ExecuteNonQuery();
+
+
+                String sql = "CALL  proc_DeleteCliente(@IdCli); ";
+                con = new MySqlConnection(_conexaoMySQL);
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@IdCli", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (MySqlException ex)
+            {
+
+                throw new Exception("Erro no banco ao deletar cliente" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na aplicação ao deletar cliente" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
         }
     }
 }

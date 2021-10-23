@@ -64,6 +64,7 @@ namespace AppLivraria_TsT.Models.DLL
                 throw ex;
             }
         }
+        //UPDATE FUNCIONARIO
         public void alteraFuncionario(Funcionario_DTO funcionario)
         {
             try

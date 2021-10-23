@@ -1,10 +1,10 @@
-﻿@model AppLivraria_TsT.Models.DTO.Funcionario_DTO
+﻿@model AppLivraria_TsT.Models.DTO.Cliente_DTO
 
 @{
-    ViewBag.Title = "EditarFuncionario";
+    ViewBag.Title = "EditarCliente";
     Layout = "~/Views/Dashbord/Layout/_Layout.cshtml";
 }
-@using (Html.BeginForm("EditarFuncionario", "Funcionario"))
+@using (Html.BeginForm("EditarCliente", "Cliente"))
 {
     @Html.AntiForgeryToken()
     <section class="layout-content">
@@ -14,7 +14,7 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         <i class="fas fa-caret-right"></i>
-                        <span>Editar Funciánario</span>
+                        <span>Editar Cliente</span>
                     </li>
                 </ul>
             </div>
@@ -23,9 +23,9 @@
             <form action="" method="POST">
                 <div class="form-row">
                     <div class="form-group col-md-1">
-                        @Html.LabelFor(model => model.IdFunc, htmlAttributes: new { @class = "control-label col-md-1" })
-                        @Html.EditorFor(model => model.IdFunc, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                        @Html.ValidationMessageFor(model => model.IdFunc, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model.IdCli, htmlAttributes: new { @class = "control-label col-md-1" })
+                        @Html.EditorFor(model => model.IdCli, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.IdCli, "", new { @class = "text-danger" })
                         <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group col-md-4">
@@ -74,12 +74,7 @@
 
                 @*__________________________________________TELEFONE______________________________________________________*@
                 <div class="form-row">
-                    <div class="form-group col-md-4">
-                        @Html.LabelFor(model => model.Cargo, htmlAttributes: new { @class = "control-label col-md-4" })
-                        @Html.EditorFor(model => model.Cargo, new { htmlAttributes = new { placeholder = "Informe o cargo", @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Cargo, "", new { @class = "text-danger" })
-                        <div class="invalid-feedback"></div>
-                    </div>
+                    
                     <div class="form-group col-md-4">
                         @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-4" })
                         @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder = "joao@gmail.com.br", @class = "form-control" } })
@@ -96,9 +91,9 @@
 
                 <input type="hidden" id="id" name="id" value="" />
                 <button type="submit" class="btn btn-outline-primary">Atualizar</button>
-                
+
                 <button type="button" class="btn btn-outline-primary" style="color:black">
-                    @Html.ActionLink("Voltar", "ListarFuncionario", new { @style = "color:white" })
+                    @Html.ActionLink("Voltar", "ListarCliente", new { @style = "color:white" })
                 </button>
             </form>
         </div>
@@ -118,7 +113,5 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-
-
 
 

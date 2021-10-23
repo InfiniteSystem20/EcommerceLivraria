@@ -53,16 +53,16 @@ namespace AppLivraria_TsT.Controllers
         // EDITAR CLIENTE        
         public ActionResult EditarFuncionario(int id)
         {
-          //  if (Session["usuariologado"] == null || Session["senhaLogado"] == null)
-          //  {
-          //      return RedirectToAction("Index", "Home");
-          //  }
-          //  else
-         //   {
-                return View(dll.listaFuncionario().Find(funcionarioDto => funcionarioDto.IdFunc == id));
-          //  }
+            //  if (Session["usuariologado"] == null || Session["senhaLogado"] == null)
+            //  {
+            //      return RedirectToAction("Index", "Home");
+            //  }
+            //  else
+            //   {
+            return View(dll.listaFuncionario().Find(funcionarioDto => funcionarioDto.IdFunc == id));
+            //  }
         }
-
+        //EDITAR FUNCIONARIO
         [HttpPost]
         public ActionResult EditarFuncionario(Funcionario_DTO funcionario)
         {
@@ -79,14 +79,13 @@ namespace AppLivraria_TsT.Controllers
         //    //  else
         //    //   {
         //    return View(dll.listaFuncionario().Find(funcionarioDto => funcionarioDto.IdFunc == id));
-            
+
         //    //  }
         //}
 
-       
+        //EXCLUIR FNCIONARIO
         public ActionResult ExcluirFuncionario(int id)
         {
-            //dll.listaFuncionario().Find(funcionarioDto => funcionarioDto.IdFunc == id);
             dll.exclurFuncionario(id);
             return RedirectToAction(nameof(ListarFuncionario));
         }

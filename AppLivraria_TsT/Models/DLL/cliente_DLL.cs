@@ -13,6 +13,20 @@ namespace AppLivraria_TsT.Models.DLL
         Cliente_DAO dal = null;
         public Cliente_DLL() { }
 
+        //SELECIONAR LISTA DE CLIENTE
+        public List<Cliente_DTO> listaCliente()
+        {
+            try
+            {
+                dal = new Cliente_DAO();
+                return dal.selectListCliente();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         //SELECIONAR CLIENTE
         public DataTable selecionaCliente()
         {
@@ -35,6 +49,45 @@ namespace AppLivraria_TsT.Models.DLL
             {
                 dal = new Cliente_DAO();
                 dal.inserirCliente(clienteDto);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        //SELECIONAR LISTA DE CLIENTE DETALHES
+        public List<Cliente_DTO> listaClienteDetalhes()
+        {
+            try
+            {
+                dal = new Cliente_DAO();
+                return dal.selectListClienteDetalhes();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        //UPDATE CLIENTE
+        public void alteraCliente(Cliente_DTO cliente)
+        {
+            try
+            {
+                dal = new Cliente_DAO();
+                dal.updateCliente(cliente);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        //EXCLUIR CLIENTE
+        public void exclurCliente(int id)
+        {
+            try
+            {
+                dal = new Cliente_DAO();
+                dal.deleteCliente(id);
             }
             catch (Exception ex)
             {
