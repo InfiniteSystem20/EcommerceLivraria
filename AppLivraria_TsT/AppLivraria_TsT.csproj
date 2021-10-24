@@ -127,6 +127,7 @@
     <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -137,13 +138,16 @@
     <Compile Include="Models\DAO\Cliente_DAO.cs" />
     <Compile Include="Models\DAO\Conexao.cs" />
     <Compile Include="Models\DAO\Funcionario_DAO.cs" />
+    <Compile Include="Models\DAO\Produto_DAO.cs" />
     <Compile Include="Models\DLL\Categoria_DLL.cs" />
     <Compile Include="Models\DLL\Cliente_DLL.cs" />
     <Compile Include="Models\DLL\Funcionario_DLL.cs" />
+    <Compile Include="Models\DLL\Produto_DLL.cs" />
     <Compile Include="Models\DTO\Categoria_DTO.cs" />
     <Compile Include="Models\DTO\Cliente_DTO.cs" />
     <Compile Include="Models\DTO\Funcionario_DTO.cs" />
     <Compile Include="Models\DTO\Login.cs" />
+    <Compile Include="Models\DTO\Produto_DTO.cs" />
     <Compile Include="Models\ErrorViewModel.cs" />
     <Compile Include="Models\NewsletterEmail.cs" />
     <Compile Include="Models\Produto.cs" />
@@ -760,9 +764,13 @@
     <Content Include="Views\Cliente\DetalhesCliente.cshtml" />
     <Content Include="Views\Cliente\EditarCliente.cshtml" />
     <Content Include="Views\Categoria\CadCategoria.cshtml" />
+    <Content Include="Views\Produto\CadastroProduto.cshtml" />
+    <Content Include="Views\Produto\CadastroLivro.cshtml" />
+    <Content Include="Views\Produto\ListarProdutos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\produtos\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -1,6 +1,6 @@
-﻿@model AppLivraria_TsT.Models.NewsletterEmail
+﻿@model IEnumerable<AppLivraria_TsT.Models.DTO.Produto_DTO>
 
-@{ ViewData["Title"] = "Index"; }
+@{ ViewBag.Title = "Index"; }
 
 <main role="main">
 
@@ -12,15 +12,15 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="first-slide" src="/images/items/banner1.png"
+                <img class="first-slide" src="~/images/items/banner1.png"
                      alt="First slide">
                 <div class="container">
                     <div class="carousel-caption text-right">
                         <br />
                         <br />
-                        <h1 style="color: #87CEFA" >Plataforma Magento </h1>
+                        <h1 style="color: #87CEFA">Plataforma Magento </h1>
                         <p>
-                            Seja um especialista e plataforma e-commerce.<br/>
+                            Seja um especialista e plataforma e-commerce.<br />
                             Aprenda tudo sobre magento.
                         </p>
                         <p><a class="btn btn-lg btn-success" href="#" role="button">Veja Mais</a></p>
@@ -28,11 +28,11 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="second-slide" src="/images/items/Banner2.jpeg"
+                <img class="second-slide" src="~/images/items/Banner2.jpeg"
                      alt="Second slide">
                 <div class="container">
                     <div class="carousel-caption">
-                       <br/> <h1 style="color: #87CEFA">Linguagem de programação.</h1>
+                        <br /> <h1 style="color: #87CEFA">Linguagem de programação.</h1>
                         <p style="color: #87CEFA">
                             Tudo sobre linguagem de programação você encontra aqui.
                         </p>
@@ -41,8 +41,8 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="third-slide" src="/images/items/banner3.png"
-                     alt="Third slide"> 
+                <img class="third-slide" src="~/images/items/banner3.png"
+                     alt="Third slide">
                 <div class="container">
                     <div class="carousel-caption text-right">
                         <h1>Bancos de dados</h1>
@@ -64,142 +64,44 @@
         </a>
     </div>
 
-
-
-
     <!-- Lista de Produtos
-            ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
-
-
+            ==================================================================================== -->
     <div class="container" id="code_prod_complex">
         <div class="row">
-            <div class="col-md-4">
-                <figure class="card card-product">
-                    <div class="img-wrap"><img src="images/items/1.jpg"></div>
-                    <figcaption class="info-wrap">
-                        <h4 class="title">Another name of item</h4>
-                        <p class="desc">Some small description goes here</p>
-                        <div class="rating-wrap">
-                            <ul class="rating-stars">
-                                <li style="width:80%" class="stars-active">
-                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                </li>
-                                <li>
-                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                </li>
-                            </ul>
-                            <div class="label-rating">132 reviews</div>
-                            <div class="label-rating">154 orders </div>
-                        </div> <!-- rating-wrap.// -->
-                    </figcaption>
-                    <div class="bottom-wrap">
-                        <a href="" class="btn btn-sm btn-primary float-right">Order Now</a>
-                        <div class="price-wrap h5">
-                            <span class="price-new">$1280</span> <del class="price-old">$1980</del>
-                        </div> <!-- price-wrap.// -->
-                    </div> <!-- bottom-wrap.// -->
-                </figure>
-            </div> <!-- col // -->
-            <div class="col-md-4">
-                <figure class="card card-product">
-                    <div class="img-wrap"><img src="~/images/items/banner1.png"> </div>
-                    <figcaption class="info-wrap">
-                        <h4 class="title">Seja um especialista e plataforma e-commerce</h4>
-                        <p class="desc">Aprenda tudo sobre magento</p>
-                        <div class="rating-wrap">
-                            <ul class="rating-stars">
-                                <li style="width:80%" class="stars-active">
-                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                </li>
-                                <li>
-                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                </li>
-                            </ul>
-                            <div class="label-rating">132 reviews</div>
-                            <div class="label-rating">154 orders </div>
-                        </div> <!-- rating-wrap.// -->
-                    </figcaption>
-                    <div class="bottom-wrap">
-                        <a href="" class="btn btn-sm btn-primary float-right">Order Now</a>
-                        <div class="price-wrap h5">
-                            <span class="price-new">$1280</span> <del class="price-old">$1980</del>
-                        </div> <!-- price-wrap.// -->
-                    </div> <!-- bottom-wrap.// -->
-                </figure>
-            </div> <!-- col // -->
-            <div class="col-md-4">
-                <figure class="card card-product">
-                    <div class="img-wrap"><img src="images/items/3.jpg"></div>
-                    <figcaption class="info-wrap">
-                        <h4 class="title">Product name goes here</h4>
-                        <p class="desc">Some small description goes here</p>
-                        <div class="rating-wrap">
-                            <ul class="rating-stars">
-                                <li style="width:80%" class="stars-active">
-                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                </li>
-                                <li>
-                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                </li>
-                            </ul>
-                            <div class="label-rating">132 reviews</div>
-                            <div class="label-rating">154 orders </div>
-                        </div> <!-- rating-wrap.// -->
-                    </figcaption>
-                    <div class="bottom-wrap">
-                        <a href="" class="btn btn-sm btn-primary float-right">Order Now</a>
-                        <div class="price-wrap h5">
-                            <span class="price-new">$1280</span> <del class="price-old">$1980</del>
-                        </div> <!-- price-wrap.// -->
-                    </div> <!-- bottom-wrap.// -->
-                </figure>
-            </div> <!-- col // -->
-        </div> <!-- row.// -->
+
+            @foreach (var produto in Model)
+            {
+<div class="col-md-4">
+    <figure class="card card-product">
+        <div class="img-wrap"><img src="@produto.Imagem"></div>
+        <figcaption class="info-wrap">
+            <h4 class="title">@produto.Nome</h4>
+            <p class="desc">@produto.Descricao</p>
+            <div class="rating-wrap">
+                <ul class="rating-stars">
+                    <li style="width:80%" class="stars-active">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                    </li>
+                </ul>
+                <div class="label-rating">132 Visualização</div>
+                <div class="label-rating">154 pedidos </div>
+            </div>
+        </figcaption>
+        <div class="bottom-wrap">
+            <a href="" class="btn btn-sm btn-primary float-right">Comprar</a>
+            <a href="" class="btn btn-sm btn-warning float-lg-right" style="margin-right: 20px;">Detalhes</a>
+
+            <div class="price-wrap h5">
+                <span class="price-new">R$@produto.PrecoUni</span> <del class="price-old">R$1980,00</del>
+            </div>
+        </div>
+    </figure>
+</div>}
+        </div>
     </div>
+
 </main>
 
-
-
-@{
-                /*
-                * @using (Html.BeginForm("index", "Home", FormMethod.Post))
-                */
-
-}
-
-
-
-
-    <div class="container" id="formulario">
-        <div class="row">
-            <div class="col-sm-8 offset-sm-2">
-                @if (TempData["MSG_S"] != null)
-                {
-                    <p class="alert alert-success">@TempData["MSG_S"]</p>
-                }
-            </div>
-        </div>
-        <div class="row">
-
-            <div class="col-sm-6 offset-sm-2">
-                <div class="form-group">
-                    <label for="nome">Cadastre seu e-mail para receber promoções:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa  fa-envelope "></i></span>
-                        </div>
-                        @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                    <span style="color: red;">@Html.ValidationMessageFor(m => m.Email)</span>
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <br />
-                <button class="subscribe btn btn-primary btn-block" type="submit" style="margin-top: 7px"> Cadastrar-se </button>
-            </div>
-
-
-        </div>
-    </div>
-    

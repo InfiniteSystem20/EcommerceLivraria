@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AppLivraria_TsT.Models.DLL;
+using AppLivraria_TsT.Models.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +10,11 @@ namespace AppLivraria_TsT.Controllers
 {
     public class HomeController : Controller
     {
+        Produto_DLL dll = new Produto_DLL();
+        Produto_DTO produtoDto = new Produto_DTO();
         public ActionResult Index()
         {
-            return View();
+            return View(dll.listaProduto());
         }
         public ActionResult Contato()
         {
