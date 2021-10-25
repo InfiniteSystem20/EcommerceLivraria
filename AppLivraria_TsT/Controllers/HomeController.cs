@@ -20,6 +20,11 @@ namespace AppLivraria_TsT.Controllers
         {
             return View();
         }
+        public ActionResult detalhe(int id)
+        {
+            return View(dll.listaProdutoDetalhes().Find(produtoDto => produtoDto.IdProd == id));
+        }
+        
         public ActionResult Login()
         {
             return View();

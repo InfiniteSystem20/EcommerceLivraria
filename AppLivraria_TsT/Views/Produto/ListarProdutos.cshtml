@@ -11,7 +11,7 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <i class="fas fa-caret-right"></i>
-                    <span>Lista de Funcionarios</span>
+                    <span>Lista de Produtos</span>
                 </li>
             </ul>
             <a class="btn btn-outline-primary" href="/Funcionario/CadastroFuncionario" role="button">
@@ -41,43 +41,18 @@
                         <tr>
                             <td>@Produto.IdProd</td>
                             <td>@Produto.Nome</td>
-                            <td>R$@Produto.PrecoUni</td>
-                            @* <td>
-                                    <button type="button" class="btn btn-secondary btn-sm" data-container="body"
-                                            data-toggle="popover" data-placement="top"
-                                            data-content="@funcionario.Email">
-                                        <span class="fas fa-eye" title="Visualizar" aria-hidden="true"></span>
-                                    </button>
-                                </td>*@
-                            @*<td>
-                                    <button type="button" class="btn btn-secondary btn-sm" data-container="body"
-                                            data-toggle="popover" data-placement="top"
-                                            data-content="@funcionario.Telefone">
-                                        <span class="fas fa-eye" title="Visualizar" aria-hidden="true"></span>
-                                    </button>
-                                </td>*@
-                            @*<td>
-                                    <button type="button" class="btn btn-secondary btn-sm" data-container="body"
-                                            data-toggle="popover" data-placement="top"
-                                            data-content="@funcionario.Celular">
-                                        <span class="fas fa-eye" title="Visualizar" aria-hidden="true"></span>
-                                    </button>
-
-                                </td>*@
-                            
+                            <td>R$@Produto.PrecoUni</td> 
 
                         <td colspan="2">
                             <button type="button" class="btn btn-info btn-sm">
-                                @Html.ActionLink("Detalhes/Livro", "DetalhesLivro", new { id = Produto.IdProd }, new { @style = "color:white" })
+                                @Html.ActionLink("Detalhes", "DetalhesProduto", new { id = Produto.IdProd }, new { @style = "color:white" })
                             </button>
 
                             <button type="button" class="btn btn-warning btn-sm fas fa-edit" style="color:black">
-                                @Html.ActionLink("Editar", "EditarFuncionario", new { id = Produto.IdProd }, new { @style = "color:white" })
+                                @Html.ActionLink("Editar", "EditarProduto", new { id = Produto.IdProd }, new { @style = "color:white" })
                             </button>
 
-                            <button type="button" class="btn btn-info btn-sm">
-                                @Html.ActionLink("Detalhes/Produto", "DetalhesLivro", new { id = Produto.IdProd }, new { @style = "color:white" })
-                            </button>
+                            
                             @*<a class="btn btn-info btn-sm" href="/Funcionario/FuncionariosPorId/@funcionario.IdFunc" role="button">
             <span class="fas fa-info-circle" title="Detalhes" aria-hidden="true"></span>
         </a>*@

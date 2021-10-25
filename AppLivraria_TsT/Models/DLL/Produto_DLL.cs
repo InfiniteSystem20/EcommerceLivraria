@@ -51,5 +51,18 @@ namespace AppLivraria_TsT.Models.DLL
                 throw ex;
             }
         }
+        //SELECIONAR LISTA DE Produto detalhes
+        public List<Produto_DTO> listaProdutoDetalhes()
+        {
+            try
+            {
+                dal = new Produto_DAO();
+                return dal.selectListProdutoDetalhes();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

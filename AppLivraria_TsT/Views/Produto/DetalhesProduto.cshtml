@@ -1,0 +1,92 @@
+﻿@model AppLivraria_TsT.Models.DTO.Produto_DTO
+
+@{
+    ViewBag.Title = "DetalhesFuncionario";
+    Layout = "~/Views/Dashbord/Layout/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("DetalhesProduto", "Produto"))
+{
+    @Html.AntiForgeryToken()
+<section class="layout-content">
+
+    <nav class="navbar navbar-expand-md bg-light">
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <i class="fas fa-caret-right"></i>
+                    <span>Detalhes</span>
+                </li>
+            </ul>
+            <a class="btn btn-outline-primary" href="/Funcionario/CadastroFuncionario/@Model.IdProd" role="button">
+                <span class="fas fa-user-plus" title="Cadastro" aria-hidden="true"></span>
+                <span>Cadastrar Produto</span>
+            </a>
+        </div>
+    </nav>
+        <div class="container" id="code_prod_detail" style="margin-top: 50px">
+            <div class="card">
+                <div class="row no-gutters">
+                    <aside class="col-sm-5 border-right">
+                        <article class="gallery-wrap">
+                            <div class="img-big-wrap">
+                                <div> <a href="@Model.Imagem" data-fancybox=""><img src="@Model.Imagem"></a></div>
+                            </div>
+                        
+                        </article>
+                    </aside>
+                    <aside class="col-sm-7">
+                        <article class="p-5">
+                            <h3 class="title mb-3">@Model.Nome</h3>
+
+                            <div class="mb-3">
+                                <var class="price h3 text-warning">
+                                    <span class="currency">R$</span><span class="num">@Model.PrecoUni</span>
+                                </var>
+                                <span></span>
+                            </div>
+                            <dl>
+                                <dt>Descrição</dt>
+                                <dd>
+                                    <p>
+                                        @Model.Descricao
+                                    </p>
+                                </dd>
+                            </dl>
+                            <dl class="row">
+                                @if (Model.Categiria != "Produto")
+                                {
+                                    <dt class="col-sm-3">ISBN</dt>
+                                    <dd class="col-sm-9">@Model.ISBN </dd>
+
+                                    <dt class="col-sm-3">Autor</dt>
+                                    <dd class="col-sm-9">@Model.Autor</dd>
+                                    }
+
+                                <dt class="col-sm-3">Categoria</dt>
+                                <dd class="col-sm-9">@Model.Categiria </dd>
+
+                                <dt class="col-sm-3">Estoque</dt>
+                                <dd class="col-sm-9">@Model.Estoque</dd>
+
+
+                            </dl>
+                            
+                        </article>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    <br />
+    <br />
+            <button type="button" class="btn btn-outline-primary" style="color:black">
+                @Html.ActionLink("Voltar", "ListarProdutos", new { @style = "color:white" })
+            </button>
+            <button type="button" class="btn btn-warning" style="color:black">
+                @Html.ActionLink("Editar", "EditarProduto", new { id = Model.IdProd }, new { @style = "color:white" })
+            </button>
+       
+ 
+</section>
+}
+

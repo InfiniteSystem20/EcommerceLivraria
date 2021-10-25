@@ -138,5 +138,51 @@ namespace AppLivraria_TsT.Models.DAO
                 throw new Exception("Erro na aplicação ao Listar Produto" + ex.Message);
             }
         }
+        // Selecionar Lista cliente Detalhes
+        public List<Produto_DTO> selectListProdutoDetalhes()
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(_conexaoMySQL))
+                {
+                    using (MySqlCommand command = new MySqlCommand("CALL proc_SelecionarProdutoDetalhes( )", conn))
+                    {
+                        conn.Open();
+                        List<Produto_DTO> listaProduto = new List<Produto_DTO>();
+                        using (MySqlDataReader dr = command.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                Produto_DTO produto = new Produto_DTO();
+
+                                produto.IdProd = Convert.ToInt32(dr["IdProd"]);
+                                produto.ISBN = dr["ISBN"].ToString();
+                                produto.Nome = dr["Nome"].ToString();
+                                produto.Descricao = dr["Descricao"].ToString();
+                                produto.PrecoUni = Convert.ToDecimal(dr["PrecoUni"]);
+                                produto.Estoque = Convert.ToInt32(dr["Estoque"]);
+                                produto.Autor = dr["Autor"].ToString();
+                                produto.Categiria = dr["Categoria"].ToString();
+                                produto.Imagem = dr["Imagem"].ToString();
+
+
+                                listaProduto.Add(produto);
+                            }
+                        }
+                        return listaProduto;
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+
+                throw new Exception("Erro no banco ao Listar produto" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na aplicação ao Listar produto" + ex.Message);
+            }
+        }
     }
 }

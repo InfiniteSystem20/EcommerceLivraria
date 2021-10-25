@@ -767,6 +767,8 @@
     <Content Include="Views\Produto\CadastroProduto.cshtml" />
     <Content Include="Views\Produto\CadastroLivro.cshtml" />
     <Content Include="Views\Produto\ListarProdutos.cshtml" />
+    <Content Include="Views\Produto\DetalhesProduto.cshtml" />
+    <Content Include="Views\Home\detalhe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

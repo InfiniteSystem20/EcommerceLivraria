@@ -99,9 +99,15 @@ namespace AppLivraria_TsT.Controllers
             }
             return View();
         }
+        //Listar Produtos
         public ActionResult ListarProdutos()
         {
             return View(dll.listaProduto());
+        }
+        //Listar Produtos detalhes
+        public ActionResult DetalhesProduto(int id)
+        {
+            return View(dll.listaProdutoDetalhes().Find(produtoDto => produtoDto.IdProd == id));
         }
     }
 }
