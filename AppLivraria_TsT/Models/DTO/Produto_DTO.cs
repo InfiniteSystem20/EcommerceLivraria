@@ -10,7 +10,7 @@ namespace AppLivraria_TsT.Models.DTO
     {
         /* PK */
         [Display(Name = "Código", Description = "Código.")]
-        public int IdProd { get; set; }
+        public string IdProd { get; set; }
 
 
         public string IdCat { get; set; }
@@ -20,7 +20,7 @@ namespace AppLivraria_TsT.Models.DTO
 
         [Display(Name = "Nome", Description = "Nome.")]
        // [Required(ErrorMessage = "O nome completo é obrigatório.")]
-        public string Nome { get; set; }
+        public string NomeProd { get; set; }
 
         [Display(Name = "Descrição", Description = "Descrição.")]
         //[Required(ErrorMessage = "O nome completo é obrigatório.")]

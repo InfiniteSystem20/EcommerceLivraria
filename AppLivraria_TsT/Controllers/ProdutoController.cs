@@ -105,7 +105,7 @@ namespace AppLivraria_TsT.Controllers
             return View(dll.listaProduto());
         }
         //Listar Produtos detalhes
-        public ActionResult DetalhesProduto(int id)
+        public ActionResult DetalhesProduto(string id)
         {
             return View(dll.listaProdutoDetalhes().Find(produtoDto => produtoDto.IdProd == id));
         }

@@ -75,7 +75,7 @@
     <figure class="card card-product">
         <div class="img-wrap"><img src="@produto.Imagem"></div>
         <figcaption class="info-wrap">
-            <h4 class="title">@produto.Nome</h4>
+            <h4 class="title">@produto.NomeProd</h4>
             <p class="desc">@produto.Descricao</p>
             <div class="rating-wrap">
                 <ul class="rating-stars">
@@ -91,7 +91,19 @@
             </div>
         </figcaption>
         <div class="bottom-wrap">
-            <a href="" class="btn btn-sm btn-primary float-right">Comprar</a>
+            @using (Html.BeginForm("AdicionarCarrinho", "Home", FormMethod.Post))
+            {
+                <input type="hidden" name="id" value=@produto.IdProd>
+                <input type="hidden" name="pre" value=@produto.PrecoUni>
+                <input type="hidden" name="imagem" value=@produto.Imagem>
+                <input type="hidden" name="quantidade" value="1">
+                <button type="submit" class="btn btn-sm btn-primary float-right">Comprar</button>
+                @*<a href="" class="btn btn-sm btn-primary float-right">Comprar</a>*@
+            }
+
+            
+
+
             <a href="/Home/Detalhe/@produto.IdProd" class="btn btn-sm btn-warning float-lg-right" style="margin-right: 20px;">Detalhes</a>
 
             <div class="price-wrap h5">

@@ -64,5 +64,18 @@ namespace AppLivraria_TsT.Models.DLL
                 throw ex;
             }
         }
+        //SELECIONAR PRODUTO POR ID
+        public Produto_DTO listaProdutooPorID(int id)
+        {
+            try
+            {
+                dal = new Produto_DAO();
+                return dal.selectProdutoByID(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }        
     }
 }
