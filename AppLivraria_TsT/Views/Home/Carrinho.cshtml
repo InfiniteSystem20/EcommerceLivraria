@@ -1,0 +1,168 @@
+﻿@model AppLivraria_TsT.Models.DTO.Pedido_DTO
+@{ ViewData["Title"] = "CarrinhoCompras"; }
+
+<main role="main">
+
+
+
+
+
+    <section class="container" id="order" style="margin-top: 50px">
+
+        <h4 class="subtitle-doc">
+            Carrinho de compras
+
+        </h4>
+        <div id="code_cart">
+            <div class="card">
+                <table class="table table-hover shopping-cart-wrap">
+                    <thead class="text-muted">
+                        <tr>
+                            <th scope="col">Produtos</th>
+                            <th scope="col" width="120">Quantidade</th>
+                            <th scope="col" width="120">Preço</th>
+                            <th scope="col" width="200" class="text-right">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ItensPedido)
+                        {
+            <tr>
+                <td>
+                    <figure class="media">
+                        <div class="img-wrap"><img src="@item.Imagem" class="img-thumbnail img-sm"></div>
+                        <figcaption class="media-body">
+                            <h6 class="title text-truncate">Produto: @item.Produto </h6>
+                            <dl class="dlist-inline small">
+                                <dt>Código: @item.IdProd</dt>
+                                <dd>@*XXL*@</dd>
+                            </dl>
+                            <dl class="dlist-inline small">
+                                @*<dt>Color: </dt>
+                                <dd>Orange color</dd>*@
+                            </dl>
+                        </figcaption>
+                    </figure>
+                </td>
+                <td>
+                    <input type="number" value="@item.Qtd" /><br/><br />
+                    <dt><a href="/Home/CupomDesconto" class="btn btn-sm btn-primary float-right" style="margin-right: 10px;">Atualizar</a>
+                    @*<select class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+        </select>*@
+                </td>
+                <td>
+                    <div class="price-wrap">
+                        <var class="price">R$@item.valorParcial</var>
+                        @*<small class="text-muted">(USD5 each)</small>*@
+                    </div> <!-- price-wrap .// -->
+                </td>
+                <td class="text-right">
+                    <a title="" href="" class="btn btn-outline-success" data-toggle="tooltip"
+                       data-original-title="Save to Wishlist"><i class="fa fa-heart"></i></a>
+                    <a href="/home/ExcluirItem/@item.IdItensCar" class="btn btn-outline-danger"> × Remove</a>
+                </td>
+            </tr>}
+
+                    </tbody>
+                </table>
+            </div> <!-- card.// -->
+        </div> <!-- code-wrap.// -->
+        <br /><br />
+        <a href="/Home/SalvarCarrinho" class="btn btn-sm btn-success float-right"style="margin-right: 10px;">Finalizar pedido</a>
+        <a href="/Home/Index" class="btn btn-sm btn-primary float-right"  style="margin-right: 15px;">Continuar Comprando</a>
+
+
+    </section>
+    <br />
+    <br />
+    
+    <section class="container">
+        <div class="row">
+            <aside class="col-md-4">
+                <h4 class="subtitle-doc">
+                    Cálculo de frete
+                    <a href="/Home/CalcularFrete" class="btn btn-sm btn-warning float-right" style="margin-right: 10px;">Entrega</a>
+                </h4>
+                <div id="code_desc_simple">
+                    <div class="box">
+                        <dl>
+                            <dt>Informações: </dt>
+                            <dd>
+                                Você poderá optar por retirar na loja ou usar um dos serviços de Delivery disponíveis.
+                            </dd>
+                            <dt></dt>
+                        </dl>
+                        <dl>
+                            <dt>@*Parameter:*@ </dt>
+                            <dd>@*Value name*@</dd>
+                        </dl>
+                        <dl>
+                            <dt>@*Desconto:*@</dt>
+                            <dd>@*USD 658*@</dd>
+                        </dl>
+                    </div> <!-- box.// -->
+                </div> <!-- code-wrap.// -->
+            </aside>
+            <aside class="col-md-4 float-lg-right">
+                <h4 class="subtitle-doc">
+                    Regras do cupom. 
+                    <a href="/Home/CupomDesconto" class="btn btn-sm btn-warning float-right" style="margin-right: 10px;">Veja Mais</a>
+                </h4>
+                <div id="code_desc_align">
+                    <div class="box">
+                        <dl>
+                            <dt>Aproveite:</dt>
+                            <dd>
+                                Todos os dias tem descontos, fique sempre atento.
+                            </dd>
+                            <dt></dt>
+                        </dl>                        
+                        <dl class="dlist-align">
+                            <dt>@*Parameter:*@ </dt>
+                            <dd>@*Value name*@</dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt>@*Color:*@</dt>
+                            <dd>@*Orange and Black*@</dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt>@*Material*@</dt>
+                            <dd>@*Leather*@</dd>
+                        </dl>
+                    </div> 
+                </div>  
+            </aside>
+            <aside class="col-md-4">
+                <h4 class="subtitle-doc">
+                    Valor Total da compra 
+
+                </h4>
+                <div id="code_desc_right">
+                    <div class="box">
+                        <dl class="dlist-align">
+                            <dt>Subtotal: </dt>
+                            <dd class="text-right">R$ @Model.ValorTotal </dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt>Desconto:</dt>
+                            <dd class="text-right">R$ 00,00</dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt>Frete:</dt>
+                            <dd class="text-right">R$ 00,00</dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt>Valor Total: </dt>
+                            <dd class="text-right h5 b"> R$ @Model.ValorTotal </dd>
+                        </dl>
+                    </div>
+                </div> 
+            </aside>
+
+        </div>
+    </section>
+</main>

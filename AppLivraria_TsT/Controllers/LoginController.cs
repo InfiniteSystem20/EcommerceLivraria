@@ -27,6 +27,7 @@ namespace AppLivraria_TsT.Controllers
                 Session["usuarioLogado"] = verLogin.Email.ToString();
                 Session["senhaLogado"] = verLogin.Senha.ToString();
                 Session["usuarioNome"] = verLogin.Nome.ToString();
+                Session["idUser"] = verLogin.IdCli.ToString();
 
                 if (verLogin.Tipo == "1")
                 {

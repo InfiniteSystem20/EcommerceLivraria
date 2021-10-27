@@ -64,7 +64,7 @@ namespace AppLivraria_TsT.Models.DAO
                 throw new Exception("Erro na aplicação ao Listar cliente" + ex.Message);
             }
         }
-        // Selecionar Lista cliente
+        // Selecionar Lista cliente Detalhes
         public List<Cliente_DTO> selectListClienteDetalhes()
         {
             try

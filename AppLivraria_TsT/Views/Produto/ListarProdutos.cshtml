@@ -1,10 +1,9 @@
-﻿@model IEnumerable<AppLivraria_TsT.Models.DTO.Categoria_DTO>
+﻿@model IEnumerable<AppLivraria_TsT.Models.DTO.Produto_DTO>
 
 @{
-    ViewBag.Title = "Listar Categoria";
+    ViewBag.Title = "Listar Produtos";
     Layout = "~/Views/Dashbord/Layout/_Layout.cshtml";
 }
-
 <section class="layout-content">
 
     <nav class="navbar navbar-expand-md bg-light">
@@ -12,12 +11,12 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <i class="fas fa-caret-right"></i>
-                    <span>Lista de Categoria</span>
+                    <span>Lista de Produtos</span>
                 </li>
             </ul>
-            <a class="btn btn-outline-primary" href="/Categoria/CadCategoria" role="button">
+            <a class="btn btn-outline-primary" href="/Funcionario/CadastroFuncionario" role="button">
                 <span class="fas fa-user-plus" title="Cadastro" aria-hidden="true"></span>
-                <span>Cadastrar Categoria</span>
+                <span>Cadastrar Produtos</span>
             </a>
         </div>
     </nav>
@@ -28,41 +27,49 @@
                 <thead class="thead-dark">
                     <tr>
                         <th>Código</th>
-                        <th>Nome</th>                        
+                        <th>Nome</th>
+                        <th>Valor</th>
+                        
+                        
                         <th>Ação</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var categoria in Model)
+                    @foreach (var Produto in Model)
                     {
 
                         <tr>
-                            <td>@categoria.IdCat</td>
-                            <td>@categoria.Nome</td>                            
+                            <td>@Produto.IdProd</td>
+                            <td>@Produto.Nome</td>
+                            <td>R$@Produto.PrecoUni</td> 
 
-                            <td colspan="2">
-                                @*<button type="button" class="btn btn-info btn-sm">
-                                    @Html.ActionLink("Detalhes", "DetalhesFuncionario", new { id = funcionario.IdCat }, new { @style = "color:white" })
-                                </button>*@
-                                @*<a class="btn btn-info btn-sm" href="/Funcionario/FuncionariosPorId/@funcionario.IdFunc" role="button">
-                                        <span class="fas fa-info-circle" title="Detalhes" aria-hidden="true"></span>
-                                    </a>*@
-                                @*<a class="btn btn-warning btn-sm" href="/Funcionario/EditarFuncionario/@funcionario.IdFunc" role="button">
-                                        <span class="fas fa-edit" title="Atualizar" aria-hidden="true"></span>
-                                    </a>*@
-                                <button type="button" class="btn btn-warning btn-sm fas fa-edit" style="color:black">
-                                    @Html.ActionLink("Editar", "EditarCategoria", new { id = categoria.IdCat }, new { @style = "color:white" })
-                                </button>
+                        <td colspan="2">
+                            <button type="button" class="btn btn-info btn-sm">
+                                @Html.ActionLink("Detalhes", "DetalhesProduto", new { id = Produto.IdProd }, new { @style = "color:white" })
+                            </button>
 
-                                @*<a class="btn btn-danger btn-sm da" href="/Funcionario/ExcluirFuncionario/@funcionario.IdFunc" role="button">
-                                        <span class="fas fa-trash-alt " title="Excluir" aria-hidden="true"></span>
-                                    </a>*@
+                            <button type="button" class="btn btn-warning btn-sm fas fa-edit" style="color:black">
+                                @Html.ActionLink("Editar", "EditarProduto", new { id = Produto.IdProd }, new { @style = "color:white" })
+                            </button>
 
-                                <button type="button" class="btn btn-danger btn-sm da" style="color:black">
-                                    @Html.ActionLink("Excluir", "ExcluirCategoria", new { id = categoria.IdCat },
-                                    new { onclick = "return confirm('Deseja realmente Excluir o funcionário?');" })
-                                </button>
-                            </td>
+                            
+                            @*<a class="btn btn-info btn-sm" href="/Funcionario/FuncionariosPorId/@funcionario.IdFunc" role="button">
+            <span class="fas fa-info-circle" title="Detalhes" aria-hidden="true"></span>
+        </a>*@
+                            @*<a class="btn btn-warning btn-sm" href="/Funcionario/EditarFuncionario/@funcionario.IdFunc" role="button">
+            <span class="fas fa-edit" title="Atualizar" aria-hidden="true"></span>
+        </a>*@
+
+
+                            @*<a class="btn btn-danger btn-sm da" href="/Funcionario/ExcluirFuncionario/@funcionario.IdFunc" role="button">
+            <span class="fas fa-trash-alt " title="Excluir" aria-hidden="true"></span>
+        </a>*@
+
+                            <button type="button" class="btn btn-danger btn-sm da" style="color:black">
+                                @Html.ActionLink("Excluir", "ExcluirFuncionario", new { id = Produto.IdProd },
+                                new { onclick = "return confirm('Deseja realmente Excluir o funcionário?');" })
+                            </button>
+                        </td>
                         </tr>
                     }
                 </tbody>
@@ -97,3 +104,5 @@
             .appendTo('#ListaFuncionario_wrapper_wrapper .col-md-6:eq(0)');
     });
 </script>
+
+
