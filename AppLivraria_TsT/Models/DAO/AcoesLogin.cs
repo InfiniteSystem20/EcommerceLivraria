@@ -30,6 +30,7 @@ namespace AppLivraria_TsT.Models.DAO
                     user.Nome = Convert.ToString(leitor["Nome"]);
                     user.Email = Convert.ToString(leitor["Email"]);
                     user.Senha = Convert.ToString(leitor["Senha"]);
+                    user.IdCli = Convert.ToInt32(leitor["IdCli"]);
                     user.Tipo = Convert.ToString(leitor["Tipo"]);
                 }
             }

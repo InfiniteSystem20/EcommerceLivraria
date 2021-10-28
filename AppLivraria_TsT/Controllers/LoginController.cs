@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace AppLivraria_TsT.Controllers
 {
@@ -24,6 +25,7 @@ namespace AppLivraria_TsT.Controllers
             acLg.TestarUsuario(verLogin);
             if (verLogin.Email != null && verLogin.Senha != null)
             {
+                FormsAuthentication.SetAuthCookie(verLogin.Email, false);
                 Session["usuarioLogado"] = verLogin.Email.ToString();
                 Session["senhaLogado"] = verLogin.Senha.ToString();
                 Session["usuarioNome"] = verLogin.Nome.ToString();
@@ -39,6 +41,35 @@ namespace AppLivraria_TsT.Controllers
                     return RedirectToAction("index", "Dashbord");
                 }
                 return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ViewBag.msgLogar = "Usuário não encontrado. Verifique o nome do usuário e a senha";
+                return View();
+            }
+        }
+
+        public ActionResult Login2(Cliente_DTO verLogin)
+        {
+            acLg.TestarUsuario(verLogin);
+            if (verLogin.Email != null && verLogin.Senha != null)
+            {
+                FormsAuthentication.SetAuthCookie(verLogin.Email, false);
+                Session["usuarioLogado"] = verLogin.Email.ToString();
+                Session["senhaLogado"] = verLogin.Senha.ToString();
+                Session["usuarioNome"] = verLogin.Nome.ToString();
+                Session["idUser"] = verLogin.IdCli.ToString();
+
+                if (verLogin.Tipo == "1")
+                {
+                    Session["tipoLogado1"] = verLogin.Tipo.ToString(); //=1;
+                }
+                else
+                {
+                    Session["tipoLogado2"] = verLogin.Tipo.ToString();//=2
+                    return RedirectToAction("index", "Dashbord");
+                }
+                return RedirectToAction("Carrinho", "Home");
             }
             else
             {

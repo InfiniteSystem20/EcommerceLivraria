@@ -17,7 +17,8 @@ namespace AppLivraria_TsT.Controllers
         Produto_DAO produto_DAO = new Produto_DAO();
 
         Pedido_DLL pedidodll = new Pedido_DLL();
-        Pedido_DTO PedidoDto = new Pedido_DTO();
+        Pedido_DTO pedidoDto = new Pedido_DTO();
+        Pedido_DAO pedido_DAO = new Pedido_DAO();
 
         ItensCarrinho_DLL itensCarrinhodll = new ItensCarrinho_DLL();
         ItensCarrinho_DTO itensCarrinhoDto = new ItensCarrinho_DTO();
@@ -81,7 +82,7 @@ namespace AppLivraria_TsT.Controllers
                 Session["Carrinho"] = carrinho;
             }
 
-            return RedirectToAction("Carrinho");
+            return RedirectToAction(nameof(Carrinho));
         }
         public ActionResult Carrinho()
         {
@@ -100,9 +101,55 @@ namespace AppLivraria_TsT.Controllers
             carrinho.ItensPedido.Remove(itemExclusao);
 
             Session["Carrinho"] = carrinho;
-            return RedirectToAction("Carrinho");
+            return RedirectToAction(nameof(Carrinho));
         }
+      
+        public ActionResult SalvarCarrinho(Pedido_DTO x)
+        {
+            
+            if ((Session["usuarioLogado"] == null) || (Session["senhaLogado"] == null))
 
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                var carrinho = Session["Carrinho"] != null ? (Pedido_DTO)Session["Carrinho"] : new Pedido_DTO();
+
+                Pedido_DTO md = new Pedido_DTO();
+                ItensCarrinho_DTO mdV = new ItensCarrinho_DTO();
+
+                md.DtPedido = DateTime.Now.ToLocalTime().ToString("dd/MM/yyyy");
+                md.HoraPedido = DateTime.Now.ToLocalTime().ToString("HH:mm");
+                md.IdCli = Session["idUser"].ToString();
+                md.ValorTotal = carrinho.ValorTotal;
+
+                pedidodll.novoPedido(md);
+
+                
+                pedido_DAO.buscaIdVenda(x);
+
+                for (int i = 0; i < carrinho.ItensPedido.Count; i++)
+                {
+
+                    mdV.IdPedido = x.IdPedido;
+                    mdV.IdProd = carrinho.ItensPedido[i].IdProd;
+                    mdV.Qtd = carrinho.ItensPedido[i].Qtd;
+                    mdV.valorParcial = carrinho.ItensPedido[i].valorParcial;
+                    itensCarrinhodll.novaItensCarrinho(mdV);
+
+                }
+
+                carrinho.ValorTotal = 0;
+                carrinho.ItensPedido.Clear();
+
+                return RedirectToAction(nameof(Finalizado));
+            }
+        }
+        public ActionResult Finalizado()
+        {
+            return View();
+        }
 
         public ActionResult Login()
         {
