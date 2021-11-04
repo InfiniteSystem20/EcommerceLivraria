@@ -91,10 +91,21 @@
 
                             </div>
                             <hr>
-                            <a href="/Home/Index" class="btn  btn-primary"> Voltar </a>
-                            <a href="#" class="btn  btn-outline-primary">
+                            
+                            @using (Html.BeginForm("AdicionarCarrinho", "Home", FormMethod.Post))
+                            {
+                                <a href="/Home/Index" class="btn  btn-primary"> Voltar </a>
+                                <input type="hidden" name="id" value=@Model.IdProd>
+                                <input type="hidden" name="pre" value=@Model.PrecoUni>
+                                <input type="hidden" name="imagem" value=@Model.Imagem>
+                                <input type="hidden" name="quantidade" value="1">
+                                <button type="submit" class="btn btn-sm btn-outline-primary">Adicionar Carrinho<i class="fas fa-shopping-cart"></i></button>
+                                @*<a href="" class="btn btn-sm btn-primary float-right">Comprar</a>*@
+                            }
+                           @*<a href="/Home/Index" class="btn  btn-primary"> Voltar </a>*@
+                            @*<a href="/home/Carrinho" class="btn  btn-outline-primary">
                                 <i class="fas fa-shopping-cart"></i> Adicionar Carrinho
-                            </a>
+                            </a>*@
                         </article> 
                     </aside> 
                 </div> 

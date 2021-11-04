@@ -759,6 +759,7 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Categoria\ListarCategoria.cshtml" />
     <Content Include="Views\Categoria\EditarCategoria.cshtml" />
+    <Content Include="Views\Categoria\ListarCategoriaId.cshtml" />
     <None Include="Views\Dashbord\Layout\_Layout.cshtml" />
     <Content Include="Views\Dashbord\Home\Index.cshtml" />
     <Content Include="Views\Funcionario\CadastroFuncionario.cshtml" />
@@ -777,6 +778,7 @@
     <Content Include="Views\Home\detalhe.cshtml" />
     <Content Include="Views\Login\Login2.cshtml" />
     <Content Include="Views\Home\Finalizado.cshtml" />
+    <Content Include="Views\Home\Pagamento.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

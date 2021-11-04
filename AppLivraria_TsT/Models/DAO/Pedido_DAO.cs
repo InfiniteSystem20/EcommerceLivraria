@@ -102,11 +102,7 @@ namespace AppLivraria_TsT.Models.DAO
                 {
                     using (MySqlCommand command = new MySqlCommand("SELECT IdPedido FROM tbPedido ORDER BY IdPedido DESC limit 1;", conn))
                     {
-                        conn.Open();
-                        //String sql = "SELECT IdPedido FROM tbPedido ORDER BY IdPedido DESC limit 1;";
-
-                        //con = new MySqlConnection(_conexaoMySQL);
-                        //MySqlCommand cmd = new MySqlCommand(sql, con);
+                        conn.Open();                        
                         using (MySqlDataReader dr = command.ExecuteReader())
                         {
 

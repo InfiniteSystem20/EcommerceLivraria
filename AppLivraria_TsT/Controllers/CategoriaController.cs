@@ -71,5 +71,17 @@ namespace AppLivraria_TsT.Controllers
             dll.exclurCategoria(id);
             return RedirectToAction(nameof(ListarCategoria));
         }
+
+        public ActionResult ListarCategoriaId(int id)
+        {
+            //  if (Session["usuariologado"] == null || Session["senhaLogado"] == null)
+            //  {
+            //      return RedirectToAction("Index", "Home");
+            //  }
+            //  else
+            //   {
+            return View(dll.listaCategoria().Find(categoriaDTO => categoriaDTO.IdCat == id));
+            //  }
+        }
     }
 }
