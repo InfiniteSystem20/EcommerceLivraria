@@ -75,8 +75,9 @@
     <figure class="card card-product">
         <div class="img-wrap"><img src="@produto.Imagem"></div>
         <figcaption class="info-wrap">
+            <h4 class="title">Código: @produto.IdProd</h4>
             <h4 class="title">@produto.NomeProd</h4>
-            <p class="desc">@produto.Descricao</p>
+            <p class="desc" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">@produto.Descricao</p>
             <div class="rating-wrap">
                 <ul class="rating-stars">
                     <li style="width:80%" class="stars-active">

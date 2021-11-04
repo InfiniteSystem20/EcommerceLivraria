@@ -1,6 +1,7 @@
 ﻿using AppLivraria_TsT.Models.DAO;
 using AppLivraria_TsT.Models.DLL;
 using AppLivraria_TsT.Models.DTO;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,22 +12,53 @@ namespace AppLivraria_TsT.Controllers
 {
     public class HomeController : Controller
     {
+        public void carregarCategoria()
+        {
+            List<SelectListItem> categorias = new List<SelectListItem>();
+
+            using (MySqlConnection con = new MySqlConnection("server=localhost;port=3307;user id=root;password=361190;database=Livraria01"))
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand("CALL proc_SelecionarCategoria();", con);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    categorias.Add(new SelectListItem
+                    {
+                        Text = rdr[1].ToString(),
+                        Value = rdr[0].ToString()
+                    });
+                }
+                con.Close();
+
+            }
+
+            ViewBag.cat = new SelectList(categorias, "Value", "Text");
+        }
+
         //Classe de produtos
         Produto_DLL dll = new Produto_DLL();
         Produto_DTO produtoDto = new Produto_DTO();
         Produto_DAO produto_DAO = new Produto_DAO();
 
         Pedido_DLL pedidodll = new Pedido_DLL();
-        Pedido_DTO PedidoDto = new Pedido_DTO();
+        Pedido_DTO pedidoDto = new Pedido_DTO();
+        Pedido_DAO pedido_DAO = new Pedido_DAO();
 
         ItensCarrinho_DLL itensCarrinhodll = new ItensCarrinho_DLL();
         ItensCarrinho_DTO itensCarrinhoDto = new ItensCarrinho_DTO();
 
         public static string codigo;
 
+        Categoria_DLL categoriadll = new Categoria_DLL();
+        Categoria_DTO categoriaDTO = new Categoria_DTO();
+
         //Carrega os produtos  na Index
         public ActionResult Index()
         {
+            carregarCategoria();
+            produtoDto.IdCat = Request["cat"];
             return View(dll.listaProduto());
         }
         // Detalhes do Produto
@@ -81,7 +113,7 @@ namespace AppLivraria_TsT.Controllers
                 Session["Carrinho"] = carrinho;
             }
 
-            return RedirectToAction("Carrinho");
+            return RedirectToAction(nameof(Carrinho));
         }
         public ActionResult Carrinho()
         {
@@ -100,9 +132,59 @@ namespace AppLivraria_TsT.Controllers
             carrinho.ItensPedido.Remove(itemExclusao);
 
             Session["Carrinho"] = carrinho;
-            return RedirectToAction("Carrinho");
+            return RedirectToAction(nameof(Carrinho));
         }
+      
+        public ActionResult SalvarCarrinho(Pedido_DTO x)
+        {
+            
+            if ((Session["usuarioLogado"] == null) || (Session["senhaLogado"] == null))
 
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                var carrinho = Session["Carrinho"] != null ? (Pedido_DTO)Session["Carrinho"] : new Pedido_DTO();
+
+                Pedido_DTO md = new Pedido_DTO();
+                ItensCarrinho_DTO mdV = new ItensCarrinho_DTO();
+
+                md.DtPedido = DateTime.Now.ToLocalTime().ToString("dd/MM/yyyy");
+                md.HoraPedido = DateTime.Now.ToLocalTime().ToString("HH:mm");
+                md.IdCli = Session["idUser"].ToString();
+                md.ValorTotal = carrinho.ValorTotal;
+
+                pedidodll.novoPedido(md);
+
+                
+                pedido_DAO.buscaIdVenda(x);
+
+                for (int i = 0; i < carrinho.ItensPedido.Count; i++)
+                {
+
+                    mdV.IdPedido = x.IdPedido;
+                    mdV.IdProd = carrinho.ItensPedido[i].IdProd;
+                    mdV.Qtd = carrinho.ItensPedido[i].Qtd;
+                    mdV.valorParcial = carrinho.ItensPedido[i].valorParcial;
+                    itensCarrinhodll.novaItensCarrinho(mdV);
+
+                }
+
+                carrinho.ValorTotal = 0;
+                carrinho.ItensPedido.Clear();
+
+                return RedirectToAction(nameof(Finalizado));
+            }
+        }
+        public ActionResult Finalizado()
+        {
+            return View();
+        }
+        public ActionResult ListarCategoria()
+        {
+            return View(categoriadll.listaCategoria());
+        }
 
         public ActionResult Login()
         {

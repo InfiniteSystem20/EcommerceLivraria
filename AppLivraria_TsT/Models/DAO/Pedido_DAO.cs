@@ -55,22 +55,8 @@ namespace AppLivraria_TsT.Models.DAO
             }
         }
 
-        //MySqlDataReader dr;
-        //public void buscaIdVenda(Pedido_DTO vend)
-        //{
-        //    MySqlCommand cmd = new MySqlCommand("SELECT codVenda FROM tbVenda ORDER BY codVenda DESC limit 1", con.MyConectarBD());
-        //    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-        //    dr = cmd.ExecuteReader();
-        //    while (dr.Read())
-        //    {
-        //        vend.codVenda = dr[0].ToString();
-        //    }
-        //    con.MyDesconectarBD();
-        //}
-
-
         //selecionar lista de Pedido
-        public List<Pedido_DTO> buscaPedidoPorId()
+        public List<Pedido_DTO> buscaPedidoPorId() 
         {
             try
             {
@@ -105,5 +91,41 @@ namespace AppLivraria_TsT.Models.DAO
                 throw new Exception("Erro na aplicação ao Listar Pedido" + ex.Message);
             }
         }
+        //Listar Produto por ID
+        public void buscaIdVenda(Pedido_DTO pedido)
+        {
+
+            //MySqlDataReader dr;
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(_conexaoMySQL))
+                {
+                    using (MySqlCommand command = new MySqlCommand("SELECT IdPedido FROM tbPedido ORDER BY IdPedido DESC limit 1;", conn))
+                    {
+                        conn.Open();                        
+                        using (MySqlDataReader dr = command.ExecuteReader())
+                        {
+
+                            while (dr.Read())
+                            {
+                                pedido.IdPedido = dr[0].ToString();
+                            }
+                            
+                        }
+                    }
+                 }
+            }
+            catch (MySqlException ex)
+            {
+
+                throw new Exception("Erro no banco em cadastro pedido" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na aplicação em cadastro pedido" + ex.Message);
+            }
+        
+        }        
     }
 }

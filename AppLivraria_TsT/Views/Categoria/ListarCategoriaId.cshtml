@@ -1,0 +1,58 @@
+﻿@model IEnumerable<AppLivraria_TsT.Models.DTO.Categoria_DTO>
+
+    ViewBag.Title = "ListarCategoriaId";
+}
+
+<main role="main">
+    <!-- Lista de Produtos
+            ==================================================================================== -->
+    <div class="container" id="code_prod_complex">
+        <div class="row">
+
+            @foreach (var categoria in Model)
+            {
+                <div class="col-md-4">
+                    <figure class="card card-product">
+                        <div class="img-wrap"><img src="@categoria.Imagem"></div>
+                        <figcaption class="info-wrap">
+                            <h4 class="title">Código: @categoria.IdProd</h4>
+                            <h4 class="title">@categoria.NomeProd</h4>
+                            <p class="desc" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">@categoria.Descricao</p>
+                            <div class="rating-wrap">
+                                <ul class="rating-stars">
+                                    <li style="width:80%" class="stars-active">
+                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                    </li>
+                                </ul>
+                                <div class="label-rating">132 Visualização</div>
+                                <div class="label-rating">154 pedidos </div>
+                            </div>
+                        </figcaption>
+                        <div class="bottom-wrap">
+                            @using (Html.BeginForm("AdicionarCarrinho", "Home", FormMethod.Post))
+                            {
+                                <input type="hidden" name="id" value=@categoria.IdProd>
+                                <input type="hidden" name="pre" value=@categoria.PrecoUni>
+                                <input type="hidden" name="imagem" value=@categoria.Imagem>
+                                <input type="hidden" name="quantidade" value="1">
+                                <button type="submit" class="btn btn-sm btn-primary float-right">Comprar</button> @*<a href="" class="btn btn-sm btn-primary float-right">Comprar</a>*@}
+
+
+
+
+                            <a href="/Home/Detalhe/@categoria.IdProd" class="btn btn-sm btn-warning float-lg-right" style="margin-right: 20px;">Detalhes</a>
+
+                            <div class="price-wrap h5">
+                                <span class="price-new">R$@categoria.PrecoUni</span> <del class="price-old">R$1980,00</del>
+                            </div>
+                        </div>
+                    </figure>
+                </div>}
+        </div>
+    </div>
+
+</main>
+

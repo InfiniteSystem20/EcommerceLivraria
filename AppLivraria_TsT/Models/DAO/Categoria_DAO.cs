@@ -147,7 +147,6 @@ namespace AppLivraria_TsT.Models.DAO
             {
                 con.Close();
             }
-
         }
     }
 }
