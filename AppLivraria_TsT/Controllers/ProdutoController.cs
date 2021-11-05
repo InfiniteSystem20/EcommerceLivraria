@@ -16,8 +16,8 @@ namespace AppLivraria_TsT.Controllers
         public void carregarCategoria()
         {
             List<SelectListItem> categorias = new List<SelectListItem>();
-
-            using (MySqlConnection con = new MySqlConnection("server=localhost;port=3307;user id=root;password=361190;database=Livraria01"))
+            //using (MySqlConnection con = new MySqlConnection("server=localhost;port=3307;user id=root;password=361190;database=Livraria01"))
+            using (MySqlConnection con = new MySqlConnection("server=localhost;user id=root;password=root;database=Livraria01"))
             {
                 con.Open();
                 MySqlCommand cmd = new MySqlCommand("CALL proc_SelecionarCategoria();", con);
@@ -109,5 +109,36 @@ namespace AppLivraria_TsT.Controllers
         {
             return View(dll.listaProdutoDetalhes().Find(produtoDto => produtoDto.IdProd == id));
         }
+
+        public ActionResult EditarProduto(string id)
+        {
+            //  if (Session["usuariologado"] == null || Session["senhaLogado"] == null)
+            //  {
+            //      return RedirectToAction("Index", "Home");
+            //  }
+            //  else
+            //   {
+            carregarCategoria();
+            return View(dll.listaProdutoDetalhes().Find(produtoDto => produtoDto.IdProd == id));
+            //  }
+        }
+        // EDITAR Categoria
+        [HttpPost]
+        public ActionResult EditarProduto(Produto_DTO produto, HttpPostedFileBase file)
+        {
+            carregarCategoria();
+            produto.IdCat = Request["cat"];
+
+            string arquivo = Path.GetFileName(file.FileName);
+            string file2 = "/images/produtos/" + Path.GetFileName(file.FileName);
+            string _path = Path.Combine(Server.MapPath("~/images/produtos/"), arquivo);
+            file.SaveAs(_path);
+            produto.Imagem = file2;
+
+            dll.alteraProduto(produto);
+            return RedirectToAction(nameof(ListarProdutos));
+        }
+
+
     }
 }

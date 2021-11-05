@@ -303,5 +303,48 @@ namespace AppLivraria_TsT.Models.DAO
                 throw new Exception("Erro na aplicação ao Listar Produto" + ex.Message);
             }
         }
+        // UPDATE Categoria
+        public void updateProduto(Produto_DTO produto)
+        {
+            try
+            {
+                String sql = " CALL proc_UpdateProduto(@IdProd, @IdCat, @Nome, @Descricao, @PrecoUni, @Estoque, @Imagem,@ISBN, @Autor); ";
+
+                //Alter Categoria
+                con = new MySqlConnection(_conexaoMySQL);
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@IdProd", produto.IdProd);
+                cmd.Parameters.AddWithValue("@IdCat", produto.IdCat);                
+                cmd.Parameters.AddWithValue("@Nome", produto.NomeProd);
+                cmd.Parameters.AddWithValue("@Descricao", produto.Descricao);
+                cmd.Parameters.AddWithValue("@PrecoUni", produto.PrecoUni);
+                cmd.Parameters.AddWithValue("@Estoque", Convert.ToInt32(produto.Estoque));                
+                cmd.Parameters.AddWithValue("@Imagem", produto.Imagem);
+                cmd.Parameters.AddWithValue("@Categiria", produto.Categiria);
+                
+                if (produto.Categiria != "Produto")
+                {
+                    cmd.Parameters.AddWithValue("@ISBN", produto.ISBN);
+                    cmd.Parameters.AddWithValue("@Autor", produto.Autor);
+                }                
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+
+                throw new Exception("Erro no banco ao atualizar dados do categoria" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na aplicação ao atualizar dados do categoria" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
     }
 }

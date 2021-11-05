@@ -779,6 +779,7 @@
     <Content Include="Views\Login\Login2.cshtml" />
     <Content Include="Views\Home\Finalizado.cshtml" />
     <Content Include="Views\Home\Pagamento.cshtml" />
+    <Content Include="Views\Produto\EditarProduto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

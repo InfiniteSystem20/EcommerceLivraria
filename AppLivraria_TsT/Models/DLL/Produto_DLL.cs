@@ -76,6 +76,19 @@ namespace AppLivraria_TsT.Models.DLL
             {
                 throw ex;
             }
-        }        
+        }
+        //UPDATE Produto
+        public void alteraProduto(Produto_DTO produto)
+        {
+            try
+            {
+                dal = new Produto_DAO();
+                dal.updateProduto(produto);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
