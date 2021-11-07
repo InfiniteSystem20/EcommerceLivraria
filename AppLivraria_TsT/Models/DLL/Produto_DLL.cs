@@ -90,5 +90,18 @@ namespace AppLivraria_TsT.Models.DLL
                 throw ex;
             }
         }
+        //EXCLUIR Categoria
+        public void exclurProduto(int id)
+        {
+            try
+            {
+                dal = new Produto_DAO();
+                dal.deleteProduto(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

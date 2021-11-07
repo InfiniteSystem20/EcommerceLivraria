@@ -26,6 +26,7 @@ namespace AppLivraria_TsT.Models.DTO
         //[Required(ErrorMessage = "O nome completo é obrigatório.")]
         public string Descricao { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:0,0.000000}")]
         [Display(Name = "Preço", Description = "Preço.")]
        // [Required(ErrorMessage = "O nome completo é obrigatório.")]
         public decimal PrecoUni { get; set; }

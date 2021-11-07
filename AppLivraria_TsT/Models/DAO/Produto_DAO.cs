@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -32,7 +33,7 @@ namespace AppLivraria_TsT.Models.DAO
                 cmd.Parameters.AddWithValue("@IdCat", produto.IdCat);
                 cmd.Parameters.AddWithValue("@Nome", produto.NomeProd);                
                 cmd.Parameters.AddWithValue("@Descricao", produto.Descricao);
-                cmd.Parameters.AddWithValue("@PrecoUni", produto.PrecoUni);
+                cmd.Parameters.AddWithValue("@PrecoUni", produto.PrecoUni).ToString().Replace(",", ".");
                 cmd.Parameters.AddWithValue("@Estoque",Convert.ToInt32( produto.Estoque));
                 cmd.Parameters.AddWithValue("@Imagem", produto.Imagem);                
                 con.Open();
@@ -70,7 +71,7 @@ namespace AppLivraria_TsT.Models.DAO
                 cmd.Parameters.AddWithValue("@ISBN", produto.ISBN);
                 cmd.Parameters.AddWithValue("@Nome", produto.NomeProd);
                 cmd.Parameters.AddWithValue("@Descricao", produto.Descricao);
-                cmd.Parameters.AddWithValue("@PrecoUni", produto.PrecoUni);
+                cmd.Parameters.AddWithValue("@PrecoUni", produto.PrecoUni).ToString().Replace(",", ".");
                 cmd.Parameters.AddWithValue("@Estoque", Convert.ToInt32(produto.Estoque));
                 cmd.Parameters.AddWithValue("@Autor", produto.Autor);
                 cmd.Parameters.AddWithValue("@Imagem", produto.Imagem);
@@ -115,7 +116,7 @@ namespace AppLivraria_TsT.Models.DAO
                                 produto.ISBN = dr["ISBN"].ToString();
                                 produto.NomeProd = dr["Nome"].ToString();
                                 produto.Descricao = dr["Descricao"].ToString();
-                                produto.PrecoUni = Convert.ToDecimal( dr["PrecoUni"]);
+                                produto.PrecoUni = Convert.ToDecimal(dr["PrecoUni"].ToString().Replace(".", ","));
                                 produto.Estoque = Convert.ToInt32(dr["Estoque"]);
                                 produto.Autor = dr["Autor"].ToString();
                                 produto.Imagem = dr["Imagem"].ToString();
@@ -160,7 +161,7 @@ namespace AppLivraria_TsT.Models.DAO
                                 produto.ISBN = dr["ISBN"].ToString();
                                 produto.NomeProd = dr["Nome"].ToString();
                                 produto.Descricao = dr["Descricao"].ToString();
-                                produto.PrecoUni = Convert.ToDecimal(dr["PrecoUni"]);
+                                produto.PrecoUni = Convert.ToDecimal(dr["PrecoUni"].ToString().Replace(".", ","));
                                 produto.Estoque = Convert.ToInt32(dr["Estoque"]);
                                 produto.Autor = dr["Autor"].ToString();
                                 produto.Categiria = dr["Categoria"].ToString();
@@ -205,7 +206,7 @@ namespace AppLivraria_TsT.Models.DAO
                     produto.ISBN = dr["ISBN"].ToString();
                     produto.NomeProd = dr["Nome"].ToString();
                     produto.Descricao = dr["Descricao"].ToString();
-                    produto.PrecoUni = Convert.ToDecimal(dr["PrecoUni"]);
+                    produto.PrecoUni = Convert.ToDecimal(dr["PrecoUni"].ToString().Replace(".", ","));
                     produto.Estoque = Convert.ToInt32(dr["Estoque"]);
                     produto.Autor = dr["Autor"].ToString();
                     produto.Categiria = dr["Categoria"].ToString();
@@ -250,7 +251,7 @@ namespace AppLivraria_TsT.Models.DAO
                         IdProd = Convert.ToString(dr["IdProd"]),
                         NomeProd = Convert.ToString(dr["Nome"]),
                         Descricao = Convert.ToString(dr["Descricao"]),
-                        PrecoUni = Convert.ToDecimal(dr["PrecoUni"]),
+                        PrecoUni = Convert.ToDecimal(dr["PrecoUni"].ToString().Replace(".", ",")),
                         Estoque = Convert.ToInt32(dr["Estoque"]),
                         Imagem = Convert.ToString(dr["Imagem"])
                     });
@@ -279,7 +280,7 @@ namespace AppLivraria_TsT.Models.DAO
                                 produto.ISBN = dr["ISBN"].ToString();
                                 produto.NomeProd = dr["Nome"].ToString();
                                 produto.Descricao = dr["Descricao"].ToString();
-                                produto.PrecoUni = Convert.ToDecimal(dr["PrecoUni"]);
+                                produto.PrecoUni = Convert.ToDecimal(dr["PrecoUni"].ToString().Replace(".", ","));
                                 produto.Estoque = Convert.ToInt32(dr["Estoque"]);
                                 produto.Autor = dr["Autor"].ToString();
                                 produto.Imagem = dr["Imagem"].ToString();
@@ -317,7 +318,7 @@ namespace AppLivraria_TsT.Models.DAO
                 cmd.Parameters.AddWithValue("@IdCat", produto.IdCat);                
                 cmd.Parameters.AddWithValue("@Nome", produto.NomeProd);
                 cmd.Parameters.AddWithValue("@Descricao", produto.Descricao);
-                cmd.Parameters.AddWithValue("@PrecoUni", produto.PrecoUni);
+                cmd.Parameters.AddWithValue("@PrecoUni", produto.PrecoUni).ToString().Replace(",", ".");
                 cmd.Parameters.AddWithValue("@Estoque", Convert.ToInt32(produto.Estoque));                
                 cmd.Parameters.AddWithValue("@Imagem", produto.Imagem);
                 cmd.Parameters.AddWithValue("@Categiria", produto.Categiria);
@@ -346,5 +347,34 @@ namespace AppLivraria_TsT.Models.DAO
                 con.Close();
             }
         }
+        // DELETAR produto
+        public void deleteProduto(int id)
+        {
+            try
+            {
+                String sql = "CALL  proc_DeleteProduto(@IdProd); ";
+                con = new MySqlConnection(_conexaoMySQL);
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@IdProd", id);
+                con.Open();
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (MySqlException ex)
+            {
+
+                throw new Exception("Erro no banco ao deletar produto" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na aplicação ao deletar produto" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        
     }
 }

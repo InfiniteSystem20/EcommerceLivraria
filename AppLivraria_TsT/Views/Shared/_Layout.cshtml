@@ -58,7 +58,7 @@
                         <a class="nav-link" href="/Home/Contato"><i class="far fa-address-book"></i> Contato </a>
                     </li>
 
-                    <li class="nav-item dropdown">
+                    @*<li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
                             <i class="far fa-address-book"></i> Dados do cliente
@@ -69,14 +69,25 @@
 
                         </div>
 
-                    </li>
+                    </li>*@
 
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
 
                     <input class="form-control mr-sm-2" type="search" placeholder="Digite uma palavra" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="color:white;">Buscar</button>
                     <a class="nav-link" href="/Login/Login"><i class="fas fa-user-alt"></i> Login </a>
+                    <li class="nav-item dropdown" style="margin-top: 1px; list-style:none">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <i class="far fa-address-book"></i> Dados do cliente
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Minha conta‎</a>
+                            <a class="dropdown-item" href="#">Meus pedidos‎</a>
+
+                        </div>
+                    </li>
                     <a class="nav-link" href="/home/Carrinho"><i class="fas fa-shopping-cart"></i> Carrinho</a>
                     <a class="nav-link" href="#"> <i class="fas fa-user"></i> Bem vindo! @Session["usuarioNome"]</a>
                     <span class="glyphicon glyphicon-log-in">  @Html.ActionLink("Sair", "Logout", "Login")</span>
