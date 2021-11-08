@@ -54,7 +54,6 @@ namespace AppLivraria_TsT.Models.DAO
                 con.Close();
             }
         }
-
         //selecionar lista de Pedido
         public List<Pedido_DTO> buscaPedidoPorId() 
         {
