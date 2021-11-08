@@ -186,6 +186,10 @@ namespace AppLivraria_TsT.Controllers
         {
             return View(categoriadll.listaCategoria());
         }
+        public ActionResult Checkout()
+        {
+            return View();
+        }
 
         public ActionResult Login()
         {
@@ -196,11 +200,8 @@ namespace AppLivraria_TsT.Controllers
         {
             return View();
         }
-        public ActionResult CadastroCliente()
-        {
-            return View();
-        }
-        public ActionResult CarrinhoCompras()
+        
+        public ActionResult PainelControle()
         {
             return View();
         }

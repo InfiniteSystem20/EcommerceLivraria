@@ -13,6 +13,7 @@ namespace AppLivraria_TsT.Models.DAO
 
         public void TestarUsuario(Cliente_DTO user)
         {
+            
             MySqlCommand cmd = new MySqlCommand("select * from tbCliente where Email = @Email and Senha = @Senha ", con.MyConectarBD());
 
             
