@@ -225,7 +225,6 @@ C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\Antlr3.Runtime.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\Microsoft.Web.Infrastructure.dll
-C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\MySql.Data.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\Newtonsoft.Json.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\System.Web.Helpers.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\System.Web.Mvc.dll

@@ -17,6 +17,7 @@ namespace AppLivraria_TsT.Controllers
         {
             List<SelectListItem> categorias = new List<SelectListItem>();
             //using (MySqlConnection con = new MySqlConnection("server=localhost;port=3307;user id=root;password=361190;database=Livraria01"))
+            //server=localhost;port=3307;user id=root;password=361190;database=Livraria01server=localhost;port=3307;user id=root;password=361190;database=Livraria01
             using (MySqlConnection con = new MySqlConnection("server=localhost;user id=root;password=root;database=Livraria01"))
             {
                 con.Open();
@@ -138,7 +139,5 @@ namespace AppLivraria_TsT.Controllers
             dll.alteraProduto(produto);
             return RedirectToAction(nameof(ListarProdutos));
         }
-
-
     }
 }

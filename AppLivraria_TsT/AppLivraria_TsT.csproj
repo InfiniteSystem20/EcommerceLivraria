@@ -131,7 +131,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Contato.cs" />
     <Compile Include="Models\DAO\AcoesLogin.cs" />
     <Compile Include="Models\DAO\Categoria_DAO.cs" />
@@ -156,7 +155,6 @@
     <Compile Include="Models\DTO\Produto_DTO.cs" />
     <Compile Include="Models\ErrorViewModel.cs" />
     <Compile Include="Models\NewsletterEmail.cs" />
-    <Compile Include="Models\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
