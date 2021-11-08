@@ -17,7 +17,7 @@ namespace AppLivraria_TsT.Controllers
             List<SelectListItem> categorias = new List<SelectListItem>();
 
             //using (MySqlConnection con = new MySqlConnection("server=localhost;port=3307;user id=root;password=361190;database=Livraria01"))
-            using (MySqlConnection con = new MySqlConnection("server=localhost;port=3307;user id=root;password=361190;database=Livraria01"))
+            using (MySqlConnection con = new MySqlConnection("server=localhost;user id=root;password=root;database=Livraria01"))
             {
                 con.Open();
                 MySqlCommand cmd = new MySqlCommand("CALL proc_SelecionarCategoria();", con);
@@ -186,6 +186,10 @@ namespace AppLivraria_TsT.Controllers
         {
             return View(categoriadll.listaCategoria());
         }
+        public ActionResult Checkout()
+        {
+            return View();
+        }
 
         public ActionResult Login()
         {
@@ -196,11 +200,8 @@ namespace AppLivraria_TsT.Controllers
         {
             return View();
         }
-        public ActionResult CadastroCliente()
-        {
-            return View();
-        }
-        public ActionResult CarrinhoCompras()
+        
+        public ActionResult PainelControle()
         {
             return View();
         }

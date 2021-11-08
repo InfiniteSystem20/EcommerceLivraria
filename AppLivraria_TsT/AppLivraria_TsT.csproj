@@ -818,6 +818,8 @@
     <Content Include="Views\Home\Finalizado.cshtml" />
     <Content Include="Views\Home\Pagamento.cshtml" />
     <Content Include="Views\Produto\EditarProduto.cshtml" />
+    <Content Include="Views\Home\Checkout.cshtml" />
+    <Content Include="Views\Home\PainelControle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
