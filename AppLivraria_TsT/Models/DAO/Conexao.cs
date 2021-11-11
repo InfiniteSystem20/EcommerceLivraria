@@ -8,7 +8,7 @@ namespace AppLivraria_TsT.Models.DAO
 {
     public class Conexao
     {
-        MySqlConnection cn = new MySqlConnection("server=localhost;port=3307;user id=root;password=361190;database=Livraria01");
+        MySqlConnection cn = new MySqlConnection("server=localhost;user id=root;password=root;database=Livraria01");
         public static string msg;
 
         public MySqlConnection MyConectarBD() //Método: MyConectarBD()

@@ -203,7 +203,15 @@ namespace AppLivraria_TsT.Controllers
         
         public ActionResult PainelControle()
         {
-            return View();
+            if ((Session["usuarioLogado"] == null) || (Session["senhaLogado"] == null))
+
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public ActionResult About()
