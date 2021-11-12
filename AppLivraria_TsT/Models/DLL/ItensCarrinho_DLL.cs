@@ -24,5 +24,18 @@ namespace AppLivraria_TsT.Models.DLL
                 throw ex;
             }
         }
+        //SELECIONAR LISTA DE ITENS CARRINHO DETALHES
+        public List<ItensCarrinho_DTO> listaItensCarrinhoDetalhes()
+        {
+            try
+            {
+                dal = new ItensCarrinho_DAO();
+                return dal.selectListItensCarrinhoDetalhes();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

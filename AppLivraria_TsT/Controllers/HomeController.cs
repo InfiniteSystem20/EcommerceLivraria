@@ -178,17 +178,33 @@ namespace AppLivraria_TsT.Controllers
                 return RedirectToAction(nameof(Finalizado));
             }
         }
-        public ActionResult Finalizado()
+        public ActionResult Finalizado(Pedido_DTO x)
         {
-            return View();
+            pedido_DAO.buscaIdVenda(x);
+            pedidoDto.IdPedido = x.IdPedido;
+            ViewBag.pedido = x.IdPedido;
+            return View(itensCarrinhodll.listaItensCarrinhoDetalhes().Find(itensCarrinhoDto => itensCarrinhoDto.IdPedido == x.IdPedido));
+           
         }
+        public ActionResult FinalizadoDetalhes(string id)
+        {
+            if ((Session["usuarioLogado"] == null) || (Session["senhaLogado"] == null))
+
+            {
+                return RedirectToAction("Login", "Login");
+            }
+
+            return View(itensCarrinhodll.listaItensCarrinhoDetalhes().Find(itensCarrinhoDto => itensCarrinhoDto.IdPedido == id));
+
+        }
+
         public ActionResult ListarCategoria()
         {
             return View(categoriadll.listaCategoria());
         }
-        public ActionResult Checkout()
+        public ActionResult Checkout(string id)
         {
-            return View();
+            return View(itensCarrinhodll.listaItensCarrinhoDetalhes().Find(itensCarrinhoDto => itensCarrinhoDto.IdPedido == id));
         }
 
         public ActionResult Login()

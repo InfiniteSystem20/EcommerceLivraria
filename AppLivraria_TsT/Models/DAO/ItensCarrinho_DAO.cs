@@ -52,5 +52,46 @@ namespace AppLivraria_TsT.Models.DAO
                 con.Close();
             }
         }
+        // Selecionar Lista Itens Carrinho Detalhes
+        public List<ItensCarrinho_DTO> selectListItensCarrinhoDetalhes()
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(_conexaoMySQL))
+                {
+                    using (MySqlCommand command = new MySqlCommand("CALL proc_SelecionarItensPedidoDetalhes( )", conn))
+                    {
+                        conn.Open();
+                        List<ItensCarrinho_DTO> listaItensCarrinho_DTO = new List<ItensCarrinho_DTO>();
+                        using (MySqlDataReader dr = command.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                ItensCarrinho_DTO itensCarrinho_DTO = new ItensCarrinho_DTO();
+
+                                itensCarrinho_DTO.IdPedido = dr["IdPedido"].ToString();
+                                itensCarrinho_DTO.Produto = dr["Nome"].ToString();
+                                itensCarrinho_DTO.Qtd = Convert.ToInt32(dr["Qtd"]);
+                                itensCarrinho_DTO.Imagem = dr["Imagem"].ToString();
+                                itensCarrinho_DTO.ValorTotal = Convert.ToDecimal(dr["ValorTotal"]);
+
+                                listaItensCarrinho_DTO.Add(itensCarrinho_DTO);
+                            }
+                        }
+                        return listaItensCarrinho_DTO;
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+
+                throw new Exception("Erro no banco ao Listar funcionario" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na aplicação ao Listar funcionario" + ex.Message);
+            }
+        }
     }
 }
