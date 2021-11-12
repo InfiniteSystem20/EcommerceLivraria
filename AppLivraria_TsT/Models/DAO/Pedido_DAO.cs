@@ -90,7 +90,7 @@ namespace AppLivraria_TsT.Models.DAO
                 throw new Exception("Erro na aplicação ao Listar Pedido" + ex.Message);
             }
         }
-        //Listar Produto por ID
+        //Listar Produto por ID em uso
         public void buscaIdVenda(Pedido_DTO pedido)
         {
 

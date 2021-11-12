@@ -23,5 +23,11 @@ namespace AppLivraria_TsT.Models.DTO
         public decimal Qtd { get; set; }
 
         public decimal valorParcial { get; set; }
+
+        [Display(Name = "Valor Total", Description = "Valor Total")]
+
+        public decimal ValorTotal { get; set; }
+
+        public List<ItensCarrinho_DTO> ItensPedido = new List<ItensCarrinho_DTO>();
     }
 }

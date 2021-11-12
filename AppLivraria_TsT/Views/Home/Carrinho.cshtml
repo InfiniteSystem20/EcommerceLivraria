@@ -72,7 +72,7 @@
             </div> <!-- card.// -->
         </div> <!-- code-wrap.// -->
         <br /><br />
-        <a href="/Home/SalvarCarrinho" class="btn btn-sm btn-success float-right"style="margin-right: 10px;">Finalizar pedido</a>
+        <a href="/Home/SalvarCarrinho/@Model.IdPedido" class="btn btn-sm btn-success float-right"style="margin-right: 10px;">Finalizar pedido</a>
         <a href="/Home/Index" class="btn btn-sm btn-primary float-right"  style="margin-right: 15px;">Continuar Comprando</a>
 
 
@@ -96,10 +96,10 @@
                             </dd>
                             <dt>
                                 <select class="form-control">
-                                <option>Selciona forma de entrega </option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
+                                    <option>Selciona forma de entrega </option>
+                                    <option>Correios</option>
+                                    <option>Retirar na loja</option>
+                                    <option>Transportadora</option>
                                 </select>
                             </dt>
                         </dl>
@@ -114,47 +114,133 @@
                     </div> <!-- box.// -->
                 </div> <!-- code-wrap.// -->
             </aside>
+           
             <aside class="col-md-4 float-lg-right">
                 <h4 class="subtitle-doc">
-                    Regras do cupom. 
+                    Formas de pagamento
                     <a href="/Home/CupomDesconto" class="btn btn-sm btn-warning float-right" style="margin-right: 10px;">Veja Mais</a>
                 </h4>
                 <div id="code_desc_align">
                     <div class="box">
-                        <dl>
-                            <dt>Aproveite:</dt>
-                            <dd>
-                                Todos os dias tem descontos, fique sempre atento.
-                            </dd>
-                            <dt>
-                            <dt>
-                                <select class="form-control">
-                                    <option>Selciona forma de pagamento </option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
-                            </dt>
-                            </dt>
-                        </dl>                        
-                        <dl class="dlist-align">
-                            <dt>@*Parameter:*@ </dt>
-                            <dd>@*Value name*@</dd>
-                        </dl>
-                        <dl class="dlist-align">
-                            <dt>@*Color:*@</dt>
-                            <dd>@*Orange and Black*@</dd>
-                        </dl>
-                        <dl class="dlist-align">
-                            <dt>@*Material*@</dt>
-                            <dd>@*Leather*@</dd>
-                        </dl>
-                    </div> 
-                </div>  
-            </aside>
+                        
+                        <div id="code_payment2">
+
+                            <article class="card">
+                                <div class="card-body p-5">
+
+                                    <ul class="nav bg radius nav-pills nav-fill mb-3" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-toggle="pill" href="#nav-tab-card">
+                                                <i class="fa fa-credit-card"></i> Cartão
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="pill" href="#nav-tab-paypal">
+                                                <i class="fab fa-paypal"></i> Paypal
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="pill" href="#nav-tab-bank">
+                                                <i class="fa fa-university"></i> Transferência/PIX
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade show active" id="nav-tab-card">                                            
+                                            <form role="form">
+                                                <div class="form-group">
+                                                    <label for="username">Nome (Igual do cartão)</label>
+                                                    <input type="text" class="form-control" name="username" placeholder=""
+                                                           required="">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="cardNumber">Numero Cartão</label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" name="cardNumber"
+                                                               placeholder="">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text text-muted">
+                                                                <i class="fab fa-cc-visa"></i> &nbsp; <i class="fab fa-cc-amex"></i>
+                                                                &nbsp;
+                                                                <i class="fab fa-cc-mastercard"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-sm-8">
+                                                        <div class="form-group">
+                                                            <label><span class="hidden-xs">Validade</span> </label>
+                                                            <div class="input-group">
+                                                                <input type="number" class="form-control" placeholder="Mes"
+                                                                       name="">
+                                                                <input type="number" class="form-control" placeholder="Ano"
+                                                                       name="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label data-toggle="tooltip" title="" data-original-title="3 dígitos que fica atras do cartão">
+                                                                CVV
+                                                                <i class="fa fa-question-circle"></i>
+                                                            </label>
+                                                            <input type="number" class="form-control" required="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button class="subscribe btn btn-primary btn-block" type="button">
+                                                    Confirmar
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="tab-pane fade" id="nav-tab-paypal">
+                                            <p>Você será redirecionado</p>
+                                            <p>
+                                                <button type="button" class="btn btn-primary">
+                                                    <i class="fab fa-paypal"></i>
+                                                    Login no Paypal
+                                                </button>
+                                            </p>
+                                            <p>
+                                                <strong>Note:</strong> O pedido será liberado, logo após a confirmação do pagamento,
+                                                você receberá uma cópia de atualização status do pedido.
+                                            </p>
+                                        </div>
+                                        <div class="tab-pane fade" id="nav-tab-bank">
+                                            <p>Dados Bancários</p>
+                                            <dl class="param">
+                                                <dt>Banco: </dt>
+                                                <dd> Banco Santander</dd>
+                                            </dl>
+                                            <dl class="param">
+                                                <dt>Agencia/Conta: </dt>
+                                                <dd> 4759 / 01001199-4</dd>
+                                            </dl>
+                                            <dl class="param">
+                                                <dt>PIX: CPF</dt>
+                                                <dd> 039.388.076-10</dd>
+                                            </dl>
+                                            <p>
+                                                <strong>OBS:</strong> Por favor, enviar o comprovante de pagamento
+                                                no e-mail com numero do pedido.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+            </aside>           
+
+
             <aside class="col-md-4">
                 <h4 class="subtitle-doc">
-                    Valor Total da compra 
+                    Valor Total da compra
 
                 </h4>
                 <div id="code_desc_right">
@@ -176,7 +262,7 @@
                             <dd class="text-right h5 b"> R$ @Model.ValorTotal </dd>
                         </dl>
                     </div>
-                </div> 
+                </div>
             </aside>
 
         </div>

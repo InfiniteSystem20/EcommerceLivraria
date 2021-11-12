@@ -815,11 +815,13 @@
     <Content Include="Views\Produto\DetalhesProduto.cshtml" />
     <Content Include="Views\Home\detalhe.cshtml" />
     <Content Include="Views\Login\Login2.cshtml" />
-    <Content Include="Views\Home\Finalizado.cshtml" />
+    <Content Include="Views\Home\FinalizadoDetalhe1.cshtml" />
     <Content Include="Views\Home\Pagamento.cshtml" />
     <Content Include="Views\Produto\EditarProduto.cshtml" />
     <Content Include="Views\Home\Checkout.cshtml" />
     <Content Include="Views\Home\PainelControle.cshtml" />
+    <Content Include="Views\Home\Finalizado.cshtml" />
+    <Content Include="Views\Home\FinalizadoDetalhes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,7 +17,7 @@ namespace AppLivraria_TsT.Controllers
             List<SelectListItem> categorias = new List<SelectListItem>();
 
             //using (MySqlConnection con = new MySqlConnection("server=localhost;port=3307;user id=root;password=361190;database=Livraria01"))
-            using (MySqlConnection con = new MySqlConnection("server=localhost;user id=root;password=root;database=Livraria01"))
+            using (MySqlConnection con = new MySqlConnection("server=localhost;port=3307;user id=root;password=361190;database=Livraria01"))
             {
                 con.Open();
                 MySqlCommand cmd = new MySqlCommand("CALL proc_SelecionarCategoria();", con);
@@ -173,22 +173,38 @@ namespace AppLivraria_TsT.Controllers
                 }
 
                 carrinho.ValorTotal = 0;
+                ViewBag.pedido = x.IdPedido;
                 carrinho.ItensPedido.Clear();
-
+                
                 return RedirectToAction(nameof(Finalizado));
             }
         }
-        public ActionResult Finalizado()
+        public ActionResult Finalizado(Pedido_DTO x)
         {
-            return View();
+            pedido_DAO.buscaIdVenda(x);
+            pedidoDto.IdPedido = x.IdPedido;
+            ViewBag.pedido = x.IdPedido;
+            return View(itensCarrinhodll.listaItensCarrinhoDetalhes().Find(pedidoDto => pedidoDto.IdPedido == x.IdPedido));         
+        }
+        public ActionResult FinalizadoDetalhes(string id)
+        {
+            if ((Session["usuarioLogado"] == null) || (Session["senhaLogado"] == null))
+
+            {
+                return RedirectToAction("Login", "Login");
+            }            
+
+            return View(itensCarrinhodll.listaItensCarrinhoDetalhes().Find(itensCarrinhoDto => itensCarrinhoDto.IdPedido == id));
+
         }
         public ActionResult ListarCategoria()
         {
             return View(categoriadll.listaCategoria());
         }
-        public ActionResult Checkout()
+        public ActionResult Checkout(string id)
         {
-            return View();
+
+            return View(itensCarrinhodll.listaItensCarrinhoDetalhes().Find(pedidoDto => pedidoDto.IdPedido == id));
         }
 
         public ActionResult Login()
