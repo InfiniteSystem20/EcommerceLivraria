@@ -197,7 +197,17 @@ namespace AppLivraria_TsT.Controllers
             return View(itensCarrinhodll.listaItensCarrinhoDetalhes().Find(itensCarrinhoDto => itensCarrinhoDto.IdPedido == id));
 
         }
+        public ActionResult FinalizadoDetalhes1(string id)
+        {
+            if ((Session["usuarioLogado"] == null) || (Session["senhaLogado"] == null))
 
+            {
+                return RedirectToAction("Login", "Login");
+            }
+
+            return View(itensCarrinhodll.listaItensCarrinhoDetalhes().Find(itensCarrinhoDto => itensCarrinhoDto.IdPedido == id));
+
+        }
         public ActionResult ListarCategoria()
         {
             return View(categoriadll.listaCategoria());

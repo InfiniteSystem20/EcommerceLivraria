@@ -1,4 +1,4 @@
-﻿@model AppLivraria_TsT.Models.DTO.Pedido_DTO
+﻿@model AppLivraria_TsT.Models.DTO.ItensCarrinho_DTO
 <main role="main">
     <br />
     <br />
@@ -6,7 +6,7 @@
         <div class="row">
             <aside class="col-md-12">
                 <h3 class="subtitle-doc">
-                    Pedido #0000@ViewBag.pedido
+                    Pedido #@ViewBag.pedido
                     <a href="#" data-html="code_simple_card" class="showcode">[code]</a>
                 </h3>
 
@@ -26,9 +26,9 @@
         <div class="row">
             <div id="code_itemside_img2">
                 <div class="box items-bordered-wrap">
-
+                @foreach(var item in Model) { 
                     <figure class="itemside">
-                        <div class="aside"><img src="" class="img-sm"></div>
+                        <div class="aside"><img src="@item.Imagem" class="img-sm"></div>
                         <figcaption class="text-wrap align-self-center">
                             <h6 class="title"><a href="#">fa</a></h6>
                             <div class="price-wrap">
@@ -37,7 +37,7 @@
                             </div>
                         </figcaption>
                     </figure>
-
+                    }
                     <figure class="itemside">
                         <div class="aside"><img src="images/items/5.jpg" class="img-sm"></div>
                         <figcaption class="text-wrap align-self-center">

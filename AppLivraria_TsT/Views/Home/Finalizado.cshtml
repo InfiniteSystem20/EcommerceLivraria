@@ -14,7 +14,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Ola: @Session["usuarioNome"] </h5>
                             <p class="card-text">Seu pedido foi realizado com sucesso </p>
-                            @Html.ActionLink("Detalhes do pedido", "FinalizadoDetalhes", new { id = Model.IdPedido }, new { @styles = "float-left" })
+                            @Html.ActionLink("Detalhes do pedido", "FinalizadoDetalhes1", new { id = Model.IdPedido }, new { @styles = "float-left" })
                             @*<a href="/Home/FinalizadoDetalhes/@Model.IdPedido" class="btn btn-sm btn-success float-left" style="margin-right: 10px;">Detalhes do pedido</a>*@
                         </div>
                     </div>

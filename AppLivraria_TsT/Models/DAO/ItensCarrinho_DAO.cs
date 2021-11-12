@@ -67,15 +67,15 @@ namespace AppLivraria_TsT.Models.DAO
                         {
                             while (dr.Read())
                             {
-                                ItensCarrinho_DTO itensCarrinho_DTO = new ItensCarrinho_DTO();
+                                ItensCarrinho_DTO itensCarrinho = new ItensCarrinho_DTO();
 
-                                itensCarrinho_DTO.IdPedido = dr["IdPedido"].ToString();
-                                itensCarrinho_DTO.Produto = dr["Nome"].ToString();
-                                itensCarrinho_DTO.Qtd = Convert.ToInt32(dr["Qtd"]);
-                                itensCarrinho_DTO.Imagem = dr["Imagem"].ToString();
-                                itensCarrinho_DTO.ValorTotal = Convert.ToDecimal(dr["ValorTotal"]);
+                                itensCarrinho.IdPedido = dr["IdPedido"].ToString();
+                                itensCarrinho.Produto = dr["Nome"].ToString();
+                                itensCarrinho.Qtd = Convert.ToInt32(dr["Qtd"]);
+                                itensCarrinho.Imagem = dr["Imagem"].ToString();
+                                itensCarrinho.ValorTotal = Convert.ToDecimal(dr["ValorTotal"]);
 
-                                listaItensCarrinho_DTO.Add(itensCarrinho_DTO);
+                                listaItensCarrinho_DTO.Add(itensCarrinho);
                             }
                         }
                         return listaItensCarrinho_DTO;
