@@ -169,7 +169,7 @@ namespace AppLivraria_TsT.Models.DAO
             }
         }
         // Selecionar Lista Pedido por cliente Detalhes
-        public List<Pedido_DTO> selectListPedidoPorIdCliDetalhes(string id)
+        public List<ItensCarrinho_DTO> selectListPedidoPorIdCliDetalhes(string id)
         {
 
             try
@@ -180,12 +180,12 @@ namespace AppLivraria_TsT.Models.DAO
                     {
                         command.Parameters.AddWithValue("@IdPedido", id);
                         conn.Open();
-                        List<Pedido_DTO> listaPedido = new List<Pedido_DTO>();
+                        List<ItensCarrinho_DTO> listaPedido = new List<ItensCarrinho_DTO>();
                         using (MySqlDataReader dr = command.ExecuteReader())
                         {
                             while (dr.Read())
                             {
-                                Pedido_DTO pedido = new Pedido_DTO();
+                                ItensCarrinho_DTO pedido = new ItensCarrinho_DTO();
                                 pedido.IdPedido = dr["IdPedido"].ToString();
                                 pedido.IdCli = dr["IdCli"].ToString();
                                 pedido.DtPedido = dr["DtPedido"].ToString();

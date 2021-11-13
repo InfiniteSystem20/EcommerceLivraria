@@ -22,6 +22,9 @@ namespace AppLivraria_TsT.Models.DTO
 
         public decimal Qtd { get; set; }
 
+        public string IdCli { get; set; }
+        public string DtPedido { get; set; }
+        public string HoraPedido { get; set; }
         public decimal valorParcial { get; set; }
 
         [Display(Name = "Valor Total", Description = "Valor Total")]

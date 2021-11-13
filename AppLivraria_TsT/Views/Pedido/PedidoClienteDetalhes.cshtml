@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AppLivraria_TsT.Models.DTO.Pedido_DTO>
+﻿@model IEnumerable<AppLivraria_TsT.Models.DTO.ItensCarrinho_DTO>
 
 @{
     ViewBag.Title = " Itens do Pedido Cliente";
@@ -18,7 +18,6 @@
             <thead>
                 <tr>
                     <th>Imagem</th>
-                    <th>Código</th>
                     <th>Data do Pedido</th>
                     <th>Hora do pedido</th>
                     <th>Valor Unitário</th>
@@ -42,20 +41,19 @@
                                 </dl>
                                 <dl class="dlist-inline small">
                                     @*<dt>Color: </dt>
-                    <dd>Orange color</dd>*@
+                        <dd>Orange color</dd>*@
                                 </dl>
                             </figcaption>
                         </figure>
                     </td>
-                    <td>@item.IdProd</td>
                     <td>@item.DtPedido</td>
-                    
+
                     <td>@item.HoraPedido</td>
                     <td>@item.valorUnit</td>
-                    
+
                     <td>
                         <button type="button" class="btn btn-info btn-sm" style="color:white">
-                            @Html.ActionLink("Voltar", "PedidoCliente", new { id = item.IdCli })
+                            @Html.ActionLink("Voltar", "PedidoCliente", new {id = item.IdCli })
                         </button>
                     </td>
                 </tr>
