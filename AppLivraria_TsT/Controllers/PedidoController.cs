@@ -30,9 +30,20 @@ namespace AppLivraria_TsT.Controllers
                 return RedirectToAction("Login", "Login");
             }
             else
-            {
-                Session["idUser"] = id;
+            {   
                 return View(pedido_DAO.selectListPedidoPorIdCli(id));
+            }
+        }
+        public ActionResult PedidoClienteDetalhes(string id)
+        {
+            if ((Session["usuarioLogado"] == null) || (Session["senhaLogado"] == null))
+
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                return View(pedido_DAO.selectListPedidoPorIdCliDetalhes(id));
             }
         }
     }

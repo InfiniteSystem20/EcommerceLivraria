@@ -824,6 +824,7 @@
     <Content Include="Views\Home\Finalizado.cshtml" />
     <Content Include="Views\Home\FinalizadoDetalhes.cshtml" />
     <Content Include="Views\Pedido\PedidoCliente.cshtml" />
+    <Content Include="Views\Pedido\PedidoClienteDetalhes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
