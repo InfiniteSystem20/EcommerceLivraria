@@ -28,6 +28,6 @@ namespace AppLivraria_TsT.Models.DTO
 
         public decimal ValorTotal { get; set; }
 
-        public List<ItensCarrinho_DTO> ItensPedido = new List<ItensCarrinho_DTO>();
+        //public List<ItensCarrinho_DTO> ItensPedido = new List<ItensCarrinho_DTO>();
     }
 }

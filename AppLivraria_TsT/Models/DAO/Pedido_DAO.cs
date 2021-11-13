@@ -125,6 +125,48 @@ namespace AppLivraria_TsT.Models.DAO
                 throw new Exception("Erro na aplicação em cadastro pedido" + ex.Message);
             }
         
-        }        
+        }
+        // Selecionar Lista Pedido por cliente
+        public List<Pedido_DTO> selectListPedidoPorIdCli(string id)
+        {
+            
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(_conexaoMySQL))
+                {
+                    using (MySqlCommand command = new MySqlCommand("CALL proc_SelecionarPedidoIdCliente( @IdCli)", conn))
+                    {
+                        command.Parameters.AddWithValue("@IdCli", id);
+                        conn.Open();
+                        List<Pedido_DTO> listaPedido = new List<Pedido_DTO>();
+                        using (MySqlDataReader dr = command.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                Pedido_DTO pedido = new Pedido_DTO();
+
+                                pedido.IdPedido = dr["IdPedido"].ToString();
+                                pedido.IdCli = dr["IdCli"].ToString();
+                                pedido.DtPedido = dr["DtPedido"].ToString();
+                                pedido.HoraPedido = dr["HoraPedido"].ToString();
+                                pedido.ValorTotal = Convert.ToDecimal(dr["ValorTotal"].ToString().Replace(".", ","));
+                                listaPedido.Add(pedido);
+                            }
+                        }
+                        return listaPedido;
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+
+                throw new Exception("Erro no banco ao Listar Produto" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na aplicação ao Listar Produto" + ex.Message);
+            }
+        }
     }
 }

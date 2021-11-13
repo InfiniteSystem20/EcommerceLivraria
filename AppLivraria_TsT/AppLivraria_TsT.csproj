@@ -167,6 +167,7 @@
     <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PedidoController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -822,6 +823,7 @@
     <Content Include="Views\Home\PainelControle.cshtml" />
     <Content Include="Views\Home\Finalizado.cshtml" />
     <Content Include="Views\Home\FinalizadoDetalhes.cshtml" />
+    <Content Include="Views\Pedido\PedidoCliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
