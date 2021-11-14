@@ -11,21 +11,21 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h2 class="h2">Meus Pedidos</h2>
         <div class="btn-toolbar mb-2 mb-md-0">
-            <div class="btn-group mr-2">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-            </div>
-            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                <span data-feather="calendar"></span>
-                This week
-            </button>
+            @*<div class="btn-group mr-2">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                </div>
+                <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                    <span data-feather="calendar"></span>
+                    This week
+                </button>*@
         </div>
     </div>
 
     @*<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>*@
 
     <div class="table-responsive">
-        <table class="table table-striped table-sm">
+        <table id="ListaPedido" class="table table-striped table-sm">
             <thead>
                 <tr>
                     <th>Código</th>
@@ -38,31 +38,55 @@
 
             <tbody>
                 @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>@item.IdPedido</td>
-                            <td>@item.DtPedido</td>
-                            <td>@item.HoraPedido</td>
-                            <td>@item.ValorTotal</td>
-                            <td>
-                                <button type="button" class="btn btn-warning btn-sm" style="color:white">
-                                    @Html.ActionLink("Detalhes", "PedidoClienteDetalhes", new { id = item.IdPedido }) 
-                                </button>
-                                |
-                                <button type="button" class="btn btn-info btn-sm" style="color:white">
-                                    @Html.ActionLink("Voltar", "PainelControle", "Home")
-                                </button>
-                            </td>
-                        </tr>
-                }               
+                {
+                    <tr>
+                        <td>@item.IdPedido</td>
+                        <td>@item.DtPedido</td>
+                        <td>@item.HoraPedido</td>
+                        <td>@item.ValorTotal</td>
+                        <td>
+                            <button type="button" class="btn btn-warning btn-sm" style="color:white">
+                                @Html.ActionLink("Detalhes", "PedidoClienteDetalhes", new { id = item.IdPedido })
+                            </button>
+                            |
+                            <button type="button" class="btn btn-info btn-sm" style="color:white">
+                                @Html.ActionLink("Voltar", "PainelControle", "Home")
+                            </button>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
 </main>
 
-    <script src="resources/lib/jquery3.3.1/jquery-3.3.1.min.js"></script>
-    <script src="resources/lib/bootstrap-4.2.1-dist/js/bootstrap.min.js"></script>
-    <script src="resources/lib/feather/feather.js"></script>
-    <script src="resources/lib/charts/charts.js"></script>
-    <script src="resources/lib/dashboard/dashboard.js"></script>
-    
+<script src="resources/lib/jquery3.3.1/jquery-3.3.1.min.js"></script>
+<script src="resources/lib/bootstrap-4.2.1-dist/js/bootstrap.min.js"></script>
+<script src="resources/lib/feather/feather.js"></script>
+<script src="resources/lib/charts/charts.js"></script>
+<script src="resources/lib/dashboard/dashboard.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.bootstrap4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#ListaPedido').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+            },
+
+        });
+
+    });
+</script>
