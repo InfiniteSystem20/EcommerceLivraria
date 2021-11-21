@@ -29,5 +29,6 @@ namespace AppLivraria_TsT.Models.DTO
         public decimal Qtd { get; set; }
 
         public decimal valorParcial { get; set; }
+
     }
 }

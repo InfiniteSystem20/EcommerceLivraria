@@ -66,7 +66,7 @@ namespace AppLivraria_TsT.Models.DAO
                             while (dr.Read())
                             {
                                 Categoria_DTO categoria = new Categoria_DTO();
-                                categoria.IdCat = (int)dr["IdCat"];
+                                categoria.IdCat = Convert.ToInt32( dr["IdCat"]);
                                 categoria.Nome = (String)dr["Nome"];
 
 

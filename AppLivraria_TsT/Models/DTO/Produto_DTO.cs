@@ -45,5 +45,9 @@ namespace AppLivraria_TsT.Models.DTO
       //  [Required(ErrorMessage = "O nome completo é obrigatório.")]
         public string Imagem { get; set; }
 
+        //public Categoria_DTO ObjCategoria { get; set; }
+
+        //public List<Categoria_DTO> ListaCategorias = new List<Categoria_DTO>();
+
     }
 }

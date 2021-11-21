@@ -140,7 +140,7 @@ namespace AppLivraria_TsT.Models.DAO
                 throw new Exception("Erro na aplicação ao Listar Produto" + ex.Message);
             }
         }
-        // Selecionar Lista cliente Detalhes
+        // Selecionar Lista produto Detalhes
         public List<Produto_DTO> selectListProdutoDetalhes()
         {
             try
@@ -186,48 +186,57 @@ namespace AppLivraria_TsT.Models.DAO
                 throw new Exception("Erro na aplicação ao Listar produto" + ex.Message);
             }
         }
-        // SELECIONAR FUNCIONARIO POR ID
-        public Produto_DTO selectProdutoByID(int id)
+
+        // Selecionar Lista produto por categoria
+        public List<Produto_DTO> selectProdutoPorIdCategoria(int id)
         {
             try
             {
-                //String sql = "call proc_SelectProdutoById(IdProd)";
-                String sql = "SELECT * FROM Tbproduto where IdProd = @IdProd)";
-                con = new MySqlConnection(_conexaoMySQL);
-                MySqlCommand cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@IdProd", id);
-                con.Open();
-                MySqlDataReader dr;
-                Produto_DTO produto = new Produto_DTO();
-                dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                while (dr.Read())
+                using (MySqlConnection conn = new MySqlConnection(_conexaoMySQL))
                 {
-                    produto.IdProd = dr["IdProd"].ToString();
-                    produto.ISBN = dr["ISBN"].ToString();
-                    produto.NomeProd = dr["Nome"].ToString();
-                    produto.Descricao = dr["Descricao"].ToString();
-                    produto.PrecoUni = Convert.ToDecimal(dr["PrecoUni"].ToString().Replace(".", ","));
-                    produto.Estoque = Convert.ToInt32(dr["Estoque"]);
-                    produto.Autor = dr["Autor"].ToString();
-                    produto.Categiria = dr["Categoria"].ToString();
-                    produto.Imagem = dr["Imagem"].ToString();
+                    using (MySqlCommand command = new MySqlCommand("CALL proc_SelecionarCategoriaId(@IdCat);", conn))
+                    {
+                        command.Parameters.AddWithValue("@IdCat", id);
+                        conn.Open();
+                        List<Produto_DTO> listaProduto = new List<Produto_DTO>();
+                        using (MySqlDataReader dr = command.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                Produto_DTO produto = new Produto_DTO();
 
+                                produto.IdCat = Convert.ToString(dr["IdCat"]);
+                                produto.IdProd = Convert.ToString(dr["IdProd"]);
+                                produto.ISBN = dr["ISBN"].ToString();
+                                produto.NomeProd = dr["Nome"].ToString();
+                                produto.Descricao = dr["Descricao"].ToString();
+                                produto.PrecoUni = Convert.ToDecimal(dr["PrecoUni"].ToString().Replace(".", ","));
+                                produto.Estoque = Convert.ToInt32(dr["Estoque"]);
+                                produto.Autor = dr["Autor"].ToString();
+                                produto.Categiria = dr["nome"].ToString();
+                                produto.Imagem = dr["Imagem"].ToString();
+
+
+                                listaProduto.Add(produto);
+                            }
+                        }
+                        return listaProduto;
+                    }
                 }
-                return produto;
-
             }
             catch (MySqlException ex)
             {
 
-                throw new Exception("Erro no banco ao localizar funcionario pelo codigo" + ex.Message);
+                throw new Exception("Erro no banco ao Listar produto" + ex.Message);
             }
             catch (Exception ex)
             {
 
-                throw new Exception("Erro na aplicação ao localizar funcionario pelo codigo" + ex.Message);
+                throw new Exception("Erro na aplicação ao Listar produto" + ex.Message);
             }
         }
 
+      
         public List<Produto_DTO> GetConsProd(int id)
         {
             List<Produto_DTO> Produtoslist = new List<Produto_DTO>();

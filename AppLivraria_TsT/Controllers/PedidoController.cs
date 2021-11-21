@@ -46,5 +46,18 @@ namespace AppLivraria_TsT.Controllers
                 return View(pedido_DAO.selectListPedidoPorIdCliDetalhes(id));
             }
         }
+
+        public ActionResult ListarTodospedidoDetalhes()
+        {
+            if ((Session["usuarioLogado"] == null) || (Session["senhaLogado"] == null))
+
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                return View(pedido_DAO.selectListPedidoDetalhes());
+            }
+        }
     }
 }

@@ -825,6 +825,11 @@
     <Content Include="Views\Home\FinalizadoDetalhes.cshtml" />
     <Content Include="Views\Pedido\PedidoCliente.cshtml" />
     <Content Include="Views\Pedido\PedidoClienteDetalhes.cshtml" />
+    <Content Include="Views\Home\ListarCategoriaHome.cshtml" />
+    <Content Include="Views\Pedido\ListarTodospedidoDetalhes.cshtml" />
+    <Content Include="Views\Home\Index2.cshtml" />
+    <Content Include="Views\Home\Index_old.cshtml" />
+    <Content Include="Views\Home\ProdutoCategoriaIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -37,21 +37,8 @@ namespace AppLivraria_TsT.Models.DLL
             {
                 throw ex;
             }
-        }
+        }        
 
-        //SELECIONAR Pedido por Cliente
-        //public List<Pedido_DTO> listaPedidoPorIDCliente()
-        //{
-        //    try
-        //    {
-        //        dal = new Pedido_DAO();
-        //        return dal.selectListPedidoPorIdCli(string id);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
 
     }
 }

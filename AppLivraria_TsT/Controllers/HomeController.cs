@@ -54,12 +54,31 @@ namespace AppLivraria_TsT.Controllers
 
         Categoria_DLL categoriadll = new Categoria_DLL();
         Categoria_DTO categoriaDTO = new Categoria_DTO();
+        Categoria_DAO categoria_DAO = new Categoria_DAO();
 
         //Carrega os produtos  na Index
+        public ActionResult Index2()
+        {
+            //carregarCategoria();
+
+            //produtoDto.IdCat = Request["cat"];
+            //categoriadll.listaCategoria();  
+            return View(categoria_DAO.selectListCategoria());
+            //return View(dll.listaProduto());
+        }
+        public ActionResult ProdutoCategoriaIndex(int id)
+        {
+            //carregarCategoria();
+            return View(produto_DAO.selectProdutoPorIdCategoria(id));
+            //produtoDto.IdCat = Request["cat"];
+            //categoriadll.listaCategoria();  
+            //return View(categoria_DAO.selectListCategoria());
+            //return View(dll.listaProduto());
+            
+        }
         public ActionResult Index()
         {
             carregarCategoria();
-            produtoDto.IdCat = Request["cat"];
             return View(dll.listaProduto());
         }
         // Detalhes do Produto
@@ -197,7 +216,7 @@ namespace AppLivraria_TsT.Controllers
             return View(itensCarrinhodll.listaItensCarrinhoDetalhes().Find(itensCarrinhoDto => itensCarrinhoDto.IdPedido == id));
 
         }
-        public ActionResult ListarCategoria()
+        public ActionResult ListarCategoriaHome()
         {
             return View(categoriadll.listaCategoria());
         }

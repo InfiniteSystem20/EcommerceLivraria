@@ -214,5 +214,51 @@ namespace AppLivraria_TsT.Models.DAO
                 throw new Exception("Erro na aplicação ao Listar Produto" + ex.Message);
             }
         }
+        // Selecionar Lista Pedido todos clientes Detalhes
+        public List<ItensCarrinho_DTO> selectListPedidoDetalhes()
+        {
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(_conexaoMySQL))
+                {
+                    using (MySqlCommand command = new MySqlCommand("CALL proc_SelecionarItensPedidoDetalhes( )", conn))
+                    {
+                        //command.Parameters.AddWithValue("@IdPedido", id);
+                        conn.Open();
+                        List<ItensCarrinho_DTO> listaPedido = new List<ItensCarrinho_DTO>();
+                        using (MySqlDataReader dr = command.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                ItensCarrinho_DTO pedido = new ItensCarrinho_DTO();
+                                pedido.IdPedido = dr["IdPedido"].ToString();
+                                pedido.IdCli = dr["IdCli"].ToString();
+                                pedido.DtPedido = dr["DtPedido"].ToString();
+                                pedido.IdProd = dr["IdProd"].ToString();
+                                pedido.Imagem = dr["Imagem"].ToString();
+                                pedido.Produto = dr["nome"].ToString();
+                                pedido.HoraPedido = dr["HoraPedido"].ToString();
+                                pedido.Qtd = Convert.ToInt32(dr["Qtd"].ToString());
+                                pedido.valorUnit = Convert.ToDecimal(dr["PrecoUni"].ToString().Replace(".", ","));
+                                pedido.ValorTotal = Convert.ToDecimal(dr["ValorTotal"].ToString().Replace(".", ","));
+                                listaPedido.Add(pedido);
+                            }
+                        }
+                        return listaPedido;
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+
+                throw new Exception("Erro no banco ao Listar Produto" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na aplicação ao Listar Produto" + ex.Message);
+            }
+        }
     }
 }

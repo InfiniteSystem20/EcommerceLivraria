@@ -1,9 +1,11 @@
 ﻿@model IEnumerable<AppLivraria_TsT.Models.DTO.Produto_DTO>
 
-@{ ViewBag.Title = "Index"; }
+@{
+    ViewBag.Title = "Index";
+}
 
 <main role="main">
-    
+
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -94,15 +96,13 @@
         <div class="bottom-wrap">
             @using (Html.BeginForm("AdicionarCarrinho", "Home", FormMethod.Post))
             {
-                <input type="hidden" name="id" value=@produto.IdProd>
-                <input type="hidden" name="pre" value=@produto.PrecoUni>
-                <input type="hidden" name="imagem" value=@produto.Imagem>
-                <input type="hidden" name="quantidade" value="1">
-                <button type="submit" class="btn btn-sm btn-primary float-right">Comprar</button>
-                @*<a href="" class="btn btn-sm btn-primary float-right">Comprar</a>*@
-            }
+<input type="hidden" name="id" value=@produto.IdProd>
+                    <input type="hidden" name="pre" value=@produto.PrecoUni>
+                                        <input type="hidden" name="imagem" value=@produto.Imagem>
+                                                            <input type="hidden" name="quantidade" value="1">
+                                                                                <button type="submit" class="btn btn-sm btn-primary float-right">Comprar</button> @*<a href="" class="btn btn-sm btn-primary float-right">Comprar</a>*@}
 
-            
+
 
 
             <a href="/Home/Detalhe/@produto.IdProd" class="btn btn-sm btn-warning float-lg-right" style="margin-right: 20px;">Detalhes</a>
@@ -117,4 +117,3 @@
     </div>
 
 </main>
-

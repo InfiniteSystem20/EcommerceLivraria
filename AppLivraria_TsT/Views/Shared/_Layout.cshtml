@@ -1,4 +1,4 @@
-﻿@*@model IEnumerable<AppLivraria_TsT.Models.DTO.Produto_DTO>*@
+﻿@*@model IEnumerable<AppLivraria_TsT.Models.DTO.Categoria_DTO>*@
 <!DOCTYPE html>
 
 <html lang="pt-br">
@@ -40,22 +40,30 @@
                            aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-list-ul"></i> Categorias
                         </a>
+                        @*@using (Html.BeginForm("ListarCategoria", "Home", FormMethod.Post))
+                        {*@
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="color:white">
+                        @*<a class="dropdown-item" href=""> @Html.DropDownList("cat", "Escolha o Categoria")‎</a>*@
 
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @*<a class="dropdown-item" href="#">@Html.DropDownList("cat", "Escolha o Categoria")</a>*@
-                            @*@foreach (var categoria in Model) {
-                <a class="dropdown-item" href="#">Escolha o Categoria @ViewBag.cat"</a>
-                }*@
-                            <a class="dropdown-item" href="#">Banco de Dados‎</a>
-                            <a class="dropdown-item" href="#">Hardware‎</a>
-                            <a class="dropdown-item" href="#">História da informatica</a>
-                            <a class="dropdown-item" href="#">Linguagens de Marcação</a>
-                            <a class="dropdown-item" href="#">Linguagens de Programação‎</a>
-                            <a class="dropdown-item" href="#">Redes de Computadores</a>
-                            <a class="dropdown-item" href="#">Sistemas operacionais</a>
-                            <a class="dropdown-item" href="#">Produtos</a>
-                        </div>
-                    <li class="nav-item">
+                        @*@foreach (var categoria in Model)
+        {
+
+            <a class="dropdown-item" href="#">@categoria.Nome</a>
+        }*@
+
+                        <a class="dropdown-item" href="/Home/ListarCategoriaHome">Todas categorias‎</a>
+                        <a class="dropdown-item" href="#">Banco de Dados‎</a>
+                        <a class="dropdown-item" href="#">Hardware‎</a>
+                        <a class="dropdown-item" href="#">História da informatica</a>
+                        <a class="dropdown-item" href="#">Linguagens de Marcação</a>
+                        <a class="dropdown-item" href="#">Linguagens de Programação‎</a>
+                        <a class="dropdown-item" href="#">Redes de Computadores</a>
+                        <a class="dropdown-item" href="#">Sistemas operacionais</a>
+                        <a class="dropdown-item" href="#">Produtos</a>
+                    </div>
+                        @*}*@
+
+<li class="nav-item">
                         <a class="nav-link" href="/Home/Contato"><i class="far fa-address-book"></i> Contato </a>
                     </li>
 
