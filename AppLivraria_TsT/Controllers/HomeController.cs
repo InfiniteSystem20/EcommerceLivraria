@@ -11,33 +11,7 @@ using System.Web.Mvc;
 namespace AppLivraria_TsT.Controllers
 {
     public class HomeController : Controller
-    {
-        public void carregarCategoria()
-        {
-            List<SelectListItem> categorias = new List<SelectListItem>();
-
-            //using (MySqlConnection con = new MySqlConnection("server=localhost;port=3307;user id=root;password=361190;database=Livraria01"))
-            using (MySqlConnection con = new MySqlConnection("server=localhost;port=3307;user id=root;password=361190;database=Livraria01"))
-            {
-                con.Open();
-                MySqlCommand cmd = new MySqlCommand("CALL proc_SelecionarCategoria();", con);
-                MySqlDataReader rdr = cmd.ExecuteReader();
-
-                while (rdr.Read())
-                {
-                    categorias.Add(new SelectListItem
-                    {
-                        Text = rdr[1].ToString(),
-                        Value = rdr[0].ToString()
-                    });
-                }
-                con.Close();
-
-            }
-
-            ViewBag.cat = new SelectList(categorias, "Value", "Text");
-        }
-
+    {       
         //Classe de produtos
         Produto_DLL dll = new Produto_DLL();
         Produto_DTO produtoDto = new Produto_DTO();
@@ -56,31 +30,31 @@ namespace AppLivraria_TsT.Controllers
         Categoria_DTO categoriaDTO = new Categoria_DTO();
         Categoria_DAO categoria_DAO = new Categoria_DAO();
 
+       
+
         //Carrega os produtos  na Index
-        public ActionResult Index2()
+        public ActionResult Index()
+        {
+            //carregarCategoria();
+            return View(dll.listaProdutoHome());
+        }
+        //Carrega os produtos  na categoria Index
+        public ActionResult CategoriaIndex()
         {
             //carregarCategoria();
 
             //produtoDto.IdCat = Request["cat"];
             //categoriadll.listaCategoria();  
             return View(categoria_DAO.selectListCategoria());
+
             //return View(dll.listaProduto());
         }
         public ActionResult ProdutoCategoriaIndex(int id)
-        {
-            //carregarCategoria();
-            return View(produto_DAO.selectProdutoPorIdCategoria(id));
-            //produtoDto.IdCat = Request["cat"];
-            //categoriadll.listaCategoria();  
-            //return View(categoria_DAO.selectListCategoria());
-            //return View(dll.listaProduto());
+        {           
+            return View(produto_DAO.selectProdutoPorIdCategoria(id));     
             
         }
-        public ActionResult Index()
-        {
-            carregarCategoria();
-            return View(dll.listaProduto());
-        }
+        
         // Detalhes do Produto
         public ActionResult detalhe(string id)
         {
@@ -120,7 +94,6 @@ namespace AppLivraria_TsT.Controllers
                     carrinho.ItensPedido.FirstOrDefault(p => p.Produto == produto[0].NomeProd).valorParcial = carrinho.ItensPedido.FirstOrDefault(p => p.Produto == produto[0].NomeProd).Qtd * itemPedido.valorUnit;
 
                 }
-
                 else
                 {
                     itemPedido.valorParcial = itemPedido.Qtd * itemPedido.valorUnit;
@@ -226,6 +199,7 @@ namespace AppLivraria_TsT.Controllers
             return View(itensCarrinhodll.listaItensCarrinhoDetalhes().Find(pedidoDto => pedidoDto.IdPedido == id));
         }
 
+        
         public ActionResult Login()
         {
             return View();

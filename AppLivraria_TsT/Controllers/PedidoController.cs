@@ -14,8 +14,9 @@ namespace AppLivraria_TsT.Controllers
         Pedido_DLL pedido_DLL = new Pedido_DLL();
         Pedido_DTO pedido_DTO = new Pedido_DTO();
         Pedido_DAO pedido_DAO = new Pedido_DAO();
-            
-            // GET: Pedido
+        
+
+        // GET: Pedido
         public ActionResult Index()
         {
             return View();
@@ -32,8 +33,9 @@ namespace AppLivraria_TsT.Controllers
             else
             {   
                 return View(pedido_DAO.selectListPedidoPorIdCli(id));
-            }
+            } 
         }
+        
         public ActionResult PedidoClienteDetalhes(string id)
         {
             if ((Session["usuarioLogado"] == null) || (Session["senhaLogado"] == null))

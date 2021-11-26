@@ -1,4 +1,5 @@
-﻿using AppLivraria_TsT.Models.DLL;
+﻿using AppLivraria_TsT.Models.DAO;
+using AppLivraria_TsT.Models.DLL;
 using AppLivraria_TsT.Models.DTO;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace AppLivraria_TsT.Controllers
     {
         Cliente_DLL dll = new Cliente_DLL();
         Cliente_DTO clienteDTO = new Cliente_DTO();
+
+        Cliente_DAO cliente_DAO = new Cliente_DAO();
 
         // GET: Cliente
         public ActionResult Index()
@@ -89,6 +92,18 @@ namespace AppLivraria_TsT.Controllers
         {
             dll.exclurCliente(id);
             return RedirectToAction(nameof(ListarCliente));
+        }
+        public ActionResult DadosCliente(string id)
+        {
+            if ((Session["usuarioLogado"] == null) || (Session["senhaLogado"] == null))
+
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                return View(cliente_DAO.selectListClientePorId(id));
+            }
         }
     }
 }

@@ -53,7 +53,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/Cliente/DadosCliente/@Session["idUser"]">
                                 <span data-feather="file"></span>
                                 Dados cadastrais
                             </a>
@@ -124,17 +124,44 @@
                     <h1 class="h2">Painel do Cliente</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                            @*<button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>*@
                         </div>
-                        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                        @*<button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
                             <span data-feather="calendar"></span>
                             This week
-                        </button>
+                        </button>*@
                     </div>
                 </div>
 
-                @*<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>*@
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+
+                <canvas id="myChart" style="width:300%;max-width:700px"></canvas>
+
+                <script>
+                    var xValues = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+                    var yValues = [60, 56, 49, 55, 43, 55, 45, 52, 49, 44, 32, 45];
+                    var barColors = ["#1E90FF", "#3CB371", "#664FA1", "#3CB371", "#1E90FF", "#3CB371", "#664FA1", "#3CB371", "#664FA1", "#D2691E", "#FF0000", "#664FA1"];
+
+                    new Chart("myChart", {
+                        type: "bar",
+                        data: {
+                            labels: xValues,
+                            datasets: [{
+                                backgroundColor: barColors,
+                                data: yValues
+                            }]
+                        },
+                        options: {
+                            legend: { display: false },
+                            title: {
+                                display: true,
+                                text: "Minhas Comprar do ano"
+                            }
+                        }
+                    });
+                </script>
 
                 <h2>Section title</h2>
                 <div class="table-responsive">
@@ -148,23 +175,23 @@
                                 <th>Ação</th>
                             </tr>
                         </thead>
-                        
+
                         <tbody>
                             @*@foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>@item.IdPedido</td>
-                                    <td>@item.DtPedido</td>
-                                    <td>@item.HoraPedido</td>
-                                    <td>@item.ValorTotal</td>
-                                    <td>
-                                     @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                                     @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                                     @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                                    </td>
-                                </tr>x
-                            }
-                                *@
+                    {
+                        <tr>
+                            <td>@item.IdPedido</td>
+                            <td>@item.DtPedido</td>
+                            <td>@item.HoraPedido</td>
+                            <td>@item.ValorTotal</td>
+                            <td>
+                             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                            </td>
+                        </tr>x
+                    }
+                            *@
                             <tr>
                                 <td>1,002</td>
                                 <td>amet</td>
@@ -271,7 +298,7 @@
                                 <td>libero</td>
                             </tr>
                         </tbody>
-                        </table>
+                    </table>
                 </div>
             </main>
         </div>

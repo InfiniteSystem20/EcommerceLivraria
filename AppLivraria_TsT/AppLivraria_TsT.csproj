@@ -827,9 +827,11 @@
     <Content Include="Views\Pedido\PedidoClienteDetalhes.cshtml" />
     <Content Include="Views\Home\ListarCategoriaHome.cshtml" />
     <Content Include="Views\Pedido\ListarTodospedidoDetalhes.cshtml" />
-    <Content Include="Views\Home\Index2.cshtml" />
+    <Content Include="Views\Home\CategoriaIndex.cshtml" />
     <Content Include="Views\Home\Index_old.cshtml" />
     <Content Include="Views\Home\ProdutoCategoriaIndex.cshtml" />
+    <Content Include="Views\Shared\_NavBarPartial.cshtml" />
+    <Content Include="Views\Cliente\DadosCliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

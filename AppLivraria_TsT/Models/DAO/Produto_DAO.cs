@@ -95,6 +95,51 @@ namespace AppLivraria_TsT.Models.DAO
                 con.Close();
             }
         }
+        // Selecionar Lista Produto Home
+        public List<Produto_DTO> selectListProdutoHome()
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(_conexaoMySQL))
+                {
+                    using (MySqlCommand command = new MySqlCommand("CALL proc_SelecionarProdutoHome( )", conn))
+                    {
+                        conn.Open();
+                        List<Produto_DTO> listaProduto = new List<Produto_DTO>();
+                        using (MySqlDataReader dr = command.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                Produto_DTO produto = new Produto_DTO();
+
+                                produto.IdProd = Convert.ToString(dr["IdProd"]);
+                                produto.ISBN = dr["ISBN"].ToString();
+                                produto.NomeProd = dr["Nome"].ToString();
+                                produto.Descricao = dr["Descricao"].ToString();
+                                produto.PrecoUni = Convert.ToDecimal(dr["PrecoUni"].ToString().Replace(".", ","));
+                                produto.Estoque = Convert.ToInt32(dr["Estoque"]);
+                                produto.Autor = dr["Autor"].ToString();
+                                produto.Imagem = dr["Imagem"].ToString();
+
+
+                                listaProduto.Add(produto);
+                            }
+                        }
+                        return listaProduto;
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+
+                throw new Exception("Erro no banco ao Listar Produto" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na aplicação ao Listar Produto" + ex.Message);
+            }
+        }
         // Selecionar Lista Produto
         public List<Produto_DTO> selectListProduto()
         {
