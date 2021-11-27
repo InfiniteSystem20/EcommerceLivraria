@@ -161,6 +161,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\DashbordController.cs" />
@@ -799,6 +800,8 @@
     <Content Include="Views\Categoria\ListarCategoria.cshtml" />
     <Content Include="Views\Categoria\EditarCategoria.cshtml" />
     <Content Include="Views\Categoria\ListarCategoriaId.cshtml" />
+    <Content Include="Views\Cliente\DetalhesClientePainel.cshtml" />
+    <Content Include="Views\Cliente\EditarClientePainel.cshtml" />
     <None Include="Views\Dashbord\Layout\_Layout.cshtml" />
     <Content Include="Views\Dashbord\Home\Index.cshtml" />
     <Content Include="Views\Funcionario\CadastroFuncionario.cshtml" />
@@ -830,8 +833,8 @@
     <Content Include="Views\Home\CategoriaIndex.cshtml" />
     <Content Include="Views\Home\Index_old.cshtml" />
     <Content Include="Views\Home\ProdutoCategoriaIndex.cshtml" />
-    <Content Include="Views\Shared\_NavBarPartial.cshtml" />
     <Content Include="Views\Cliente\DadosCliente.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

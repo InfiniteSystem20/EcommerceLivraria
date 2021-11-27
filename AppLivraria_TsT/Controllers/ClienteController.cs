@@ -68,20 +68,45 @@ namespace AppLivraria_TsT.Controllers
         {
             return View(dll.listaClienteDetalhes().Find(clienteDTO => clienteDTO.IdCli == id));
         }
+        //Listar Cliente Detalhes Painel
+        public ActionResult DetalhesClientePainel(int id)
+        {
+            if (Session["usuariologado"] == null || Session["senhaLogado"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+
+                return View(dll.listaClienteDetalhes().Find(clienteDTO => clienteDTO.IdCli == id));
+            }
+        }
+        // EDITAR CLIENTE PAINEL        
+        public ActionResult EditarClientePainel(int id)
+        {
+            if (Session["usuariologado"] == null || Session["senhaLogado"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View(dll.listaCliente().Find(clienteDTO => clienteDTO.IdCli == id));
+            }
+        }
         // EDITAR CLIENTE        
         public ActionResult EditarCliente(int id)
         {
-            //  if (Session["usuariologado"] == null || Session["senhaLogado"] == null)
-            //  {
-            //      return RedirectToAction("Index", "Home");
-            //  }
-            //  else
-            //   {
-            return View(dll.listaCliente().Find(clienteDTO => clienteDTO.IdCli == id));
-            //  }
+            if (Session["usuariologado"] == null || Session["senhaLogado"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View(dll.listaCliente().Find(clienteDTO => clienteDTO.IdCli == id));
+            }
         }
-        // EDITAR CLIENTE
-        [HttpPost]
+            // EDITAR CLIENTE
+            [HttpPost]
         public ActionResult EditarCliente(Cliente_DTO cliente)
         {
             dll.alteraCliente(cliente);
