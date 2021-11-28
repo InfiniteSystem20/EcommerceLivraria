@@ -22,10 +22,10 @@ namespace AppLivraria_TsT.Models.DAO
         //Inserir Pedido
         public void inserirPedido(Pedido_DTO pedido)
         {
-
+            string StatusPedido = "Pendente";
             try
             {
-                String sql = "CALL proc_CadPedido(@IdCli, @DtPedido, @HoraPedido, @ValorTotal );";
+                String sql = "CALL proc_CadPedido(@IdCli, @DtPedido, @HoraPedido, @ValorTotal, @StatusPedido );";
 
                 con = new MySqlConnection(_conexaoMySQL);
                 MySqlCommand cmd = new MySqlCommand(sql, con);
@@ -33,7 +33,8 @@ namespace AppLivraria_TsT.Models.DAO
                 cmd.Parameters.AddWithValue("@DtPedido", pedido.DtPedido);
                 cmd.Parameters.AddWithValue("@HoraPedido", pedido.HoraPedido);
                 cmd.Parameters.AddWithValue("@ValorTotal", pedido.ValorTotal);
-                
+                cmd.Parameters.AddWithValue("@StatusPedido", StatusPedido);
+
                 con.Open();
                 cmd.ExecuteNonQuery();
                 // retorno = Convert.ToString(cmd.ExecuteScalar());                
@@ -150,6 +151,7 @@ namespace AppLivraria_TsT.Models.DAO
                                 pedido.DtPedido = dr["DtPedido"].ToString();
                                 pedido.HoraPedido = dr["HoraPedido"].ToString();
                                 pedido.ValorTotal = Convert.ToDecimal(dr["ValorTotal"].ToString().Replace(".", ","));
+                                pedido.StatusPedido = dr["StatusPedido"].ToString();
                                 listaPedido.Add(pedido);
                             }
                         }
@@ -195,7 +197,7 @@ namespace AppLivraria_TsT.Models.DAO
                                 pedido.HoraPedido = dr["HoraPedido"].ToString();
                                 pedido.Qtd = Convert.ToInt32(dr["Qtd"].ToString());
                                 pedido.valorUnit = Convert.ToDecimal(dr["PrecoUni"].ToString().Replace(".", ","));
-                                pedido.ValorTotal = Convert.ToDecimal(dr["ValorTotal"].ToString().Replace(".", ","));
+                                pedido.ValorTotal = Convert.ToDecimal(dr["ValorTotal"].ToString().Replace(".", ","));                            
                                 listaPedido.Add(pedido);
                             }
                         }

@@ -25,6 +25,7 @@
                     <th>Data do Pedido</th>
                     <th>Hora do pedido</th>
                     <th>Valor Total</th>
+                    <th>Status</th>
                     <th>Ação</th>
                 </tr>
             </thead>
@@ -32,21 +33,22 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>@item.IdPedido</td>
-                        <td>@item.DtPedido</td>
-                        <td>@item.HoraPedido</td>
-                        <td>@item.ValorTotal</td>
-                        <td>
-                            <button type="button" class="btn btn-warning btn-sm" style="color:white">
-                                @Html.ActionLink("Detalhes", "PedidoClienteDetalhes", new { id = item.IdPedido })
-                            </button>
-                            |
-                            <button type="button" class="btn btn-info btn-sm" style="color:white">
-                                @Html.ActionLink("Voltar", "PainelControle", "Home")
-                            </button>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>@item.IdPedido</td>
+                    <td>@item.DtPedido</td>
+                    <td>@item.HoraPedido</td>
+                    <td>@item.ValorTotal</td>
+                    <td>@item.StatusPedido</td>
+                    <td>
+                        <button type="button" class="btn btn-warning btn-sm" style="color:white">
+                            @Html.ActionLink("Detalhes", "PedidoClienteDetalhes", new { id = item.IdPedido })
+                        </button>
+                        |
+                        <button type="button" class="btn btn-info btn-sm" style="color:white">
+                            @Html.ActionLink("Voltar", "PainelControle", "Home")
+                        </button>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>

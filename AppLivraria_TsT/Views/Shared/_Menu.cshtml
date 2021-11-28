@@ -52,19 +52,24 @@
                     <li class="nav-item dropdown" style="margin-top: 1px; list-style:none">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
-                            <i class="far fa-address-book"></i> Ciente
+                            <i class="far fa-address-book"></i> Minha conta
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/Login/Login"><i class="fas fa-user-alt"></i> Login </a>
-
-                            <a class="dropdown-item" href="/Home/PainelControle"<i class="fas fa-list-ul"></i> Minha conta‎</a>
-                            <a class="dropdown-item" href="#"><i class="fas fa-gift"></i> Meus pedidos‎</a>
-
-                        </div>
+                            @if (@Session["usuarioNome"] == null)
+                            {
+                                <a class="dropdown-item" href="/Login/Login"><i class="fas fa-user-alt"></i> Login </a>
+                            }
+                            @*<a class="dropdown-item" href="/Home/PainelControle"<i class="fas fa-list-ul"></i> Minha conta‎</a>*@
+                            <a class="dropdown-item" href="/Home/PainelControle"><i class="fas fa-gift"></i> Meus pedidos‎</a>
+                            @if (@Session["usuarioNome"] != null)
+                            {
+                                <a class="dropdown-item" href="/Login/Logout"><i class="fas fa-power-off sizet"></i> Sair‎</a>
+                            }
+                            </div>
                     </li>
                     <a class="nav-link" href="/home/Carrinho"><i class="fas fa-shopping-cart"></i> Carrinho</a>
                     <a class="nav-link" href="#"> <i class="fas fa-user"></i> Bem vindo! @Session["usuarioNome"]</a>
-                    <span class="glyphicon glyphicon-log-in">  @Html.ActionLink("Sair", "Logout", "Login")</span>
+                    @*<span class="glyphicon glyphicon-log-in">  @Html.ActionLink("Sair", "Logout", "Login")</span>*@
 
                 </form>
             </div>
