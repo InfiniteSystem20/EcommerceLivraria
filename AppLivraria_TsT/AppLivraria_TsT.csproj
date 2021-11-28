@@ -839,6 +839,7 @@
     <Content Include="Views\Cliente\DadosCliente.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\Endereco\ListarClienteEnderecoPorID.cshtml" />
+    <Content Include="Views\Pedido\ListarTodosPedidos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

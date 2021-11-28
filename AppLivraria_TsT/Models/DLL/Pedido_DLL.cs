@@ -37,7 +37,20 @@ namespace AppLivraria_TsT.Models.DLL
             {
                 throw ex;
             }
-        }        
+        }
+
+        public List<Pedido_DTO> listaPedido()
+        {
+            try
+            {
+                dal = new Pedido_DAO();
+                return dal.selectListPedido();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
 
     }

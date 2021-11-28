@@ -21,7 +21,13 @@ namespace AppLivraria_TsT.Controllers
         {
             return View();
         }
-        
+
+        public ActionResult ListarTodosPedidos()
+        {
+            return View(pedido_DLL.listaPedido());
+        }
+
+
 
         public ActionResult PedidoCliente(string id)
         {
