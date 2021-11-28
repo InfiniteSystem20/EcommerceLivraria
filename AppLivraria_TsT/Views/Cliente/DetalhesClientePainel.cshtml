@@ -128,12 +128,12 @@
 
                     </div>
                     @*__________________________________________FIM ENDEREÇO______________________________________________________*@
-                    <button type="button" class="btn btn-outline-primary" style="color:black">
-                        @Html.ActionLink("Cancelar", "PainelControle", "Home", new { @style = "color:white" })
-                    </button>
+                <button type="button" class="btn btn-info " style="color:white">
+                    @Html.ActionLink("Cancelar", "PainelControle", "Home")
+                </button>
                     <button type="button" class="btn btn-warning" style="color:black">
                         @Html.ActionLink("Editar", "EditarClientePainel", new { id = Model.IdCli }, new { @style = "color:white" })
-                    </button>
+                    </button>                    
                 </form>
             </div>
     

@@ -165,6 +165,7 @@
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\DashbordController.cs" />
+    <Compile Include="Controllers\EnderecoController.cs" />
     <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -178,6 +179,7 @@
     <Compile Include="Models\DAO\Categoria_DAO.cs" />
     <Compile Include="Models\DAO\Cliente_DAO.cs" />
     <Compile Include="Models\DAO\Conexao.cs" />
+    <Compile Include="Models\DAO\Endereco_DAO.cs" />
     <Compile Include="Models\DAO\Funcionario_DAO.cs" />
     <Compile Include="Models\DAO\ItensCarrinho_DAO.cs" />
     <Compile Include="Models\DAO\Pedido_DAO.cs" />
@@ -190,6 +192,7 @@
     <Compile Include="Models\DLL\Produto_DLL.cs" />
     <Compile Include="Models\DTO\Categoria_DTO.cs" />
     <Compile Include="Models\DTO\Cliente_DTO.cs" />
+    <Compile Include="Models\DTO\Endereco_DTO.cs" />
     <Compile Include="Models\DTO\Funcionario_DTO.cs" />
     <Compile Include="Models\DTO\ItensCarrinho_DTO.cs" />
     <Compile Include="Models\DTO\Login.cs" />
@@ -835,6 +838,7 @@
     <Content Include="Views\Home\ProdutoCategoriaIndex.cshtml" />
     <Content Include="Views\Cliente\DadosCliente.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\Endereco\ListarClienteEnderecoPorID.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
