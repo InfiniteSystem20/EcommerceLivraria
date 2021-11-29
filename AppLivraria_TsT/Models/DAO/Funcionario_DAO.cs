@@ -238,10 +238,7 @@ namespace AppLivraria_TsT.Models.DAO
         public void updateFuncionario(Funcionario_DTO funcionario)
         {
             try
-            {
-                //String sql = " update tbfuncionario set Nome = @Nome, Nascimento = @Nascimento, Sexo = @Sexo, CPF = @CPF, " +
-                //"Telefone = @Telefone, Cargo = @Cargo, Celular = @Celular, Email = @Email, Senha = @Senha  where IdFunc = @IdFunc;";
-
+            {                
                 String sql = " CALL proc_UpdateFuncionario(@IdFunc, @Nome, @CPF, @Sexo, @Telefone, @Celular,@Nascimento,  @Cargo, " +
                              " @Email, @Senha); ";
 
@@ -279,7 +276,7 @@ namespace AppLivraria_TsT.Models.DAO
             }
         }
         // DELETAR FUNCIONARIO
-        public void deleteFuncionario(int id)
+        public void deleteFuncionario(int id) 
         {
             try
             {

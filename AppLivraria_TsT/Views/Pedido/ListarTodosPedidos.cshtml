@@ -45,18 +45,64 @@
                         <td>@pedido.ValorTotal</td>
                         <td>@pedido.StatusPedido</td>
                         <td colspan="2">
-                            <button type="button" class="btn btn-info btn-sm">
-                                @Html.ActionLink("Detalhes", "DetalhesFuncionario", new { id = pedido.IdPedido }, new { @style = "color:white" })
-                            </button>
-                            <button type="button" class="btn btn-warning btn-sm">
-                                @Html.ActionLink("Faturar", "FaturarPedido", new { id = pedido.IdPedido },
-                                new { onclick = "return confirm('Deseja realmente confirmar o pagamento?');" })
-                            </button>
+                            @if (pedido.StatusPedido == "Pendente")
+                            {
+                                <button type="button" class="btn btn-info btn-sm">
+                                    @Html.ActionLink("Detalhes", "DetalhesFuncionario", new { id = pedido.IdPedido }, new { @style = "color:white" })
+                                </button>
+                                <button type="button" class="btn btn-warning btn-sm">
+                                    @Html.ActionLink("Faturar", "FaturarPedido", new { id = pedido.IdPedido },
+                                    new { onclick = "return confirm('Deseja realmente confirmar o pagamento?');" })
+                                </button>
 
-                            <button type="button" class="btn btn-danger btn-sm">
-                                @Html.ActionLink("Cancelar", "CancelarPedido", new { id = pedido.IdPedido },
-                                new { onclick = "return confirm('Deseja realmente Cancelar o pedido?');" })
-                            </button>
+                                <button type="button" class="btn btn-danger btn-sm">
+                                    @Html.ActionLink("Cancelar", "CancelarPedido", new { id = pedido.IdPedido },
+                                    new { onclick = "return confirm('Deseja realmente Cancelar o pedido?');" })
+                                </button>
+
+                                <button type="button" class="btn btn-success btn-sm">
+                                    @Html.ActionLink("Concluir", "CompletarPedido", new { id = pedido.IdPedido },
+                                   new { onclick = "javascript:return false;" })
+                                </button>
+                            }
+                            else if (pedido.StatusPedido == "Pago")
+                            {
+                                <button type="button" class="btn btn-info btn-sm">
+                                    @Html.ActionLink("Detalhes", "DetalhesFuncionario", new { id = pedido.IdPedido }, new { @style = "color:white" })
+                                </button>
+                                <button type="button" class="btn btn-warning btn-sm">
+                                    @Html.ActionLink("Faturar", "FaturarPedido", new { id = pedido.IdPedido },
+                                    new { onclick = "javascript:return false;" })
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm">
+                                    @Html.ActionLink("Cancelar", "CancelarPedido", new { id = pedido.IdPedido },
+                                    new { onclick = "javascript:return false;" })
+                                </button>
+
+                                <button type="button" class="btn btn-success btn-sm">
+                                    @Html.ActionLink("Concluir", "CompletarPedido", new { id = pedido.IdPedido },
+                                   new { onclick = "return confirm('Deseja realmente Finalizar o pedido?');" })
+                                </button>
+                            }
+                            else
+                            {
+                                <button type="button" class="btn btn-info btn-sm">
+                                    @Html.ActionLink("Detalhes", "DetalhesFuncionario", new { id = pedido.IdPedido }, new { @style = "color:white" })
+                                </button>
+                                <button type="button" class="btn btn-warning btn-sm">
+                                    @Html.ActionLink("Faturar", "FaturarPedido", new { id = pedido.IdPedido },
+                                    new { onclick = "javascript:return false;" })
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm">
+                                    @Html.ActionLink("Cancelar", "CancelarPedido", new { id = pedido.IdPedido },
+                                    new { onclick = "javascript:return false;" })
+                                </button>
+                                <button type="button" class="btn btn-success btn-sm">
+                                    @Html.ActionLink("Concluir", "CompletarPedido", new { id = pedido.IdPedido },
+                                   new { onclick = "javascript:return false;" })
+                                </button>
+                            }
+
                         </td>
                     </tr>
                     }

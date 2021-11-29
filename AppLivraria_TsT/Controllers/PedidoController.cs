@@ -26,8 +26,24 @@ namespace AppLivraria_TsT.Controllers
         {
             return View(pedido_DLL.listaPedido());
         }
-
-
+        //Faturar Pedido
+        public ActionResult FaturarPedido(string id)
+        {
+            pedido_DLL.alteraPedidoFaturar(id);
+            return RedirectToAction(nameof(ListarTodosPedidos));
+        }
+        //Cancelar Pedido
+        public ActionResult CancelarPedido(string id)
+        {
+            pedido_DLL.alteraPedidoCancelar(id);
+            return RedirectToAction(nameof(ListarTodosPedidos));
+        }
+        //Cancelar Pedido
+        public ActionResult CompletarPedido(string id)
+        {
+            pedido_DLL.alteraPedidoCompletar(id);
+            return RedirectToAction(nameof(ListarTodosPedidos));
+        }
 
         public ActionResult PedidoCliente(string id)
         {

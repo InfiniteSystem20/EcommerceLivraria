@@ -307,5 +307,110 @@ namespace AppLivraria_TsT.Models.DAO
                 throw new Exception("Erro na aplicação ao Listar Produto" + ex.Message);
             }
         }
+        // UPDATE PEDIDO CANCELAAR
+        public void updatePedidoFaturar(string id)
+        {
+            string StatusPedido = "Pago";
+            try
+            {
+                String sql = " CALL proc_UpdateStatusPedido(@IdPedido, @StatusPedido); ";
+
+                //Alter Funcionario
+                con = new MySqlConnection(_conexaoMySQL);
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+
+                cmd.Parameters.AddWithValue("@IdPedido", id);
+                cmd.Parameters.AddWithValue("@StatusPedido", StatusPedido);
+
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+
+                throw new Exception("Erro no banco ao atualizar dados do pedido" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na aplicação ao atualizar dados do pedido" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        // UPDATE PEDIDO CANCELAAR
+        public void updatePedidoCancelar(string id)
+            {
+            string StatusPedido = "Cancelado";
+                try
+                {
+                    String sql = " CALL proc_UpdateStatusPedido(@IdPedido, @StatusPedido); ";
+
+                    //Alter Funcionario
+                    con = new MySqlConnection(_conexaoMySQL);
+                    MySqlCommand cmd = new MySqlCommand(sql, con);
+
+                    cmd.Parameters.AddWithValue("@IdPedido", id);
+                    cmd.Parameters.AddWithValue("@StatusPedido", StatusPedido);
+                    
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (MySqlException ex)
+                {
+
+                    throw new Exception("Erro no banco ao atualizar dados do pedido" + ex.Message);
+                }
+                catch (Exception ex)
+                {
+
+                    throw new Exception("Erro na aplicação ao atualizar dados do pedido" + ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
+
+        // UPDATE PEDIDO CANCELAAR
+        public void updatePedidoCompletar(string id)
+        {
+            string StatusPedido = "Completo";
+            try
+            {
+                String sql = " CALL proc_UpdateStatusPedido(@IdPedido, @StatusPedido); ";
+
+                //Alter Funcionario
+                con = new MySqlConnection(_conexaoMySQL);
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+
+                cmd.Parameters.AddWithValue("@IdPedido", id);
+                cmd.Parameters.AddWithValue("@StatusPedido", StatusPedido);
+
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+
+                throw new Exception("Erro no banco ao atualizar dados do pedido" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na aplicação ao atualizar dados do pedido" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
     }
 }
