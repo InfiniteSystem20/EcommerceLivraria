@@ -89,18 +89,18 @@
                         <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
                     </li>
                 </ul>
-                <div class="label-rating">132 Visualização</div>
-                <div class="label-rating">154 pedidos </div>
+                <div class="label-rating">@produto.Visualizacao Visualização</div>
+                <div class="label-rating">@produto.TotalVenda Vendas </div>
             </div>
         </figcaption>
         <div class="bottom-wrap">
             @using (Html.BeginForm("AdicionarCarrinho", "Home", FormMethod.Post))
             {
-<input type="hidden" name="id" value=@produto.IdProd>
+                    <input type="hidden" name="id" value=@produto.IdProd>
                     <input type="hidden" name="pre" value=@produto.PrecoUni>
-                                        <input type="hidden" name="imagem" value=@produto.Imagem>
-                                                            <input type="hidden" name="quantidade" value="1">
-                                                                                <button type="submit" class="btn btn-sm btn-primary float-right">Comprar</button> @*<a href="" class="btn btn-sm btn-primary float-right">Comprar</a>*@}
+                    <input type="hidden" name="imagem" value=@produto.Imagem>
+                    <input type="hidden" name="quantidade" value="1">
+                    <button type="submit" class="btn btn-sm btn-primary float-right">Comprar</button> @*<a href="" class="btn btn-sm btn-primary float-right">Comprar</a>*@}
 
 
 
@@ -108,7 +108,7 @@
             <a href="/Home/Detalhe/@produto.IdProd" class="btn btn-sm btn-warning float-lg-right" style="margin-right: 20px;">Detalhes</a>
 
             <div class="price-wrap h5">
-                <span class="price-new">R$@produto.PrecoUni</span> <del class="price-old">R$1980,00</del>
+                <span class="price-new">R$@produto.PrecoUni</span> @*<del class="price-old">R$1980,00</del>*@
             </div>
         </div>
     </figure>

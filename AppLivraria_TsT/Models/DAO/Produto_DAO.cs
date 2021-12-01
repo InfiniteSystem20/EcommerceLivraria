@@ -120,7 +120,9 @@ namespace AppLivraria_TsT.Models.DAO
                                 produto.Estoque = Convert.ToInt32(dr["Estoque"]);
                                 produto.Autor = dr["Autor"].ToString();
                                 produto.Imagem = dr["Imagem"].ToString();
+                                produto.TotalVenda = dr["TotalVendas"].ToString();
 
+                                produto.Visualizacao = Convert.ToInt32(produto.TotalVenda) + 100;
 
                                 listaProduto.Add(produto);
                             }
@@ -165,7 +167,9 @@ namespace AppLivraria_TsT.Models.DAO
                                 produto.Estoque = Convert.ToInt32(dr["Estoque"]);
                                 produto.Autor = dr["Autor"].ToString();
                                 produto.Imagem = dr["Imagem"].ToString();
+                                produto.TotalVenda = dr["TotalVendas"].ToString();
 
+                                produto.Visualizacao = Convert.ToInt32(produto.TotalVenda) + 100;
 
                                 listaProduto.Add(produto);
                             }
@@ -211,7 +215,9 @@ namespace AppLivraria_TsT.Models.DAO
                                 produto.Autor = dr["Autor"].ToString();
                                 produto.Categiria = dr["Categoria"].ToString();
                                 produto.Imagem = dr["Imagem"].ToString();
+                                produto.TotalVenda = dr["TotalVendas"].ToString();
 
+                                produto.Visualizacao = Convert.ToInt32(produto.TotalVenda) + 100;
 
                                 listaProduto.Add(produto);
                             }
@@ -260,7 +266,9 @@ namespace AppLivraria_TsT.Models.DAO
                                 produto.Autor = dr["Autor"].ToString();
                                 produto.Categiria = dr["nome"].ToString();
                                 produto.Imagem = dr["Imagem"].ToString();
+                                produto.TotalVenda = dr["TotalVendas"].ToString();
 
+                                produto.Visualizacao = Convert.ToInt32(produto.TotalVenda) + 100;
 
                                 listaProduto.Add(produto);
                             }
@@ -307,7 +315,8 @@ namespace AppLivraria_TsT.Models.DAO
                         Descricao = Convert.ToString(dr["Descricao"]),
                         PrecoUni = Convert.ToDecimal(dr["PrecoUni"].ToString().Replace(".", ",")),
                         Estoque = Convert.ToInt32(dr["Estoque"]),
-                        Imagem = Convert.ToString(dr["Imagem"])
+                        Imagem = Convert.ToString(dr["Imagem"]),
+                        
                     });
             }
             return Produtoslist;
@@ -337,8 +346,7 @@ namespace AppLivraria_TsT.Models.DAO
                                 produto.PrecoUni = Convert.ToDecimal(dr["PrecoUni"].ToString().Replace(".", ","));
                                 produto.Estoque = Convert.ToInt32(dr["Estoque"]);
                                 produto.Autor = dr["Autor"].ToString();
-                                produto.Imagem = dr["Imagem"].ToString();
-
+                                produto.Imagem = dr["Imagem"].ToString();                                
 
                                 listaProduto.Add(produto);
                             }

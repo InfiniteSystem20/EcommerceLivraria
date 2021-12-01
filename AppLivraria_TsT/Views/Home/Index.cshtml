@@ -87,8 +87,8 @@
                         <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
                     </li>
                 </ul>
-                <div class="label-rating">132 Visualização</div>
-                <div class="label-rating">154 pedidos </div>
+                <div class="label-rating">@produto.Visualizacao Visualização</div>
+                <div class="label-rating">@produto.TotalVenda Vendas </div>
             </div>
         </figcaption>
         <div class="bottom-wrap">
@@ -108,7 +108,7 @@
             <a href="/Home/Detalhe/@produto.IdProd" class="btn btn-sm btn-warning float-lg-right" style="margin-right: 20px;">Detalhes</a>
 
             <div class="price-wrap h5">
-                <span class="price-new">R$@produto.PrecoUni</span> <del class="price-old">R$1980,00</del>
+                <span class="price-new">R$@produto.PrecoUni</span> @*<del class="price-old">R$1980,00</del>*@
             </div>
         </div>
     </figure>
