@@ -38,6 +38,61 @@ namespace AppLivraria_TsT.Models.DLL
                 throw ex;
             }
         }
-        
+        //Faturar Pedido
+        public void alteraPedidoFaturar(string id)
+        {
+            try
+            {
+                dal = new Pedido_DAO();
+                dal.updatePedidoFaturar(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+       
+        //Cancelar Pedido
+        public void alteraPedidoCancelar(string id)
+        {
+            try
+            {
+                dal = new Pedido_DAO();
+                dal.updatePedidoCancelar(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        //Completar Pedido
+        public void alteraPedidoCompletar(string id)
+        {
+            try
+            {
+                dal = new Pedido_DAO();
+                dal.updatePedidoCompletar(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<Pedido_DTO> listaPedido()
+        {
+            try
+            {
+                dal = new Pedido_DAO();
+                return dal.selectListPedido();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
     }
 }

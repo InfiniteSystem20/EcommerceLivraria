@@ -1,4 +1,5 @@
-﻿using AppLivraria_TsT.Models.DLL;
+﻿using AppLivraria_TsT.Models.DAO;
+using AppLivraria_TsT.Models.DLL;
 using AppLivraria_TsT.Models.DTO;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace AppLivraria_TsT.Controllers
     {
         Cliente_DLL dll = new Cliente_DLL();
         Cliente_DTO clienteDTO = new Cliente_DTO();
+
+        Cliente_DAO cliente_DAO = new Cliente_DAO();
 
         // GET: Cliente
         public ActionResult Index()
@@ -65,20 +68,45 @@ namespace AppLivraria_TsT.Controllers
         {
             return View(dll.listaClienteDetalhes().Find(clienteDTO => clienteDTO.IdCli == id));
         }
+        //Listar Cliente Detalhes Painel
+        public ActionResult DetalhesClientePainel(int id)
+        {
+            if (Session["usuariologado"] == null || Session["senhaLogado"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+
+                return View(dll.listaClienteDetalhes().Find(clienteDTO => clienteDTO.IdCli == id));
+            }
+        }
+        // EDITAR CLIENTE PAINEL        
+        public ActionResult EditarClientePainel(int id)
+        {
+            if (Session["usuariologado"] == null || Session["senhaLogado"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View(dll.listaCliente().Find(clienteDTO => clienteDTO.IdCli == id));
+            }
+        }
         // EDITAR CLIENTE        
         public ActionResult EditarCliente(int id)
         {
-            //  if (Session["usuariologado"] == null || Session["senhaLogado"] == null)
-            //  {
-            //      return RedirectToAction("Index", "Home");
-            //  }
-            //  else
-            //   {
-            return View(dll.listaCliente().Find(clienteDTO => clienteDTO.IdCli == id));
-            //  }
+            if (Session["usuariologado"] == null || Session["senhaLogado"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View(dll.listaCliente().Find(clienteDTO => clienteDTO.IdCli == id));
+            }
         }
-        // EDITAR CLIENTE
-        [HttpPost]
+            // EDITAR CLIENTE
+            [HttpPost]
         public ActionResult EditarCliente(Cliente_DTO cliente)
         {
             dll.alteraCliente(cliente);
@@ -89,6 +117,18 @@ namespace AppLivraria_TsT.Controllers
         {
             dll.exclurCliente(id);
             return RedirectToAction(nameof(ListarCliente));
+        }
+        public ActionResult DadosCliente(string id)
+        {
+            if ((Session["usuarioLogado"] == null) || (Session["senhaLogado"] == null))
+
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                return View(cliente_DAO.selectListClientePorId(id));
+            }
         }
     }
 }

@@ -4,7 +4,6 @@
     Layout = "~/Views/Dashbord/Layout/_Layout.cshtml";
 }
 
-
 <section class="layout-content">
 
     <nav class="navbar navbar-expand-md bg-light">
@@ -20,9 +19,38 @@
 
     <div class="container">
         <div id="list-home" class="row">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+            <canvas id="myChart" style="width:500%;max-width:1500px"></canvas>
+
+            <script>
+                //var xValues = ["Dezembro", "Novembro", "Outubro", "Setembro", "Agosto", "Julho", "Junho", "Maio", "Abril", "Marco", "Fevereiro", "Janeiro"];
+                var xValues = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+                var yValues = [60, 54, 49, 51, 58, 52, 45, 52, 49, 44, 32, 45];
+                var barColors = ["#1E90FF", "#3CB371", "#664FA1", "#3CB371", "#1E90FF", "#3CB371", "#664FA1", "#3CB371", "#664FA1", "#D2691E", "#FF0000", "#664FA1"];
+
+                new Chart("myChart", {
+                    type: "bar",
+                    data: {
+                        labels: xValues,
+                        datasets: [{
+                            backgroundColor: barColors,
+                            data: yValues
+                        }]
+                    },
+                    options: {
+                        legend: { display: false },
+                        title: {
+                            display: true,
+                            text: "Venda realizados no ano"
+                        }
+                    }
+                });
+            </script>
+
             <div class="col-4">
-                <h1>Inserir conteudo</h1>
-                <h2>index Dashbord</h2>
+                <h1></h1>
+                <h2></h2>
             </div>
         </div>
     </div>

@@ -46,7 +46,7 @@
                 </td>
                 <td>
                     <input type="number" value="@item.Qtd" /><br/><br />
-                    <a href="/Home/CupomDesconto" class="btn btn-sm btn-primary float-right" style="margin-right: 10px;">Atualizar</a>
+                    <dt><a href="/Home/CupomDesconto" class="btn btn-sm btn-primary float-right" style="margin-right: 10px;">Atualizar</a>
                     @*<select class="form-control">
             <option>1</option>
             <option>2</option>
@@ -58,7 +58,7 @@
                     <div class="price-wrap">
                         <var class="price">R$@item.valorParcial</var>
                         @*<small class="text-muted">(USD5 each)</small>*@
-                    </div> <!-- price-wrap .// -->
+                    </div> 
                 </td>
                 <td class="text-right">
                     <a title="" href="" class="btn btn-outline-success" data-toggle="tooltip"
@@ -69,10 +69,10 @@
 
                     </tbody>
                 </table>
-            </div> <!-- card.// -->
-        </div> <!-- code-wrap.// -->
+            </div>
+        </div> 
         <br /><br />
-        <a href="/Home/SalvarCarrinho" class="btn btn-sm btn-success float-right"style="margin-right: 10px;">Finalizar pedido</a>
+        <a href="/Home/SalvarCarrinho/@Model.IdPedido" class="btn btn-sm btn-success float-right"style="margin-right: 10px;">Finalizar pedido</a>
         <a href="/Home/Index" class="btn btn-sm btn-primary float-right"  style="margin-right: 15px;">Continuar Comprando</a>
 
 
@@ -111,9 +111,10 @@
                             <dt>@*Desconto:*@</dt>
                             <dd>@*USD 658*@</dd>
                         </dl>
-                    </div> <!-- box.// -->
-                </div> <!-- code-wrap.// -->
+                    </div> 
+                </div> 
             </aside>
+           
             <aside class="col-md-4 float-lg-right">
                 <h4 class="subtitle-doc">
                     Formas de pagamento
@@ -121,6 +122,7 @@
                 </h4>
                 <div id="code_desc_align">
                     <div class="box">
+                        
                         <div id="code_payment2">
 
                             <article class="card">
@@ -145,7 +147,7 @@
                                     </ul>
 
                                     <div class="tab-content">
-                                        <div class="tab-pane fade show active" id="nav-tab-card">
+                                        <div class="tab-pane fade show active" id="nav-tab-card">                                            
                                             <form role="form">
                                                 <div class="form-group">
                                                     <label for="username">Nome (Igual do cartão)</label>
@@ -233,38 +235,36 @@
                             </article>
                         </div>
                     </div>
+            </aside>           
+
+
+            <aside class="col-md-4">
+                <h4 class="subtitle-doc">
+                    Valor Total da compra
+
+                </h4>
+                <div id="code_desc_right">
+                    <div class="box">
+                        <dl class="dlist-align">
+                            <dt>Subtotal: </dt>
+                            <dd class="text-right">R$ @Model.ValorTotal </dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt>Desconto:</dt>
+                            <dd class="text-right">R$ 00,00</dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt>Frete:</dt>
+                            <dd class="text-right">R$ 00,00</dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt>Valor Total: </dt>
+                            <dd class="text-right h5 b"> R$ @Model.ValorTotal </dd>
+                        </dl>
+                    </div>
                 </div>
-            </aside>             
+            </aside>
+
         </div>
-
-
-        <aside class="col-md-4">
-            <h4 class="subtitle-doc">
-                Valor Total da compra
-
-            </h4>
-            <div id="code_desc_right">
-                <div class="box">
-                    <dl class="dlist-align">
-                        <dt>Subtotal: </dt>
-                        <dd class="text-right">R$ @Model.ValorTotal </dd>
-                    </dl>
-                    <dl class="dlist-align">
-                        <dt>Desconto:</dt>
-                        <dd class="text-right">R$ 00,00</dd>
-                    </dl>
-                    <dl class="dlist-align">
-                        <dt>Frete:</dt>
-                        <dd class="text-right">R$ 00,00</dd>
-                    </dl>
-                    <dl class="dlist-align">
-                        <dt>Valor Total: </dt>
-                        <dd class="text-right h5 b"> R$ @Model.ValorTotal </dd>
-                    </dl>
-                </div>
-            </div>
-        </aside>
-        
-
     </section>
 </main>

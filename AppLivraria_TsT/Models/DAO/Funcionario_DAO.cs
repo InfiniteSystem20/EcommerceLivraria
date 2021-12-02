@@ -57,12 +57,18 @@ namespace AppLivraria_TsT.Models.DAO
                 cmd1.Parameters.AddWithValue("@CEP", funcionario.CEP);
                 cmd1.Parameters.AddWithValue("@Cidade", funcionario.cidade);
                 cmd1.Parameters.AddWithValue("@Estado", funcionario.estado);
-                cmd1.Parameters.AddWithValue("@UF", funcionario.UF);
-                
-
+                cmd1.Parameters.AddWithValue("@UF", funcionario.UF); 
 
                 con.Open();
                 cmd1.ExecuteNonQuery();
+
+                String sqlLog = "Call proc_CadLoginFunc(@IdFunc, @Tipo);";
+                con = new MySqlConnection(_conexaoMySQL);
+                MySqlCommand cmd2 = new MySqlCommand(sqlLog, con);
+                cmd2.Parameters.AddWithValue("@IdFunc", Convert.ToInt32( retorno));
+                cmd2.Parameters.AddWithValue("@Tipo", Tipo);
+                con.Open();
+                cmd2.ExecuteNonQuery();
             }
 
             catch (MySqlException ex)
@@ -238,10 +244,7 @@ namespace AppLivraria_TsT.Models.DAO
         public void updateFuncionario(Funcionario_DTO funcionario)
         {
             try
-            {
-                //String sql = " update tbfuncionario set Nome = @Nome, Nascimento = @Nascimento, Sexo = @Sexo, CPF = @CPF, " +
-                //"Telefone = @Telefone, Cargo = @Cargo, Celular = @Celular, Email = @Email, Senha = @Senha  where IdFunc = @IdFunc;";
-
+            {                
                 String sql = " CALL proc_UpdateFuncionario(@IdFunc, @Nome, @CPF, @Sexo, @Telefone, @Celular,@Nascimento,  @Cargo, " +
                              " @Email, @Senha); ";
 
@@ -279,18 +282,10 @@ namespace AppLivraria_TsT.Models.DAO
             }
         }
         // DELETAR FUNCIONARIO
-        public void deleteFuncionario(int id)
+        public void deleteFuncionario(int id) 
         {
             try
             {
-                String sql1 = "CALL  proc_DeleteEndereco(@IdFunc); ";
-                con = new MySqlConnection(_conexaoMySQL);
-                MySqlCommand cmd1 = new MySqlCommand(sql1, con);
-                cmd1.Parameters.AddWithValue("@IdFunc", id);
-                con.Open();
-                cmd1.ExecuteNonQuery();
-
-
                 String sql = "CALL  proc_DeleteEnderecoFunc(@IdFunc); ";
                 con = new MySqlConnection(_conexaoMySQL);
                 MySqlCommand cmd = new MySqlCommand(sql, con);
@@ -298,7 +293,12 @@ namespace AppLivraria_TsT.Models.DAO
                 con.Open();
                 cmd.ExecuteNonQuery();
 
-                
+                String sql1 = "CALL  proc_DeleteFuncionario(@IdFunc); ";
+                con = new MySqlConnection(_conexaoMySQL);
+                MySqlCommand cmd1 = new MySqlCommand(sql1, con);
+                cmd1.Parameters.AddWithValue("@IdFunc", id);
+                con.Open();
+                cmd1.ExecuteNonQuery();
 
             }
             catch (MySqlException ex)

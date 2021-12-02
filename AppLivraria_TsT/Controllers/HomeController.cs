@@ -11,33 +11,7 @@ using System.Web.Mvc;
 namespace AppLivraria_TsT.Controllers
 {
     public class HomeController : Controller
-    {
-        public void carregarCategoria()
-        {
-            List<SelectListItem> categorias = new List<SelectListItem>();
-
-            //using (MySqlConnection con = new MySqlConnection("server=localhost;port=3307;user id=root;password=361190;database=Livraria01"))
-            using (MySqlConnection con = new MySqlConnection("server=localhost;user id=root;password=root;database=Livraria01"))
-            {
-                con.Open();
-                MySqlCommand cmd = new MySqlCommand("CALL proc_SelecionarCategoria();", con);
-                MySqlDataReader rdr = cmd.ExecuteReader();
-
-                while (rdr.Read())
-                {
-                    categorias.Add(new SelectListItem
-                    {
-                        Text = rdr[1].ToString(),
-                        Value = rdr[0].ToString()
-                    });
-                }
-                con.Close();
-
-            }
-
-            ViewBag.cat = new SelectList(categorias, "Value", "Text");
-        }
-
+    {       
         //Classe de produtos
         Produto_DLL dll = new Produto_DLL();
         Produto_DTO produtoDto = new Produto_DTO();
@@ -54,14 +28,33 @@ namespace AppLivraria_TsT.Controllers
 
         Categoria_DLL categoriadll = new Categoria_DLL();
         Categoria_DTO categoriaDTO = new Categoria_DTO();
+        Categoria_DAO categoria_DAO = new Categoria_DAO();
+
+       
 
         //Carrega os produtos  na Index
         public ActionResult Index()
         {
-            carregarCategoria();
-            produtoDto.IdCat = Request["cat"];
-            return View(dll.listaProduto());
+            //carregarCategoria();
+            return View(dll.listaProdutoHome());
         }
+        //Carrega os produtos  na categoria Index
+        public ActionResult CategoriaIndex()
+        {
+            //carregarCategoria();
+
+            //produtoDto.IdCat = Request["cat"];
+            //categoriadll.listaCategoria();  
+            return View(categoria_DAO.selectListCategoria());
+
+            //return View(dll.listaProduto());
+        }
+        public ActionResult ProdutoCategoriaIndex(int id)
+        {           
+            return View(produto_DAO.selectProdutoPorIdCategoria(id));     
+            
+        }
+        
         // Detalhes do Produto
         public ActionResult detalhe(string id)
         {
@@ -101,7 +94,6 @@ namespace AppLivraria_TsT.Controllers
                     carrinho.ItensPedido.FirstOrDefault(p => p.Produto == produto[0].NomeProd).valorParcial = carrinho.ItensPedido.FirstOrDefault(p => p.Produto == produto[0].NomeProd).Qtd * itemPedido.valorUnit;
 
                 }
-
                 else
                 {
                     itemPedido.valorParcial = itemPedido.Qtd * itemPedido.valorUnit;
@@ -173,8 +165,9 @@ namespace AppLivraria_TsT.Controllers
                 }
 
                 carrinho.ValorTotal = 0;
+                ViewBag.pedido = x.IdPedido;
                 carrinho.ItensPedido.Clear();
-
+                
                 return RedirectToAction(nameof(Finalizado));
             }
         }
@@ -183,8 +176,7 @@ namespace AppLivraria_TsT.Controllers
             pedido_DAO.buscaIdVenda(x);
             pedidoDto.IdPedido = x.IdPedido;
             ViewBag.pedido = x.IdPedido;
-            return View(itensCarrinhodll.listaItensCarrinhoDetalhes().Find(itensCarrinhoDto => itensCarrinhoDto.IdPedido == x.IdPedido));
-           
+            return View(itensCarrinhodll.listaItensCarrinhoDetalhes().Find(pedidoDto => pedidoDto.IdPedido == x.IdPedido));         
         }
         public ActionResult FinalizadoDetalhes(string id)
         {
@@ -192,31 +184,22 @@ namespace AppLivraria_TsT.Controllers
 
             {
                 return RedirectToAction("Login", "Login");
-            }
+            }            
 
             return View(itensCarrinhodll.listaItensCarrinhoDetalhes().Find(itensCarrinhoDto => itensCarrinhoDto.IdPedido == id));
 
         }
-        public ActionResult FinalizadoDetalhes1(string id)
-        {
-            if ((Session["usuarioLogado"] == null) || (Session["senhaLogado"] == null))
-
-            {
-                return RedirectToAction("Login", "Login");
-            }
-
-            return View(itensCarrinhodll.listaItensCarrinhoDetalhes().Find(itensCarrinhoDto => itensCarrinhoDto.IdPedido == id));
-
-        }
-        public ActionResult ListarCategoria()
+        public ActionResult ListarCategoriaHome()
         {
             return View(categoriadll.listaCategoria());
         }
         public ActionResult Checkout(string id)
         {
-            return View(itensCarrinhodll.listaItensCarrinhoDetalhes().Find(itensCarrinhoDto => itensCarrinhoDto.IdPedido == id));
+
+            return View(itensCarrinhodll.listaItensCarrinhoDetalhes().Find(pedidoDto => pedidoDto.IdPedido == id));
         }
 
+        
         public ActionResult Login()
         {
             return View();
@@ -226,7 +209,7 @@ namespace AppLivraria_TsT.Controllers
         {
             return View();
         }
-        
+
         public ActionResult PainelControle()
         {
             if ((Session["usuarioLogado"] == null) || (Session["senhaLogado"] == null))
@@ -234,10 +217,7 @@ namespace AppLivraria_TsT.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-            else
-            {
-                return View();
-            }
+            return View();
         }
 
         public ActionResult About()

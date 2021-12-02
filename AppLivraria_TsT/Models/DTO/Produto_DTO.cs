@@ -41,9 +41,18 @@ namespace AppLivraria_TsT.Models.DTO
         [Display(Name = "Categiria", Description = "Categiria.")]
         public string Categiria { get; set; }
 
+
+        [Display(Name = "Vendas", Description = "Vendas.")]
+        public string TotalVenda { get; set; }
+
+        [Display(Name = "Visualização", Description = "Visualização.")]
+        public int Visualizacao { get; set; }
+
         [Display(Name = "Imagem", Description = "Imagem.")]
       //  [Required(ErrorMessage = "O nome completo é obrigatório.")]
         public string Imagem { get; set; }
+
+        
 
     }
 }

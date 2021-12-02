@@ -1,30 +1,35 @@
-﻿@model AppLivraria_TsT.Models.DTO.ItensCarrinho_DTO
-<main role="main">
-    <br />
-    <br />
-    <section class="container">
-        <div class="row">
-            <aside class="col-md-12">
-                <h3 class="subtitle-doc">
-                    Pedido: #@ViewBag.pedido
-                </h3>
+    @model AppLivraria_TsT.Models.DTO.ItensCarrinho_DTO
+    <main role="main">
+        <br />
+        <br />
+        <section class="container">
+            <div class="row">
+                <aside class="col-md-12">
+                    <h3 class="subtitle-doc">
 
-                <div id="code_simple_card">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Ola: @Session["usuarioNome"] </h5>
-                            <p class="card-text">Seu pedido foi realizado com sucesso </p>
-                            @Html.ActionLink("Detalhes do pedido", "FinalizadoDetalhes1", new { id = Model.IdPedido }, new { @styles = "float-left, color: Blue" })
-                            @*<a href="/Home/FinalizadoDetalhes/@Model.IdPedido" class="btn btn-sm btn-success float-left" style="margin-right: 10px;">Detalhes do pedido</a>*@
+                        Pedido: #@ViewBag.pedido
+
+                        <a href="#" data-html="code_simple_card" class="showcode">[code]</a>
+
+                    </h3>
+
+                    <div id="code_simple_card">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <h5 class="card-title">Ola: @Session["usuarioNome"] </h5>
+                                <p class="card-text">Seu pedido foi realizado com sucesso </p>
+                                @*@Html.ActionLink("Detalhes do pedido", "FinalizadoDetalhes", new { id = Model.IdPedido },new { @styles = "float-left" })*@
+                                <a href="/Pedido/PedidoClienteDetalhes/@ViewBag.pedido" class="btn btn-sm btn-success float-left" style="margin-right: 10px;">Detalhes do pedido</a>
+
+                            </div>
                         </div>
                     </div>
 
-                </div>             
-             </aside>
-        </div>
-    </section>
-
-</main>
+                </aside>
+            </div>                    
+          </section> 
+        </main>
 
 <!-- Bootstrap core JavaScript
           ================================================== -->

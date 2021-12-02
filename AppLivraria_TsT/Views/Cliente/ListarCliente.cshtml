@@ -118,15 +118,13 @@
 <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
 <script>
     $(document).ready(function () {
-        var table = $('#Listacliente').DataTable({
-            lengthChange: false,
-            paging: false,
-            ordering: false,
-            info: false,
+        $('#Listacliente').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+            },
+
         });
 
-        table.buttons().container()
-            .appendTo('#Listacliente_wrapper_wrapper .col-md-6:eq(0)');
     });
 </script>
 

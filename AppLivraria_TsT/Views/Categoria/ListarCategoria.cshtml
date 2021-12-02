@@ -24,7 +24,7 @@
 
     <div class="container">
         <div class="table-responsive">
-            <table id="ListaFuncionario" class="table table-striped table-hover table-sm">
+            <table id="ListaCategoria" class="table table-striped table-hover table-sm">
                 <thead class="thead-dark">
                     <tr>
                         <th>Código</th>
@@ -41,16 +41,8 @@
                             <td>@categoria.Nome</td>                            
 
                             <td colspan="2">
-                                @*<button type="button" class="btn btn-info btn-sm">
-                                    @Html.ActionLink("Detalhes", "DetalhesFuncionario", new { id = funcionario.IdCat }, new { @style = "color:white" })
-                                </button>*@
-                                @*<a class="btn btn-info btn-sm" href="/Funcionario/FuncionariosPorId/@funcionario.IdFunc" role="button">
-                                        <span class="fas fa-info-circle" title="Detalhes" aria-hidden="true"></span>
-                                    </a>*@
-                                @*<a class="btn btn-warning btn-sm" href="/Funcionario/EditarFuncionario/@funcionario.IdFunc" role="button">
-                                        <span class="fas fa-edit" title="Atualizar" aria-hidden="true"></span>
-                                    </a>*@
-                                <button type="button" class="btn btn-warning btn-sm fas fa-edit" style="color:black">
+                               
+                                <button type="button" class="btn btn-warning btn-sm " style="color:black">
                                     @Html.ActionLink("Editar", "EditarCategoria", new { id = categoria.IdCat }, new { @style = "color:white" })
                                 </button>
 
@@ -86,14 +78,22 @@
 <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
 <script>
     $(document).ready(function () {
-        var table = $('#ListaFuncionario').DataTable({
-            lengthChange: false,
-            paging: false,
-            ordering: false,
-            info: false,
+        $('#Listacliente').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+            },
+
         });
 
-        table.buttons().container()
-            .appendTo('#ListaFuncionario_wrapper_wrapper .col-md-6:eq(0)');
+    });
+</script><script>
+    $(document).ready(function () {
+        $('#ListaCategoria').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+            },
+
+        });
+
     });
 </script>

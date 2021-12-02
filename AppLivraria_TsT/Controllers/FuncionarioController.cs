@@ -66,7 +66,7 @@ namespace AppLivraria_TsT.Controllers
         [HttpPost]
         public ActionResult EditarFuncionario(Funcionario_DTO funcionario)
         {
-            dll.alteraFuncionario(funcionario);
+            dll.alteraFuncionario(funcionario); 
             return RedirectToAction(nameof(ListarFuncionario));
         }
         // Excluir Funcionario      

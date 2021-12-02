@@ -39,6 +39,19 @@ namespace AppLivraria_TsT.Models.DLL
             }
         }
         //SELECIONAR LISTA DE Produto
+        public List<Produto_DTO> listaProdutoHome()
+        {
+            try
+            {
+                dal = new Produto_DAO();
+                return dal.selectListProdutoHome();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        //SELECIONAR LISTA DE Produto
         public List<Produto_DTO> listaProduto()
         {
             try
@@ -65,18 +78,19 @@ namespace AppLivraria_TsT.Models.DLL
             }
         }
         //SELECIONAR PRODUTO POR ID
-        public Produto_DTO listaProdutooPorID(int id)
-        {
-            try
-            {
-                dal = new Produto_DAO();
-                return dal.selectProdutoByID(id);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        //public Produto_DTO listaProdutooPorID(int id)
+        //{
+        //    try
+        //    {
+        //        dal = new Produto_DAO();
+        //        return dal.selectProdutoPorIdCategoria(id);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
+
         //UPDATE Produto
         public void alteraProduto(Produto_DTO produto)
         {

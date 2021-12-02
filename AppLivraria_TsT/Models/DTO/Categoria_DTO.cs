@@ -13,6 +13,7 @@ namespace AppLivraria_TsT.Models.DTO
         public int IdCat { get; set; }
 
         public int IdProd { get; set; }
+
         [Display(Name = "Categoria", Description = "Categoria")]
        
         [Required(ErrorMessage = "O Categoria é obrigatório.")]

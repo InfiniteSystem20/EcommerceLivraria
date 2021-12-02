@@ -1,0 +1,80 @@
+﻿@model IEnumerable<AppLivraria_TsT.Models.DTO.Categoria_DTO>
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+
+
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="/"><img src="/images/logo/Logo_Livraria.png" width="60" height="40" class="img-responsive"> LojaVirtual</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-list-ul"></i> Categorias
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="color:white">
+                             
+                            @foreach (var categoria in Model)
+                            {
+                                @*@Html.ActionLink(categoria.Nome, "Index", "Home", new { id = categoria.IdCat }, new { @class = "ropdown-item" })*@
+                                <a class="dropdown-item" href="/Home/ProdutoCategoriaIndex/@categoria.IdCat">@categoria.Nome</a>
+                            }
+
+                        </div>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home/Contato"><i class="far fa-address-book"></i> Contato </a>
+                    </li>
+
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+
+                    <input class="form-control mr-sm-2" type="search" placeholder="Digite uma palavra" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="color:white;">Buscar</button>
+
+                    <li class="nav-item dropdown" style="margin-top: 1px; list-style:none">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <i class="far fa-address-book"></i> Minha conta
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @if (@Session["usuarioNome"] == null)
+                            {
+                                <a class="dropdown-item" href="/Login/Login"><i class="fas fa-user-alt"></i> Login </a>
+                            }
+                            @*<a class="dropdown-item" href="/Home/PainelControle"<i class="fas fa-list-ul"></i> Minha conta‎</a>*@
+                            <a class="dropdown-item" href="/Home/PainelControle"><i class="fas fa-gift"></i> Meus pedidos‎</a>
+                            @if (@Session["usuarioNome"] != null)
+                            {
+                                <a class="dropdown-item" href="/Login/Logout"><i class="fas fa-power-off sizet"></i> Sair‎</a>
+                            }
+                            </div>
+                    </li>
+                    <a class="nav-link" href="/home/Carrinho"><i class="fas fa-shopping-cart"></i> Carrinho</a>
+                    <a class="nav-link" href="#"> <i class="fas fa-user"></i> Bem vindo! @Session["usuarioNome"]</a>
+                    @*<span class="glyphicon glyphicon-log-in">  @Html.ActionLink("Sair", "Logout", "Login")</span>*@
+
+                </form>
+            </div>
+        </nav>
+    </header>   
+    
+</body>
+</html>

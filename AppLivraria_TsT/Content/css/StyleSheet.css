@@ -10,9 +10,8 @@
 a {
     color: #FFFFFF;
     text-decoration: none;
-    background-color: #354fb100;
+    background-color: transparent;
 }
-
 .dropdown-menu show {
     background-color: #1E90FF;
 }

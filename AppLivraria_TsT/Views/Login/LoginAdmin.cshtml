@@ -1,0 +1,76 @@
+﻿
+@model AppLivraria_TsT.Models.DTO.Funcionario_DTO
+
+@{ Layout = null; 
+    }
+@using (Html.BeginForm("LoginAdmin", "Login", FormMethod.Post))
+{
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <title>Login Livraria BG</title>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+
+        @*Bootstrap core CSS*@
+        <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css" rel="stylesheet" />
+
+        @*Custom styles for this template*@
+        <link href="~/Content/styleLogin.css" rel="stylesheet" />
+
+    </head>
+    <body>
+
+        <div class="container" id="container">
+            <div class="form-container">
+                <form action="#">
+                    @*FALTA AUSTAR OS BOTÔES*@
+                    <span class="danger">@ViewBag.msgLogar</span>
+                    
+                    <img class="imagem" src="~/images/logo/Logo_Livraria.png"/>
+                    <div>
+                        <!--@Html.LabelFor(m => m.Email)--> @*Criação do titulo do usuário*@
+
+                        @Html.TextBoxFor(m => m.Email, new { placeholder = "Email", @class = "form-input" }) @*Caixa de textto do usuario*@
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+
+                        @Html.PasswordFor(m => m.Senha, new { placeholder = "Senha", @class = "form-input" })
+                        @Html.ValidationMessageFor(m => m.Senha, "", new { @class = "text-danger" })
+
+
+                        <input class="corbtn btn btn-sm" type="submit" name="btnEnviar" value="ENTRAR" role="button" /><br />
+                        <a href="#">Esqueci minha senha</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        @* Bootstrap core JavaScript
+            ==================================================
+            Placed at the end of the document so the pages load faster*@
+        <script src="/webjars/jquery/jquery.min.js"></script>
+        <script src="/webjars/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+$(function () {
+        $('[data-toggle="popover"]').popover();
+        });
+
+        $(document).ready(function () {
+        $(".navbar-toggle").click(function () {
+        $(".sidebar").toggleClass("sidebar-open");
+        })
+        });</script>
+
+    </body>
+</html>
+@section Scripts{
+    @Scripts.Render("~/Bundles/jdqueryval")}}
+
