@@ -15,16 +15,14 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
           crossorigin="anonymous">
 
+
     <!-- Custom styles for this template -->
     <link href="~/Content/dash/style.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
 
-    @*<link rel="stylesheet" href="/Content/resources/lib/bootstrap-4.2.1-dist/css/bootstrap.min.css">
-
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
-              crossorigin="anonymous">*@
+    
 </head>
 <body>
 
@@ -75,7 +73,7 @@
                         <a class="nav-link" href="/pedido/ListarTodospedidoDetalhes">
                             <i class="fas fa-shopping-cart"></i> <span>Realizar Venda</span>
                         </a>
-                        
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/Vendas/Consultar">
@@ -117,7 +115,7 @@
 
                 <ul class="nav nav-pills">
                     <li class="nav-item"><span class="nav-link active">CATEGORIAS</span></li>
-                   @*<li class="nav-item">
+                    @*<li class="nav-item">
                         <a class="nav-link" href="/Produtos/Cadastrar">
                             <i class="fas fa-plus-circle"></i> <span>Cadastrar</span>
                         </a>
@@ -128,40 +126,23 @@
                         </a>
                     </li>
                 </ul>
-
-
-                <ul class="nav nav-pills">
-                    <li class="nav-item"><span class="nav-link active">RELATÓRIOS</span></li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Relatorios/Vendas">
-                            <i class="far fa-file-alt"></i> <span>Vendas</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Relatorios/Clientes">
-                            <i class="far fa-file-alt"></i> <span>Clientes</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Relatorios/ProdutoEstoque">
-                            <i class="far fa-file-alt"></i> <span>Produto / Estoque</span>
-                        </a>
-                    </li>
-                </ul>
             </nav>
         </aside>
 
 
         <!-- Bootstrap core JavaScript
     ================================================== -->
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
         <script src="~/Scripts/jquery.js"></script>
         <script src="~/Scripts/jquery-mask.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="~/Scripts/js-bootstrap.js"></script>
-        
+
         <script type="text/javascript">
+
             $(function () {
                 $('[data-toggle="popover"]').popover();
             });
@@ -173,7 +154,7 @@
             });
 
         </script>
-        
+
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)
@@ -182,6 +163,7 @@
         <script src="~/Scripts/js-bootstrap.js"></script>
 
         @RenderBody()
+
 
 
 </body>

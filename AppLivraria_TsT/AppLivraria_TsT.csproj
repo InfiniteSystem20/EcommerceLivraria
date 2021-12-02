@@ -566,6 +566,8 @@
     <Content Include="Content\resources\lib\holder\holder.min.js" />
     <Content Include="Content\resources\lib\jquery3.3.1\jquery-3.3.1.min.js" />
     <Content Include="Content\resources\lib\popper1.14.6\popper.min.js" />
+    <Content Include="Content\SemAcesso.css" />
+    <Content Include="Content\styleLogin.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -840,6 +842,8 @@
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\Endereco\ListarClienteEnderecoPorID.cshtml" />
     <Content Include="Views\Pedido\ListarTodosPedidos.cshtml" />
+    <Content Include="Views\Login\LoginAdmin.cshtml" />
+    <Content Include="Views\Dashbord\semAcesso.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

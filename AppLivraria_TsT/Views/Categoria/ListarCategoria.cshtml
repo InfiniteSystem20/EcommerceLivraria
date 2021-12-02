@@ -41,16 +41,8 @@
                             <td>@categoria.Nome</td>                            
 
                             <td colspan="2">
-                                @*<button type="button" class="btn btn-info btn-sm">
-                                    @Html.ActionLink("Detalhes", "DetalhesFuncionario", new { id = funcionario.IdCat }, new { @style = "color:white" })
-                                </button>*@
-                                @*<a class="btn btn-info btn-sm" href="/Funcionario/FuncionariosPorId/@funcionario.IdFunc" role="button">
-                                        <span class="fas fa-info-circle" title="Detalhes" aria-hidden="true"></span>
-                                    </a>*@
-                                @*<a class="btn btn-warning btn-sm" href="/Funcionario/EditarFuncionario/@categoria.IdCat" role="button">
-                                        <span class="fas fa-edit" title="Atualizar" aria-hidden="true"></span>
-                                    </a>*@
-                                <button type="button" class="btn btn-warning btn-sm fas fa-edit" style="color:black">
+                               
+                                <button type="button" class="btn btn-warning btn-sm " style="color:black">
                                     @Html.ActionLink("Editar", "EditarCategoria", new { id = categoria.IdCat }, new { @style = "color:white" })
                                 </button>
 
