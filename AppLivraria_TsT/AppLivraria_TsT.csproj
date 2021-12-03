@@ -843,6 +843,7 @@
     <Content Include="Views\Pedido\ListarTodosPedidos.cshtml" />
     <Content Include="Views\Login\LoginAdmin.cshtml" />
     <Content Include="Views\Dashbord\semAcesso.cshtml" />
+    <Content Include="Views\Dashbord\semAcessoDash.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

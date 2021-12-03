@@ -34,5 +34,11 @@ namespace AppLivraria_TsT.Controllers
             ViewBag.message = "Você não tem acesso a essa página";
             return View();
         }
+        public ActionResult semAcessoDash()
+        {
+            Response.Write("<script>alert('Você não tem acesso a essa página')</script>");
+            ViewBag.message = "Você não tem acesso a essa página";
+            return View();
+        }
     }
 }

@@ -35,6 +35,11 @@ namespace AppLivraria_TsT.Controllers
         //Carrega os produtos  na Index
         public ActionResult Index()
         {
+                if (Session["tipologado2"] != null)
+                {
+                    ViewBag.message = "Você não tem acesso a essa página";
+                    return RedirectToAction("semAcessoDash", "DashBord");
+                }   
             //carregarCategoria();
             return View(dll.listaProdutoHome());
         }
