@@ -87,7 +87,7 @@ namespace AppLivraria_TsT.Models.DAO
                                 cliente.Nascimento = dr["Nascimento"].ToString();
                                 cliente.Sexo = dr["Sexo"].ToString();
                                 cliente.Telefone = dr["Telefone"].ToString();
-                                cliente.Celular = dr["Celular"].ToString();                                
+                                cliente.Celular = dr["Celular"].ToString();
                                 cliente.Email = dr["Email"].ToString();
                                 cliente.Senha = dr["Senha"].ToString();
                                 cliente.Tipo = dr["Tipo"].ToString();
@@ -210,9 +210,9 @@ namespace AppLivraria_TsT.Models.DAO
             int Tipo = 1;
             string retorno;
             try
-            {   
+            {
                 String sql = "CALL proc_CadCliente(@nome, @Nascimento, @Sexo, @CPF, @Telefone, @Celular, @Email, @Senha, @Tipo );SELECT LAST_INSERT_ID();";
-                
+
                 con = new MySqlConnection(_conexaoMySQL);
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@Nome", cliente.Nome);
@@ -245,6 +245,15 @@ namespace AppLivraria_TsT.Models.DAO
 
                 con.Open();
                 cmd1.ExecuteNonQuery();
+
+                String sqlLog = "CALL proc_CadLoginCli(@IdCli, @Tipo);";
+                con = new MySqlConnection(_conexaoMySQL);
+                MySqlCommand cmd2 = new MySqlCommand(sqlLog, con);
+                cmd2.Parameters.AddWithValue("@IdCli", retorno);
+                cmd2.Parameters.AddWithValue("@Tipo", Tipo);
+                con.Open();
+                cmd2.ExecuteNonQuery();
+
             }
             catch (MySqlException ex)
             {
@@ -277,7 +286,7 @@ namespace AppLivraria_TsT.Models.DAO
                 cmd.Parameters.AddWithValue("@Sexo", cliente.Sexo);
                 cmd.Parameters.AddWithValue("@Telefone", cliente.Telefone);
                 cmd.Parameters.AddWithValue("@Celular", cliente.Celular);
-                cmd.Parameters.AddWithValue("@Nascimento", cliente.Nascimento);                
+                cmd.Parameters.AddWithValue("@Nascimento", cliente.Nascimento);
                 cmd.Parameters.AddWithValue("@Email", cliente.Email);
                 cmd.Parameters.AddWithValue("@Senha", cliente.Senha);
                 cmd.Parameters.AddWithValue("@IdCli", cliente.IdCli);

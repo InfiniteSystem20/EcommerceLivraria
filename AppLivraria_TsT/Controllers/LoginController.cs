@@ -122,7 +122,7 @@ namespace AppLivraria_TsT.Controllers
                 else
                 {
                     Session["tipoLogado1"] = verLogin.Tipo.ToString();//=1
-                    return RedirectToAction("SemAcesso", "Dashbord");
+                    //return RedirectToAction("SemAcesso", "Dashbord");
                 }
                 return RedirectToAction("Index", "Dashbord");
             }

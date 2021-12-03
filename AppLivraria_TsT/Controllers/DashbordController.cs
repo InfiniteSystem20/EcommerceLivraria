@@ -20,10 +20,11 @@ namespace AppLivraria_TsT.Controllers
             {
                 if (Session["tipologado2"] == null)
                 {
+                    ViewBag.message = "Você não tem acesso a essa página";
                     return RedirectToAction("semAcesso", "DashBord");
                     
                 }
-                ViewBag.message = "Você não tem acesso a essa página";
+                
             }
             return View();
         }
@@ -31,7 +32,7 @@ namespace AppLivraria_TsT.Controllers
         {
             Response.Write("<script>alert('Você não tem acesso a essa página')</script>");
             ViewBag.message = "Você não tem acesso a essa página";
-            return RedirectToAction("LoginAdmin", "Login");
+            return View();
         }
     }
 }

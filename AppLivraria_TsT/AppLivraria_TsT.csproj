@@ -808,7 +808,6 @@
     <Content Include="Views\Cliente\DetalhesClientePainel.cshtml" />
     <Content Include="Views\Cliente\EditarClientePainel.cshtml" />
     <None Include="Views\Dashbord\Layout\_Layout.cshtml" />
-    <Content Include="Views\Dashbord\Home\Index.cshtml" />
     <Content Include="Views\Funcionario\CadastroFuncionario.cshtml" />
     <Content Include="Views\Funcionario\ListarFuncionario.cshtml" />
     <Content Include="Views\Funcionario\EditarFuncionario.cshtml" />

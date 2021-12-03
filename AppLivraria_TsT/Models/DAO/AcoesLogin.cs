@@ -10,64 +10,14 @@ namespace AppLivraria_TsT.Models.DAO
     public class AcoesLogin
     {
         Conexao con = new Conexao();
-
-        //public void TestarUsuario(Cliente_DTO user)
-        //{
-            
-        //    /*MySqlCommand cmd = new MySqlCommand("select * from tbCliente where Email = @Email and Senha = @Senha ", con.MyConectarBD());*/
-        //    MySqlCommand cmd = new MySqlCommand(" SELECT * FROM tblogin as t1 " +
-        //                                         " LEFT JOIN tbCliente as t3 on t1.IdCli = t3.IdCli " +
-        //                                         " LEFT JOIN tbfuncionario as t2 on t1.IdFunc = t2.IdFunc " +
-        //                                         " where t3.Email = @Email and t3.Senha = @Senha or " +
-        //                                         " t2.Email = @Email and t2.Senha = @Senha ", con.MyConectarBD());
-
-
-
-
-        //    cmd.Parameters.Add("@Email", MySqlDbType.VarChar).Value = user.Email;
-        //    cmd.Parameters.Add("@Senha", MySqlDbType.VarChar).Value = user.Senha;
-
-        //    MySqlDataReader leitor;
-
-        //    leitor = cmd.ExecuteReader();
-
-        //    if (leitor.HasRows)
-        //    {
-        //        while (leitor.Read())
-        //        {
-        //            user.Nome = Convert.ToString(leitor["Nome"]);
-        //            user.Email = Convert.ToString(leitor["Email"]);
-        //            user.Senha = Convert.ToString(leitor["Senha"]);
-        //            user.IdCli = Convert.ToInt32(leitor["IdCli"]);
-        //            user.Tipo = Convert.ToString(leitor["Tipo"]);
-        //        }
-        //    }
-
-        //    else
-        //    {
-        //        user.Nome = null;
-        //        user.Email = null;
-        //        user.Senha = null;
-        //        user.Tipo = null;
-        //    }
-        //    con.MyDesConectarBD();
-        //}
         
         public void TestarUsuarioGeral(Login user)
-        {          
+        {
 
-            /*MySqlCommand cmd = new MySqlCommand("select * from tbCliente where Email = @Email and Senha = @Senha ", con.MyConectarBD());*/
-            MySqlCommand cmd = new MySqlCommand(" SELECT t1.IdCli, t1.IdFunc, t3.Nome as NomeCli, t2.Nome as NomeFunc, t3.Email as EmailCli," +
-                                                 " t2.Email as EmailFunc, t2.Senha as SenhaFunc, t3.Senha as SenhaCli, t1.Tipo " +
-                                                 " FROM tblogin as t1 " +
-                                                 " LEFT JOIN tbCliente as t3 on t1.IdCli = t3.IdCli " +
-                                                 " LEFT JOIN tbfuncionario as t2 on t1.IdFunc = t2.IdFunc " +
-                                                 " where t3.Email = @Email and t3.Senha = @Senha or " +
-                                                 " t2.Email = @Email and t2.Senha = @Senha ", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("Call proc_SelecionarLogin(@Email, @Senha) ", con.MyConectarBD());            
 
             cmd.Parameters.Add("@Email", MySqlDbType.VarChar).Value = user.Email;
             cmd.Parameters.Add("@Senha", MySqlDbType.VarChar).Value = user.Senha;
-            
 
             MySqlDataReader leitor;
 
@@ -79,9 +29,7 @@ namespace AppLivraria_TsT.Models.DAO
                 {
                     user.Nome  = Convert.ToString(leitor["NomeCli"]);
                     user.Email = Convert.ToString(leitor["EmailCli"]);
-                    user.Senha = Convert.ToString(leitor["SenhaCli"]);
-
-                    
+                    user.Senha = Convert.ToString(leitor["SenhaCli"]);                    
                     user.Tipo = Convert.ToString(leitor["Tipo"]);
                    
                 }
@@ -96,7 +44,6 @@ namespace AppLivraria_TsT.Models.DAO
                     user.Senha = Convert.ToString(leitor["SenhaFunc"]);
                 }
             }
-
             else
             {
                 user.Nome = null;

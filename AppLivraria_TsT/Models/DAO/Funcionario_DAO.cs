@@ -13,7 +13,7 @@ namespace AppLivraria_TsT.Models.DAO
     {
         String _conexaoMySQL = null;
         MySqlConnection con = null;
-        
+
         public Funcionario_DAO()
         {
             _conexaoMySQL = ConfigurationManager.ConnectionStrings["conexaoMySQL"].ToString();
@@ -22,8 +22,8 @@ namespace AppLivraria_TsT.Models.DAO
         public void inserirFuncionaario(Funcionario_DTO funcionario)
         {
             int Tipo = 2;
-            string retorno;  
-            try 
+            string retorno;
+            try
             {
                 String sql = "CALL proc_CadFuncionario(@nome,@Nascimento,@Sexo,@CPF,@Telefone,@Celular,@Cargo, @Email,@Senha,@Tipo);SELECT LAST_INSERT_ID();";
 
@@ -41,7 +41,7 @@ namespace AppLivraria_TsT.Models.DAO
                 cmd.Parameters.AddWithValue("@Tipo", Tipo);
 
                 con.Open();
-                
+
                 retorno = Convert.ToString(cmd.ExecuteScalar());
 
                 String sqlEnd = "CALL proc_CadEnderecoFunc(@IdFunc, @TipoEndereco, @Logradouro, @Numero, @Complemento, @Bairro, @CEP, @Cidade, @Estado, @UF);";
@@ -58,11 +58,17 @@ namespace AppLivraria_TsT.Models.DAO
                 cmd1.Parameters.AddWithValue("@Cidade", funcionario.cidade);
                 cmd1.Parameters.AddWithValue("@Estado", funcionario.estado);
                 cmd1.Parameters.AddWithValue("@UF", funcionario.UF);
-                
-
 
                 con.Open();
                 cmd1.ExecuteNonQuery();
+
+                String sqlLog = "Call proc_CadLoginFunc(@IdFunc, @Tipo);";
+                con = new MySqlConnection(_conexaoMySQL);
+                MySqlCommand cmd2 = new MySqlCommand(sqlLog, con);
+                cmd2.Parameters.AddWithValue("@IdFunc", Convert.ToInt32(retorno));
+                cmd2.Parameters.AddWithValue("@Tipo", Tipo);
+                con.Open();
+                cmd2.ExecuteNonQuery();
             }
 
             catch (MySqlException ex)
@@ -100,7 +106,7 @@ namespace AppLivraria_TsT.Models.DAO
                     funcionario.Nome = dr["Nome"].ToString();
                     funcionario.CPF = dr["CPF"].ToString();
                     funcionario.Nascimento = dr["Nascimento"].ToString();
-                    funcionario.Sexo = dr["Sexo"].ToString();                   
+                    funcionario.Sexo = dr["Sexo"].ToString();
                     funcionario.Telefone = dr["Telefone"].ToString();
                     funcionario.Celular = dr["CEP"].ToString();
                     funcionario.Cargo = dr["Cargo"].ToString();
@@ -138,7 +144,7 @@ namespace AppLivraria_TsT.Models.DAO
                         {
                             while (dr.Read())
                             {
-                                Funcionario_DTO funcionario = new Funcionario_DTO();                             
+                                Funcionario_DTO funcionario = new Funcionario_DTO();
 
                                 funcionario.IdFunc = Convert.ToInt32(dr["IdFunc"]);
                                 funcionario.Nome = dr["Nome"].ToString();
@@ -238,20 +244,20 @@ namespace AppLivraria_TsT.Models.DAO
         public void updateFuncionario(Funcionario_DTO funcionario)
         {
             try
-            {                
+            {
                 String sql = " CALL proc_UpdateFuncionario(@IdFunc, @Nome, @CPF, @Sexo, @Telefone, @Celular,@Nascimento,  @Cargo, " +
                              " @Email, @Senha); ";
 
                 //Alter Funcionario
                 con = new MySqlConnection(_conexaoMySQL);
                 MySqlCommand cmd = new MySqlCommand(sql, con);
-                
+
                 cmd.Parameters.AddWithValue("@Nome", funcionario.Nome);
                 cmd.Parameters.AddWithValue("@CPF", funcionario.CPF);
                 cmd.Parameters.AddWithValue("@Sexo", funcionario.Sexo);
                 cmd.Parameters.AddWithValue("@Telefone", funcionario.Telefone);
                 cmd.Parameters.AddWithValue("@Celular", funcionario.Celular);
-                cmd.Parameters.AddWithValue("@Nascimento", funcionario.Nascimento); 
+                cmd.Parameters.AddWithValue("@Nascimento", funcionario.Nascimento);
                 cmd.Parameters.AddWithValue("@Cargo", funcionario.Cargo);
                 cmd.Parameters.AddWithValue("@Email", funcionario.Email);
                 cmd.Parameters.AddWithValue("@Senha", funcionario.Senha);
@@ -276,18 +282,10 @@ namespace AppLivraria_TsT.Models.DAO
             }
         }
         // DELETAR FUNCIONARIO
-        public void deleteFuncionario(int id) 
+        public void deleteFuncionario(int id)
         {
             try
             {
-                String sql1 = "CALL  proc_DeleteEndereco(@IdFunc); ";
-                con = new MySqlConnection(_conexaoMySQL);
-                MySqlCommand cmd1 = new MySqlCommand(sql1, con);
-                cmd1.Parameters.AddWithValue("@IdFunc", id);
-                con.Open();
-                cmd1.ExecuteNonQuery();
-
-
                 String sql = "CALL  proc_DeleteEnderecoFunc(@IdFunc); ";
                 con = new MySqlConnection(_conexaoMySQL);
                 MySqlCommand cmd = new MySqlCommand(sql, con);
@@ -295,7 +293,12 @@ namespace AppLivraria_TsT.Models.DAO
                 con.Open();
                 cmd.ExecuteNonQuery();
 
-                
+                String sql1 = "CALL  proc_DeleteFuncionario(@IdFunc); ";
+                con = new MySqlConnection(_conexaoMySQL);
+                MySqlCommand cmd1 = new MySqlCommand(sql1, con);
+                cmd1.Parameters.AddWithValue("@IdFunc", id);
+                con.Open();
+                cmd1.ExecuteNonQuery();
 
             }
             catch (MySqlException ex)
