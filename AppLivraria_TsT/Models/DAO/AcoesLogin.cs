@@ -43,6 +43,13 @@ namespace AppLivraria_TsT.Models.DAO
                     user.Email = Convert.ToString(leitor["EmailFunc"]);
                     user.Senha = Convert.ToString(leitor["SenhaFunc"]);
                 }
+                if (user.Tipo == "3")
+                {
+                    user.IdFunc = Convert.ToInt32(leitor["IdFunc"]);
+                    user.Nome = Convert.ToString(leitor["NomeFunc"]);
+                    user.Email = Convert.ToString(leitor["EmailFunc"]);
+                    user.Senha = Convert.ToString(leitor["SenhaFunc"]);
+                }
             }
             else
             {

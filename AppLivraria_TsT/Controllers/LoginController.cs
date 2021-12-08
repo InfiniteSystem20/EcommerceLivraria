@@ -119,10 +119,18 @@ namespace AppLivraria_TsT.Controllers
                     Session["tipoLogado2"] = verLogin.Tipo.ToString(); //=2;
                     
                 }
+                if (verLogin.Tipo == "3")
+                {
+                    Session["tipoLogado3"] = verLogin.Tipo.ToString(); //=2;
+
+                }
                 else
                 {
-                    Session["tipoLogado1"] = verLogin.Tipo.ToString();//=1
-                    //return RedirectToAction("SemAcesso", "Dashbord");
+                    if (verLogin.Tipo == "1")
+                    {
+                        Session["tipoLogado1"] = verLogin.Tipo.ToString();//=1
+                       return RedirectToAction("SemAcesso", "Dashbord");
+                    }
                 }
                 return RedirectToAction("Index", "Dashbord");
             }

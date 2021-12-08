@@ -18,13 +18,13 @@ namespace AppLivraria_TsT.Controllers
             }
             else
             {
-                if (Session["tipologado2"] == null)
+                if (Session["tipologado1"] != null)
                 {
                     ViewBag.message = "Você não tem acesso a essa página";
                     return RedirectToAction("semAcesso", "DashBord");
-                    
+
                 }
-                
+
             }
             return View();
         }

@@ -21,6 +21,7 @@ namespace AppLivraria_TsT.Models.DAO
         //INSERIR FUNCIONARIO
         public void inserirFuncionaario(Funcionario_DTO funcionario)
         {
+            int Gerente = 3;
             int Tipo = 2;
             string retorno;
             try
@@ -35,10 +36,16 @@ namespace AppLivraria_TsT.Models.DAO
                 cmd.Parameters.AddWithValue("@CPF", funcionario.CPF);
                 cmd.Parameters.AddWithValue("@Telefone", funcionario.Telefone);
                 cmd.Parameters.AddWithValue("@Celular", funcionario.Celular);
+                
                 cmd.Parameters.AddWithValue("@Cargo", funcionario.Cargo);
                 cmd.Parameters.AddWithValue("@Email", funcionario.Email);
                 cmd.Parameters.AddWithValue("@Senha", funcionario.Senha);
-                cmd.Parameters.AddWithValue("@Tipo", Tipo);
+                
+                if (funcionario.Cargo == "Gerente")
+                {
+                    Tipo = Gerente;
+                }
+                    cmd.Parameters.AddWithValue("@Tipo", Tipo);
 
                 con.Open();
 

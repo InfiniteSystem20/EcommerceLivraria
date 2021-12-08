@@ -11,7 +11,7 @@ using System.Web.Mvc;
 namespace AppLivraria_TsT.Controllers
 {
     public class HomeController : Controller
-    {       
+    {
         //Classe de produtos
         Produto_DLL dll = new Produto_DLL();
         Produto_DTO produtoDto = new Produto_DTO();
@@ -30,36 +30,27 @@ namespace AppLivraria_TsT.Controllers
         Categoria_DTO categoriaDTO = new Categoria_DTO();
         Categoria_DAO categoria_DAO = new Categoria_DAO();
 
-       
+
 
         //Carrega os produtos  na Index
         public ActionResult Index()
         {
-                if (Session["tipologado2"] != null)
-                {
-                    ViewBag.message = "Você não tem acesso a essa página";
-                    return RedirectToAction("semAcessoDash", "DashBord");
-                }   
-            //carregarCategoria();
+
             return View(dll.listaProdutoHome());
         }
-        //Carrega os produtos  na categoria Index
+        //CATEGORIA NA INDEX
         public ActionResult CategoriaIndex()
         {
-            //carregarCategoria();
-
-            //produtoDto.IdCat = Request["cat"];
-            //categoriadll.listaCategoria();  
             return View(categoria_DAO.selectListCategoria());
 
-            //return View(dll.listaProduto());
         }
+        //Produto na Categoria 
         public ActionResult ProdutoCategoriaIndex(int id)
-        {           
-            return View(produto_DAO.selectProdutoPorIdCategoria(id));     
-            
+        {
+            return View(produto_DAO.selectProdutoPorIdCategoria(id));
+
         }
-        
+
         // Detalhes do Produto
         public ActionResult detalhe(string id)
         {
@@ -75,7 +66,7 @@ namespace AppLivraria_TsT.Controllers
             codigo = id.ToString();
 
             Produto_DTO prod = new Produto_DTO();
-           
+
 
             if (produto != null)
             {
@@ -86,7 +77,7 @@ namespace AppLivraria_TsT.Controllers
                 itemPedido.Produto = produto[0].NomeProd;
                 itemPedido.Imagem = imagem.ToString();
                 itemPedido.Qtd = 1;
-                
+
                 itemPedido.valorUnit = pre;
 
                 List<ItensCarrinho_DTO> x = carrinho.ItensPedido.FindAll(l => l.Produto == itemPedido.Produto);
@@ -132,14 +123,19 @@ namespace AppLivraria_TsT.Controllers
             Session["Carrinho"] = carrinho;
             return RedirectToAction(nameof(Carrinho));
         }
-      
+
         public ActionResult SalvarCarrinho(Pedido_DTO x)
         {
-            
+
             if ((Session["usuarioLogado"] == null) || (Session["senhaLogado"] == null))
 
             {
                 return RedirectToAction("Login", "Login");
+            }
+            if (Session["tipologado1"] == null)
+            {
+                ViewBag.message = "Você não tem acesso a essa página";
+                return RedirectToAction("semAcessoDash", "DashBord");
             }
             else
             {
@@ -155,7 +151,7 @@ namespace AppLivraria_TsT.Controllers
 
                 pedidodll.novoPedido(md);
 
-                
+
                 pedido_DAO.buscaIdVenda(x);
 
                 for (int i = 0; i < carrinho.ItensPedido.Count; i++)
@@ -172,7 +168,7 @@ namespace AppLivraria_TsT.Controllers
                 carrinho.ValorTotal = 0;
                 ViewBag.pedido = x.IdPedido;
                 carrinho.ItensPedido.Clear();
-                
+
                 return RedirectToAction(nameof(Finalizado));
             }
         }
@@ -181,7 +177,7 @@ namespace AppLivraria_TsT.Controllers
             pedido_DAO.buscaIdVenda(x);
             pedidoDto.IdPedido = x.IdPedido;
             ViewBag.pedido = x.IdPedido;
-            return View(itensCarrinhodll.listaItensCarrinhoDetalhes().Find(pedidoDto => pedidoDto.IdPedido == x.IdPedido));         
+            return View(itensCarrinhodll.listaItensCarrinhoDetalhes().Find(pedidoDto => pedidoDto.IdPedido == x.IdPedido));
         }
         public ActionResult FinalizadoDetalhes(string id)
         {
@@ -189,7 +185,7 @@ namespace AppLivraria_TsT.Controllers
 
             {
                 return RedirectToAction("Login", "Login");
-            }            
+            }
 
             return View(itensCarrinhodll.listaItensCarrinhoDetalhes().Find(itensCarrinhoDto => itensCarrinhoDto.IdPedido == id));
 
@@ -204,7 +200,7 @@ namespace AppLivraria_TsT.Controllers
             return View(itensCarrinhodll.listaItensCarrinhoDetalhes().Find(pedidoDto => pedidoDto.IdPedido == id));
         }
 
-        
+
         public ActionResult Login()
         {
             return View();
@@ -217,10 +213,16 @@ namespace AppLivraria_TsT.Controllers
 
         public ActionResult PainelControle()
         {
+
             if ((Session["usuarioLogado"] == null) || (Session["senhaLogado"] == null))
 
             {
                 return RedirectToAction("Login", "Login");
+            }
+            if (Session["tipologado1"] == null)
+            {
+                ViewBag.message = "Você não tem acesso a essa página";
+                return RedirectToAction("semAcessoDash", "DashBord");
             }
             return View();
         }
