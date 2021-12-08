@@ -97,6 +97,52 @@ namespace AppLivraria_TsT.Models.DAO
                 throw new Exception("Erro na aplicação ao Listar Produto" + ex.Message);
             }
         }
+        // Selecionar Lista Pedido
+        public List<Pedido_DTO> ListarPedidoDetalhes()
+        {
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(_conexaoMySQL))
+                {
+                    using (MySqlCommand command = new MySqlCommand("CALL proc_SelecionarPedidoDetalhes( )", conn))
+                    {
+                        conn.Open();
+                        List<Pedido_DTO> listaPedido = new List<Pedido_DTO>();
+                        using (MySqlDataReader dr = command.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                Pedido_DTO pedido = new Pedido_DTO();
+
+                                pedido.IdPedido = dr["IdPedido"].ToString();
+                                pedido.IdCli = dr["IdCli"].ToString();
+                                pedido.DtPedido = dr["DtPedido"].ToString();
+                                pedido.HoraPedido = dr["HoraPedido"].ToString();
+                                pedido.ValorTotal = Convert.ToDecimal(dr["ValorTotal"].ToString().Replace(".", ","));
+                                pedido.StatusPedido = dr["StatusPedido"].ToString();
+                                pedido.Nome = dr["Nome"].ToString();
+                                pedido.Email = dr["Email"].ToString();
+                                pedido.CPF = dr["CPF"].ToString();
+
+                                listaPedido.Add(pedido);
+                            }
+                        }
+                        return listaPedido;
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+
+                throw new Exception("Erro no banco ao Listar Produto" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro na aplicação ao Listar Produto" + ex.Message);
+            }
+        }
 
 
         //selecionar lista de Pedido
@@ -307,7 +353,7 @@ namespace AppLivraria_TsT.Models.DAO
                 throw new Exception("Erro na aplicação ao Listar Produto" + ex.Message);
             }
         }
-        // UPDATE PEDIDO CANCELAAR
+        // UPDATE PEDIDO FATURAR
         public void updatePedidoFaturar(string id)
         {
             string StatusPedido = "Pago";
@@ -377,7 +423,7 @@ namespace AppLivraria_TsT.Models.DAO
                 }
             }
 
-        // UPDATE PEDIDO CANCELAAR
+        // UPDATE PEDIDO COMPLETAR
         public void updatePedidoCompletar(string id)
         {
             string StatusPedido = "Completo";

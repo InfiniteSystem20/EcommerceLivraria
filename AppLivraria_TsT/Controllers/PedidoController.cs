@@ -71,7 +71,7 @@ namespace AppLivraria_TsT.Controllers
             }
         }
 
-        public ActionResult ListarTodospedidoDetalhes()
+        public ActionResult ListarTodospedidoDetalhes(string id)
         {
             if ((Session["usuarioLogado"] == null) || (Session["senhaLogado"] == null))
 
@@ -80,7 +80,19 @@ namespace AppLivraria_TsT.Controllers
             }
             else
             {
-                return View(pedido_DAO.selectListPedidoDetalhes());
+                return View(pedido_DAO.selectListPedidoPorIdCliDetalhes(id));
+            }
+        }
+        public ActionResult PedidoDetalhes(string id)
+        {
+            if ((Session["usuarioLogado"] == null) || (Session["senhaLogado"] == null))
+
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                return View(pedido_DAO.ListarPedidoDetalhes().Find(pedido_DTO => pedido_DTO.IdPedido == id));
             }
         }
     }
