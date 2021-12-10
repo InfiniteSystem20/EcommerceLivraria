@@ -268,7 +268,6 @@ C:\LivariaBg_Infinite\EcommerceLivraria\AppLivraria_TsT\obj\Debug\AppLivraria_Ts
 C:\LivariaBg_Infinite\EcommerceLivraria\AppLivraria_TsT\obj\Debug\AppLivraria_TsT.csproj.CopyComplete
 C:\LivariaBg_Infinite\EcommerceLivraria\AppLivraria_TsT\obj\Debug\AppLivraria_TsT.dll
 C:\LivariaBg_Infinite\EcommerceLivraria\AppLivraria_TsT\obj\Debug\AppLivraria_TsT.pdb
-C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\obj\Debug\AppLivraria_TsT.csproj.CoreCompileInputs.cache
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\AppLivraria_TsT.dll.config
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\AppLivraria_TsT.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\AppLivraria_TsT.pdb
@@ -372,7 +371,8 @@ C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\pt-br\System.Web.WebPages.resources.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\pt-br\System.Web.WebPages.Deployment.resources.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\bin\pt-br\System.Web.WebPages.Razor.resources.dll
+C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\obj\Debug\AppLivraria_TsT.csprojAssemblyReference.cache
+C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\obj\Debug\AppLivraria_TsT.csproj.CoreCompileInputs.cache
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\obj\Debug\AppLivraria_TsT.csproj.CopyComplete
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\obj\Debug\AppLivraria_TsT.dll
 C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\obj\Debug\AppLivraria_TsT.pdb
-C:\Mega\PROJETO_ASP.NET\3@_M_Livraria_Ecom_Git\EcommerceLivraria\AppLivraria_TsT\obj\Debug\AppLivraria_TsT.csprojAssemblyReference.cache

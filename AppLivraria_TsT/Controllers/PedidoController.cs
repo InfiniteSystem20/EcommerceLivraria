@@ -3,9 +3,12 @@ using AppLivraria_TsT.Models.DLL;
 using AppLivraria_TsT.Models.DTO;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace AppLivraria_TsT.Controllers
 {
@@ -21,10 +24,18 @@ namespace AppLivraria_TsT.Controllers
         {
             return View();
         }
-
+        public ActionResult ListarTodosPedidosRelatorio()
+        {
+            return View(pedido_DLL.listaPedido());
+        }
         public ActionResult ListarTodosPedidos()
         {
             return View(pedido_DLL.listaPedido());
+        }
+        //Pedido Retirados
+        public ActionResult ListarTodosPedidosRetirados()
+        {
+            return View(pedido_DLL.listaPedidoRetirado());
         }
         //Faturar Pedido
         public ActionResult FaturarPedido(string id)
@@ -95,5 +106,6 @@ namespace AppLivraria_TsT.Controllers
                 return View(pedido_DAO.ListarPedidoDetalhes().Find(pedido_DTO => pedido_DTO.IdPedido == id));
             }
         }
+        
     }
 }

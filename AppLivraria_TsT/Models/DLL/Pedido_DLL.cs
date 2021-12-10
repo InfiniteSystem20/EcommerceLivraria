@@ -80,6 +80,7 @@ namespace AppLivraria_TsT.Models.DLL
                 throw ex;
             }
         }
+
         public List<Pedido_DTO> listaPedido()
         {
             try
@@ -92,7 +93,18 @@ namespace AppLivraria_TsT.Models.DLL
                 throw ex;
             }
         }
-
+        public List<Pedido_DTO> listaPedidoRetirado()
+        {
+            try
+            {
+                dal = new Pedido_DAO();
+                return dal.selectListPedidoRetirados();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
     }
 }

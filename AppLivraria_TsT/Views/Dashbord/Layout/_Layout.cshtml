@@ -65,31 +65,33 @@
                 </ul>
 
                 <ul class="nav nav-pills">
-                    <li class="nav-item"><span class="nav-link active">VENDAS</span></li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/pedido/ListarTodosPedidos">
-                            <i class="fas fa-shopping-cart"></i> <span>Realizar Venda</span>
-                        </a>
-                        <a class="nav-link" href="/pedido/ListarTodospedidoDetalhes">
-                            <i class="fas fa-shopping-cart"></i> <span>Realizar Venda</span>
-                        </a>
 
-                    </li>
+                    <li class="nav-item"><span class="nav-link active">VENDAS</span></li>
+                    @if (Session["tipologado3"] != null) { 
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pedido/ListarTodosPedidos">
+                                <i class="fas fa-shopping-cart"></i> <span>Realizar Venda</span>
+                            </a>
+                        </li>
+                    }
                     <li class="nav-item">
-                        <a class="nav-link" href="/Vendas/Consultar">
+                        <a class="nav-link" href="/pedido/ListarTodosPedidosRelatorio">
                             <i class="fas fa-search"></i> <span>Consultar</span>
                         </a>
                     </li>
                 </ul>
 
-
+                
                 <ul class="nav nav-pills">
+                    @if (Session["tipologado3"] != null)
+                    {
                     <li class="nav-item"><span class="nav-link active">GERENCIAMENTO</span></li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Gerenciamento/Retirada">
-                            <i class="fas fa-shopping-bag"></i> <span>Retirada</span>
+                        <a class="nav-link" href="/pedido/ListarTodosPedidosRetirados">
+                            <i class="fas fa-shopping-bag"></i> <span>Pedidos Retirados</span>
                         </a>
                     </li>
+                    }
                 </ul>
 
 
@@ -114,12 +116,7 @@
 
 
                 <ul class="nav nav-pills">
-                    <li class="nav-item"><span class="nav-link active">CATEGORIAS</span></li>
-                    @*<li class="nav-item">
-                        <a class="nav-link" href="/Produtos/Cadastrar">
-                            <i class="fas fa-plus-circle"></i> <span>Cadastrar</span>
-                        </a>
-                    </li>*@
+                    <li class="nav-item"><span class="nav-link active">CATEGORIAS</span></li>                    
                     <li class="nav-item">
                         <a class="nav-link" href="/Categoria/ListarCategoria">
                             <i class="fas fa-search"></i> <span>Consultar</span>
